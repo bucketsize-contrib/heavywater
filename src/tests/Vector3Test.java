@@ -69,7 +69,7 @@ public class Vector3Test extends TestCase {
 		System.out.println("testGetAsArray");
 		try {
 			Vector3 v = new Vector3(1, 5, 3);
-			System.out.println(v.getAsArray().length);
+			System.out.println(v.array().length);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());

@@ -63,7 +63,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testGetVertices");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.getVertices());
+			System.out.println(l.vertices());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 

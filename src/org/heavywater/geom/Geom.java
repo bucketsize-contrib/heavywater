@@ -1,16 +1,17 @@
 package org.heavywater.geom;
 
-// Base class for all geometric objects
-// plus, addition non critical functionalities
-// like pretty printing, persistence
-
-// usage:
-// Vector v = new Vector();
-// String vinfo = v.notion();
+import org.heavywater.util.FNotation;
 
 public abstract class Geom {
+	
+	FNotation fNot;
+	
+	public Geom(){
+		fNot = new FNotation();
+	}
+	
 	public String notation() {
-		return "TODO";
+		return fNot.generate(this);
 	}
 
 }

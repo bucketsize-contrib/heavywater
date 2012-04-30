@@ -49,7 +49,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testSetVector3");
 		try {
 			Quaternion q = new Quaternion();
-			q.setVector3(new Vector3(1,4.1,2));
+			q.setVector(new Vector3(1,4.1,2));
 			System.out.println(q.notation());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testGetVector3");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2.2,3,4.1});
-			System.out.println(q.getVector3().notation());
+			System.out.println(q.vector().notation());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -119,10 +119,6 @@ public class QuaternionTest extends TestCase {
 	}
 
 	public final void testSetW() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	public final void testSetProcessor() {
 		fail("Not yet implemented"); // TODO
 	}
 

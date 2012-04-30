@@ -48,7 +48,7 @@ public class Matrix4Test extends TestCase {
 					{3,4,5,6},
 					{4,5,6,7}
 			};
-			m.setAsArray(a);
+			m.setArray(a);
 			System.out.println(m.notation());
 		} catch (Exception e) {
 			e.printStackTrace();

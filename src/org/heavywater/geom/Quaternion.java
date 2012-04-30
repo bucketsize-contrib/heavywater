@@ -7,7 +7,7 @@ package org.heavywater.geom;
 //			j, j, k => basis of the quaternion
 //		also,
 //			H = |z 				w|
-//				|-cj(q)		cj(z)|
+//				|-cj(w)		cj(z)|
 //			
 //				cj() => conjugate of
 //					
@@ -22,6 +22,7 @@ package org.heavywater.geom;
 //				
 //			K = |0 	i|
 //				|i 	0|
+
 //			I^2 = -U
 //			J^2 = -U
 //			K^2 = -U
@@ -48,7 +49,7 @@ package org.heavywater.geom;
 //			| 1  0  0  0 |
 //			| 0 -1  0  0 |
 //		then,
-//			ijk=-1
+//			ijk= -1
 //			ij = -ji = k
 //			jk = -kj = i
 //			ki = -ik = j
@@ -76,17 +77,14 @@ package org.heavywater.geom;
 
 public class Quaternion extends Geom {
 
-	private double[] c = { 1, 0, 0, 0 };
+	private double[] c;
 
-	//
-	// Basic OPS
-	//
 	public Quaternion() {
-
+		c = new double[] { 1, 0, 0, 0 };
 	}
 
 	public Quaternion(double a, double i, double j, double k) {
-
+		this();
 		c[1] = i;
 		c[2] = j;
 		c[3] = k;
@@ -94,7 +92,7 @@ public class Quaternion extends Geom {
 	}
 
 	public Quaternion(double[] _c) {
-
+		this();
 		c[0] = _c[0];
 		c[1] = _c[1];
 		c[2] = _c[2];
@@ -102,41 +100,41 @@ public class Quaternion extends Geom {
 
 	}
 
-	public void setVector3(Vector3 v2) {
-		c[1] = v2.getX();
-		c[2] = v2.getY();
-		c[3] = v2.getZ();
+	public void setVector(Vector3 v2) {
+		c[1] = v2.X();
+		c[2] = v2.Y();
+		c[3] = v2.Z();
 		c[0] = 1.0f;
 	}
 
-	public Vector3 getVector3() {
+	public Vector3 vector() {
 		return new Vector3(c[1], c[2], c[3]);
 	}
 
-	public double[] getAsArray() {
+	public double[] array() {
 		return c;
 	}
 
-	public void setAsArray(double[] _c) {
+	public void setArray(double[] _c) {
 		c[0] = _c[0];
 		c[1] = _c[1];
 		c[2] = _c[2];
 		c[3] = _c[3];
 	}
 
-	public double getX() {
+	public double X() {
 		return c[1];
 	}
 
-	public double getY() {
+	public double Y() {
 		return c[2];
 	}
 
-	public double getZ() {
+	public double Z() {
 		return c[3];
 	}
 
-	public double getW() {
+	public double W() {
 		return c[0];
 	}
 
@@ -156,46 +154,43 @@ public class Quaternion extends Geom {
 		this.c[0] = c;
 	}
 
-	//
-	// Pluggable OPS
-	//
 	public Quaternion add(Quaternion q2) {
-		return new Quaternion(this.getW() + q2.getW(), this.getX() + q2.getX(),
-				this.getY() + q2.getY(), this.getZ() + q2.getZ());
+		return new Quaternion(this.W() + q2.W(), this.X() + q2.X(),
+				this.Y() + q2.Y(), this.Z() + q2.Z());
 
 	}
 
 	public Quaternion sub(Quaternion q2) {
-		return new Quaternion(this.getW() - q2.getW(), this.getX() - q2.getX(),
-				this.getY() - q2.getY(), this.getZ() - q2.getZ());
+		return new Quaternion(this.W() - q2.W(), this.X() - q2.X(),
+				this.Y() - q2.Y(), this.Z() - q2.Z());
 
 	}
 
 	public Quaternion mult(double s) {
-		return new Quaternion(this.getW() * s, this.getX() * s,
-				this.getY() * s, this.getZ() * s);
+		return new Quaternion(this.W() * s, this.X() * s,
+				this.Y() * s, this.Z() * s);
 
 	}
 
 	public Quaternion mult(Quaternion q2) {
-		return new Quaternion(this.getX() * q2.getW() + this.getY() * q2.getZ()
-				- this.getZ() * q2.getY() + this.getW() * q2.getX(),
-				-this.getX() * q2.getZ() + this.getY() * q2.getW()
-						+ this.getZ() * q2.getX() + this.getW() * q2.getY(),
-				this.getX() * q2.getY() - this.getY() * q2.getX() + this.getZ()
-						* q2.getW() + this.getW() * q2.getZ(), -this.getX()
-						* q2.getX() - this.getY() * q2.getY() - this.getZ()
-						* q2.getZ() + this.getW() * q2.getW());
+		return new Quaternion(this.X() * q2.W() + this.Y() * q2.Z()
+				- this.Z() * q2.Y() + this.W() * q2.X(),
+				-this.X() * q2.Z() + this.Y() * q2.W()
+						+ this.Z() * q2.X() + this.W() * q2.Y(),
+				this.X() * q2.Y() - this.Y() * q2.X() + this.Z()
+						* q2.W() + this.W() * q2.Z(), -this.X()
+						* q2.X() - this.Y() * q2.Y() - this.Z()
+						* q2.Z() + this.W() * q2.W());
 	}
 
 	public Quaternion normalise(Quaternion q1) {
-		double n = Math.sqrt(q1.getX() * q1.getX() + q1.getY() * q1.getY()
-				+ q1.getZ() * q1.getZ() + q1.getW() * q1.getW());
+		double n = Math.sqrt(q1.X() * q1.X() + q1.Y() * q1.Y()
+				+ q1.Z() * q1.Z() + q1.W() * q1.W());
 		return this.mult(1.0f / n);
 	}
 
 	public Quaternion conjugate(Quaternion q1) {
-		return new Quaternion(-q1.getW(), -q1.getX(), -q1.getY(), q1.getZ());
+		return new Quaternion(-q1.W(), -q1.X(), -q1.Y(), q1.Z());
 	}
 
 }

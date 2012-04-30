@@ -1,39 +1,55 @@
 package org.heavywater.util;
 
-import org.heavywater.geom.Vector3;
+import org.heavywater.geom.Axis3;
+import org.heavywater.geom.Geom;
 import org.heavywater.geom.Line3;
 import org.heavywater.geom.Matrix4;
 import org.heavywater.geom.Quaternion;
-import org.heavywater.geom.Axis3;
+import org.heavywater.geom.Vector3;
 
 public class FNotation {
+	
+	private static String nullNotation(){
+		return "Geom object is null";
+	}
+	private static boolean sanitize(Geom obj){
+		if (obj == null){
+			return false;
+		}
+		return true;
+	}
 
 	public static String generate(Vector3 geometry) {
-		return "(Vector3 " + geometry.getX() + " " + geometry.getY() + " "
-				+ geometry.getZ()+")";
+		if (!sanitize(geometry)) return nullNotation();
+		return "(Vector3 " + geometry.X() + " " + geometry.Y() + " "
+				+ geometry.Z()+")";
 
 	}
 
 	public static String generate(Quaternion geometry) {
-		return "(Quaternion " + geometry.getW() + " " +geometry.getX() + " " + geometry.getY() + " "
-		+ geometry.getZ()+")";
+		if (!sanitize(geometry)) return nullNotation();
+		return "(Quaternion " + geometry.W() + " " +geometry.X() + " " + geometry.Y() + " "
+		+ geometry.Z()+")";
 
 	}
 
 	public static String generate(Line3 geometry) {
-		return "(Line3 " + geometry.getVertices()[0].notation() + " "
-				+ geometry.getVertices()[1].notation() + ")";
+		if (!sanitize(geometry)) return nullNotation();
+		return "(Line3 " + geometry.vertices()[0].notation() + " "
+				+ geometry.vertices()[1].notation() + ")";
 
 	}
 
 	public static String generate(Axis3 geometry) {
+		if (!sanitize(geometry)) return nullNotation();
 		return "A geometric Axis3d";
 
 	}
 
 	public static String generate(Matrix4 geometry) {
+		if (!sanitize(geometry)) return nullNotation();
 		String s = "(Matrix4 ";
-		double [][] a = geometry.getAsArray();
+		double [][] a = geometry.array();
 		for (int i = 0; i < 4; ++i){
 			s+="\n(";
 			for (int j = 0; j < 4; ++j){
@@ -42,5 +58,10 @@ public class FNotation {
 			s+=")";
 		}
 		return s+")";
+	}
+
+	public String generate(Geom geometry) {
+		if (!sanitize(geometry)) return nullNotation();
+		return "Geom";
 	}
 }

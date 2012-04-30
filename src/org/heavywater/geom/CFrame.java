@@ -17,31 +17,31 @@ public class CFrame extends Geom {
 		// default matrix init
 	}
 
-	public Vector3 getUx() {
+	public Vector3 X() {
 		return ux;
 	}
 
-	public void setUx(Vector3 ux) {
-		this.ux.equal(ux);
+	public void setX(Vector3 ux) {
+		this.ux.copy(ux);
 	}
 
-	public Vector3 getUy() {
+	public Vector3 Y() {
 		return uy;
 	}
 
-	public void setUy(Vector3 uy) {
-		this.uy.equal(uy);
+	public void setY(Vector3 uy) {
+		this.uy.copy(uy);
 	}
 
-	public Vector3 getUz() {
+	public Vector3 Z() {
 		return uz;
 	}
 
-	public void setUz(Vector3 uz) {
-		this.uz.equal(uz);
+	public void setZ(Vector3 uz) {
+		this.uz.copy(uz);
 	}
 
-	public Vector3 getPos() {
+	public Vector3 pos() {
 		return pos;
 	}
 
@@ -49,7 +49,7 @@ public class CFrame extends Geom {
 		this.pos = new Vector3(pos);
 	}
 
-	public Matrix4 getTransform() {
+	public Matrix4 transform() {
 		return transform;
 	}
 

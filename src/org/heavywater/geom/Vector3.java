@@ -2,41 +2,32 @@ package org.heavywater.geom;
 
 import org.heavywater.util.FNotation;
 
-// Mathlib Foundation classes
-
-// usability: 
-//	computer vision, 
-//	robotics, 
-//	navigation, 
-//	general kinematics and mechanics
-
 public class Vector3 extends Geom {
-	private double[] c = { 0, 0, 0 };
+	private double[] c;
 
-	//
-	// Basic OPS
-	//
-	public Vector3() {
-		c[0] = c[1] = c[2] = 0;
+	public Vector3(){
+		c = new double [] { 0, 0, 0 };
 	}
 
 	public Vector3(double x, double y, double z) {
+		this();
 		c[0] = x;
 		c[1] = y;
 		c[2] = z;
 	}
 
 	public Vector3(Vector3 vec) {
-		this.equal(vec);
+		this();
+		this.copy(vec);
 	}
 
-	public void equal(Vector3 vec) {
+	public void copy(Vector3 vec) {
 		c[0] = vec.c[0];
 		c[1] = vec.c[1];
 		c[2] = vec.c[2];
 	}
 
-	public double getX() {
+	public double X() {
 		return c[0];
 	}
 
@@ -44,7 +35,7 @@ public class Vector3 extends Geom {
 		c[0] = x;
 	}
 
-	public double getY() {
+	public double Y() {
 		return c[1];
 	}
 
@@ -52,7 +43,7 @@ public class Vector3 extends Geom {
 		c[1] = y;
 	}
 
-	public double getZ() {
+	public double Z() {
 		return c[2];
 	}
 
@@ -60,7 +51,7 @@ public class Vector3 extends Geom {
 		c[2] = z;
 	}
 
-	public double[] getAsArray() {
+	public double[] array() {
 		return this.c;
 	}
 
@@ -72,7 +63,7 @@ public class Vector3 extends Geom {
 	}
 
 	public boolean isEqual(Vector3 v) {
-		if (v.getX() == c[0] && v.getY() == c[1] && v.getZ() == c[2])
+		if (v.X() == c[0] && v.Y() == c[1] && v.Z() == c[2])
 			return true;
 		else
 			return false;
@@ -91,42 +82,42 @@ public class Vector3 extends Geom {
 
 	// extra opts
 	public Vector3 add(Vector3 v1) {
-		return new Vector3(this.getX() + v1.getX(), this.getY() + v1.getY(),
-				this.getZ() + v1.getZ());
+		return new Vector3(this.X() + v1.X(), this.Y() + v1.Y(),
+				this.Z() + v1.Z());
 
 	}
 
 	public Vector3 sub(Vector3 v1) {
-		return new Vector3(this.getX() - v1.getX(), this.getY() - v1.getY(),
-				this.getZ() - v1.getZ());
+		return new Vector3(this.X() - v1.X(), this.Y() - v1.Y(),
+				this.Z() - v1.Z());
 
 	}
 
 	public Vector3 mult(double scale) {
-		return new Vector3(this.getX() * scale, this.getY() * scale,
-				this.getZ() * scale);
+		return new Vector3(this.X() * scale, this.Y() * scale,
+				this.Z() * scale);
 
 	}
 
 	public double length() {
-		return Math.sqrt(this.getX() * this.getX() + this.getY() * this.getY()
-				+ this.getZ() * this.getZ());
+		return Math.sqrt(this.X() * this.X() + this.Y() * this.Y()
+				+ this.Z() * this.Z());
 	}
 
 	public double lengthSQ() {
-		return this.getX() * this.getX() + this.getY() * this.getY()
-				+ this.getZ() * this.getZ();
+		return this.X() * this.X() + this.Y() * this.Y()
+				+ this.Z() * this.Z();
 	}
 
 	public double dot(Vector3 v1) {
-		return this.getX() * v1.getX() + this.getY() * v1.getY() + this.getZ()
-				* v1.getZ();
+		return this.X() * v1.X() + this.Y() * v1.Y() + this.Z()
+				* v1.Z();
 	}
 
 	public Vector3 cross(Vector3 v1) {
-		return new Vector3(this.getY() * v1.getZ() - this.getZ() * v1.getY(),
-				this.getZ() * v1.getX() - this.getX() * v1.getZ(), this.getX()
-						* v1.getY() - this.getY() * v1.getX());
+		return new Vector3(this.Y() * v1.Z() - this.Z() * v1.Y(),
+				this.Z() * v1.X() - this.X() * v1.Z(), this.X()
+						* v1.Y() - this.Y() * v1.X());
 	}
 
 	public boolean isBetweenPoints(Vector3 v0, Vector3 v1) {

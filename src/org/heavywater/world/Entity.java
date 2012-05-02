@@ -7,6 +7,6 @@ public class Entity {
 	protected List<Property> properties;	
 	
 	public void tick(EntityDriver driver){
-		
+		driver.drive(this);
 	}
 }

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.heavywater.geom;
+package org.heavywater.primitives;
 
 import org.heavywater.util.FNotation;
 

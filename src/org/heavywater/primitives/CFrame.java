@@ -1,8 +1,8 @@
-package org.heavywater.geom;
+package org.heavywater.primitives;
 
-import org.heavywater.geom.Geom;
-import org.heavywater.geom.Matrix4;
-import org.heavywater.geom.Vector3;
+import org.heavywater.primitives.Geom;
+import org.heavywater.primitives.Matrix4;
+import org.heavywater.primitives.Vector3;
 
 public class CFrame extends Geom {
 

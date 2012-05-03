@@ -1,11 +1,11 @@
 package org.heavywater.util;
 
-import org.heavywater.geom.Axis3;
-import org.heavywater.geom.Geom;
-import org.heavywater.geom.Line3;
-import org.heavywater.geom.Matrix4;
-import org.heavywater.geom.Quaternion;
-import org.heavywater.geom.Vector3;
+import org.heavywater.primitives.Axis3;
+import org.heavywater.primitives.Geom;
+import org.heavywater.primitives.Line3;
+import org.heavywater.primitives.Matrix4;
+import org.heavywater.primitives.Quaternion;
+import org.heavywater.primitives.Vector3;
 
 public class FNotation {
 	

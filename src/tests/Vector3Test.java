@@ -2,7 +2,7 @@ package tests;
 
 import junit.framework.TestCase;
 
-import org.heavywater.geom.Vector3;
+import org.heavywater.primitives.Vector3;
 
 public class Vector3Test extends TestCase {
 

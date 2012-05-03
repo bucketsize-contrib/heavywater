@@ -1,4 +1,4 @@
-package org.heavywater.geom;
+package org.heavywater.primitives;
 
 public class Axis3 extends Line3 {
 	public Axis3() {

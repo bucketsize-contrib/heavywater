@@ -2,7 +2,7 @@ package tests;
 
 import junit.framework.TestCase;
 
-import org.heavywater.geom.Matrix4;
+import org.heavywater.primitives.Matrix4;
 
 public class Matrix4Test extends TestCase {
 

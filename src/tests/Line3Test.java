@@ -2,8 +2,8 @@ package tests;
 
 import junit.framework.TestCase;
 
-import org.heavywater.geom.Line3;
-import org.heavywater.geom.Vector3;
+import org.heavywater.primitives.Line3;
+import org.heavywater.primitives.Vector3;
 
 public class Line3Test extends TestCase {
 

@@ -1,4 +1,6 @@
-package org.heavywater.world;
+package org.heavywater.driver;
+
+import org.heavywater.entity.Entity;
 
 /*
  * EntityDriver know how each Property affect this particular Entity.

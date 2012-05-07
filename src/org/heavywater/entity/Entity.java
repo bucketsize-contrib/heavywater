@@ -1,6 +1,9 @@
-package org.heavywater.world;
+package org.heavywater.entity;
 
 import java.util.List;
+
+import org.heavywater.driver.EntityDriver;
+import org.heavywater.property.Property;
 
 /*
  * Entity is the primary object in the simulation world. It can have many parts

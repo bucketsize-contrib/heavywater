@@ -1,6 +1,5 @@
-package org.heavywater.world.property;
+package org.heavywater.property;
 
-import org.heavywater.world.Property;
 
 public class KinematicProperty extends Property {
 

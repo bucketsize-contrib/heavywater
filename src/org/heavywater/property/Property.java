@@ -1,4 +1,4 @@
-package org.heavywater.world;
+package org.heavywater.property;
 
 /*
  * Property as of now only signifies physical properties an Entity can have.

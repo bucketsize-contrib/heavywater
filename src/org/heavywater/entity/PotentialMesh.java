@@ -1,6 +1,5 @@
-package org.heavywater.world.entity;
+package org.heavywater.entity;
 
-import org.heavywater.world.Entity;
 
 public class PotentialMesh extends Entity{
 

@@ -14,7 +14,9 @@ import org.heavywater.property.Property;
  * EntityDriver visits all properties. 
  */
 public class Entity {
+	protected Entity parent;
 	protected List<Entity> ensemble;
+	
 	protected List<Property> properties;	
 	
 	public void tick(EntityDriver driver){

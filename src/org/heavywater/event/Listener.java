@@ -5,7 +5,6 @@ import java.util.List;
 import org.heavywater.entity.Entity;
 
 /**
- * @author jb
  * Listener polls for event on registered entities
  * 
  * instead of each entity having the ability to detect collision it subscribes 

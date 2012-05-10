@@ -6,8 +6,6 @@ import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 
 /**
- * @author jb
- * 
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
  * 

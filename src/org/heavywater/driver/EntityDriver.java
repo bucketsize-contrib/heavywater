@@ -3,8 +3,6 @@ package org.heavywater.driver;
 import org.heavywater.entity.Entity;
 
 /**
- * @author jb
- *  
  * EntityDriver know how each Property affect this particular Entity.
  * 
  * EntityDriver is also to delegate away some of the dynamic behaviour away

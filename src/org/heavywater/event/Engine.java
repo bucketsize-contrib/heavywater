@@ -3,29 +3,26 @@ package org.heavywater.event;
 import java.util.List;
 
 import org.heavywater.driver.EntityDriver;
+import org.heavywater.entity.Entity;
 
 public class Engine {
 	protected List<Listener> listeners;
-	
-	protected long drive_time;
-	protected List<EntityDriver> timed_drivers;
+	protected List<Entity> entities;
+	protected long cycleTime;
 
 	public void add(Listener listener) {
 		listeners.add(listener);
 	}
 	
-	public void add(EntityDriver timed_driver){
-		timed_drivers.add(timed_driver);
+	public void add(Entity entity){
+		entities.add(entity);
 	}
 	
-	public void driveTime(long t){
-		drive_time = t;
+	public void cycleTime(long t){
+		cycleTime = t;
 	}
 	
 	public void run(){
-		// start isteners
-		
-		// start timed_drivers
 		
 	}
 }

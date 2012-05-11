@@ -25,4 +25,9 @@ public abstract class Listener {
 	private List<Entity> poll(){
 		return null;
 	}
+
+	public void listen() {
+		// TODO Auto-generated method stub
+		
+	}
 }

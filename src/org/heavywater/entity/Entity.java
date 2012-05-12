@@ -22,6 +22,17 @@ public class Entity {
 	protected Entity parent;	
 	protected List<Entity> ensemble;
 	
+	public Entity(EntityDriver ed){
+		driver = ed;
+	}
+	public List<Entity> getEnsemble() {
+		return ensemble;
+	}
+
+	public void add(Entity entity){
+		ensemble.add(entity);
+	}
+	
 	public void driver(EntityDriver _driver){
 		driver = _driver;
 	}

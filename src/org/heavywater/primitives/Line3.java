@@ -1,6 +1,6 @@
 package org.heavywater.primitives;
 
-import org.heavywater.util.FNotation;
+import org.heavywater.util.pNotation;
 
 public class Line3 extends Geom {
 
@@ -42,7 +42,7 @@ public class Line3 extends Geom {
 	}
 
 	public String notation() {
-		return FNotation.generate(this);
+		return pNotation.generate(this);
 	}
 
 	//

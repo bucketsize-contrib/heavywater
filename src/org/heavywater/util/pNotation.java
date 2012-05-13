@@ -7,7 +7,7 @@ import org.heavywater.primitives.Matrix4;
 import org.heavywater.primitives.Quaternion;
 import org.heavywater.primitives.Vector3;
 
-public class FNotation {
+public class pNotation {
 	
 	private static String nullNotation(){
 		return "Geom object is null";

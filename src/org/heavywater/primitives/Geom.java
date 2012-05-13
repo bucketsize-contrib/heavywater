@@ -1,13 +1,13 @@
 package org.heavywater.primitives;
 
-import org.heavywater.util.FNotation;
+import org.heavywater.util.pNotation;
 
 public abstract class Geom {
 	
-	FNotation fNot;
+	pNotation fNot;
 	
 	public Geom(){
-		fNot = new FNotation();
+		fNot = new pNotation();
 	}
 	
 	public String notation() {

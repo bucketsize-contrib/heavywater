@@ -34,6 +34,7 @@ public class Entity {
 		ensemble = new ArrayList<Entity>();
 	}
 
+	
 	public List<Entity> getEnsemble() {
 		return ensemble;
 	}
@@ -48,11 +49,16 @@ public class Entity {
 		ensemble.add(entity);
 	}
 
+	public void add(Property p) {
+		properties.add(p);
+	}
+	
 	public void driver(EntityDriver d) {
 		driver = d;
 	}
 
-	public void tick() {
+	public void step() {
+		System.out.println("[II] Entity step up");
 		driver.drive(this);
 	}
 

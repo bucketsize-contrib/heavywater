@@ -1,12 +1,13 @@
-package org.heavywater.event;
+package org.heavywater.driver;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.heavywater.driver.EntityDriver;
+import org.heavywater.entity.Engine;
 import org.heavywater.entity.Entity;
+import org.heavywater.event.Listener;
 
 public class EngineDriver extends EntityDriver{
 	private Map<Listener, Thread> lrunMap;
@@ -33,11 +34,12 @@ public class EngineDriver extends EntityDriver{
 	void run(final Entity entity, double withDelay){
 		TimerTask tta = new TimerTask(){
 			public void run(){
-				entity.tick();
+				entity.step();
 			}
 		};
 		
-		timer.scheduleAtFixedRate(tta, 100, 1000);
+		long delay =  (long) (1000*entity.getCycleTime());
+		timer.scheduleAtFixedRate(tta, 100, delay);
 		
 		erunMap.put(entity, tta);
 	}

@@ -3,13 +3,18 @@ package org.heavywater.property;
 import org.heavywater.primitives.Vector3;
 
 public class Dynamics extends Property {
-	protected float mass;
-	
-	protected Vector3 accel;		
-	protected Vector3 a_accel;
 
-	protected Vector3 momentum;
-	protected Vector3 a_momentum;
+	public Vector3 location;
+	public Vector3 velocity;
+	public Vector3 angular_velocity;
 	
-	protected Vector3 g_accel;
+	public float mass;
+	
+	public Vector3 accel;		
+	public Vector3 a_accel;
+
+	public Vector3 momentum;
+	public Vector3 a_momentum;
+	
+	public Vector3 g_accel;
 }

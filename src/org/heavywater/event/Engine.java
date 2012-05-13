@@ -2,11 +2,10 @@ package org.heavywater.event;
 
 import java.util.List;
 
-import org.heavywater.driver.EntityDriver;
 import org.heavywater.entity.Entity;
 
 public class Engine extends Entity{
-	private long cycleTime;
+	private double cycleTime;
 
 	private  List<Listener> listeners;
 	
@@ -26,7 +25,7 @@ public class Engine extends Entity{
 		cycleTime = t;
 	}
 	
-	public long getCycleTime(){
+	public double getCycleTime(){
 		return cycleTime;
 	}
 	

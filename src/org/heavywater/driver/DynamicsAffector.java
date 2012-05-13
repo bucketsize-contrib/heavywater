@@ -6,14 +6,9 @@ import org.heavywater.property.Dynamics;
 import org.heavywater.property.Property;
 import org.heavywater.util.pNotation;
 
-public class ParticleAffector {
-
-//	public void affect(Property p, Entity e) {
-//		System.out.println("[WW] unknown property detected");
-//	}
-	
-	public void affect(Dynamics d, Entity e) {
-		
+public class DynamicsAffector extends Affector{
+	public void affect(Property p, Entity e) {
+		Dynamics d = (Dynamics) p;
 		System.out.println("[II] Particle before = ( "+pNotation.generate(d.location)+" )");
 		System.out.println("[II] ( "+pNotation.generate(d.velocity)+" )");
 		

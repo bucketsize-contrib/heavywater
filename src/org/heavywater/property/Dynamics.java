@@ -1,5 +1,7 @@
 package org.heavywater.property;
 
+import org.heavywater.driver.Affector;
+import org.heavywater.driver.DynamicsAffector;
 import org.heavywater.primitives.Vector3;
 
 public class Dynamics extends Property {
@@ -31,5 +33,10 @@ public class Dynamics extends Property {
 		a_momentum = new Vector3();
 
 		g_accel = new Vector3();
+	}
+	
+	
+	public Affector affector(){
+		return new DynamicsAffector();
 	}
 }

@@ -14,6 +14,7 @@ public class EngineDriver extends EntityDriver{
 	Timer timer;
 	
 	public EngineDriver(){
+		System.out.println("[II] init EngineDriver");
 		lrunMap = new HashMap<Listener, Thread>();
 		erunMap = new HashMap<Entity, TimerTask>();
 		timer = new Timer();
@@ -29,14 +30,14 @@ public class EngineDriver extends EntityDriver{
 		lrunMap.put(listener, lt);
 	}
 	
-	void run(final Entity entity, long withDelay){
+	void run(final Entity entity, double withDelay){
 		TimerTask tta = new TimerTask(){
 			public void run(){
 				entity.tick();
 			}
 		};
 		
-		timer.scheduleAtFixedRate(tta, 100, withDelay);
+		timer.scheduleAtFixedRate(tta, 100, 1000);
 		
 		erunMap.put(entity, tta);
 	}
@@ -44,9 +45,11 @@ public class EngineDriver extends EntityDriver{
 	public void drive(Entity e) {
 		Engine engine = (Engine) e;
 		for (Entity en : engine.getEnsemble()){
+			System.out.println("[II] starting new monitor for Entity");
 			run(en, engine.getCycleTime());
 		}
 		for (Listener lnr : engine.getListeners()){
+			System.out.println("[II] starting Listener");
 			run(lnr);
 		}
 	}

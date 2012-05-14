@@ -25,11 +25,13 @@ public class Entity {
 	protected EntityDriver driver;
 
 	protected double cycleTime;
+	protected double aliveTime;
 
 	public Entity(EntityDriver ed) {
 		driver = ed;
 		parent = null;
 		cycleTime = 1.0;
+		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		ensemble = new ArrayList<Entity>();
 	}
@@ -60,9 +62,15 @@ public class Entity {
 	public void step() {
 		System.out.println("[II] Entity step up");
 		driver.drive(this);
+		aliveTime += cycleTime;
 	}
 
 	public double getCycleTime() {
 		return cycleTime;
+	}
+
+
+	public double getAliveTime() {
+		return aliveTime;
 	}
 }

@@ -7,17 +7,7 @@ import org.heavywater.primitives.Matrix4;
 import org.heavywater.primitives.Quaternion;
 import org.heavywater.primitives.Vector3;
 
-public class pNotation {
-	
-	private static String nullNotation(){
-		return "Geom object is null";
-	}
-	private static boolean sanitize(Geom obj){
-		if (obj == null){
-			return false;
-		}
-		return true;
-	}
+public class pNotation extends Notation{	
 
 	public static String generate(Vector3 geometry) {
 		if (!sanitize(geometry)) return nullNotation();

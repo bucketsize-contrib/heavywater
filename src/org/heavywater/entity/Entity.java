@@ -16,7 +16,7 @@ import org.heavywater.property.Property;
  * Simulation is based around entity type and its properties [AMBI].
  * EntityDriver visits all properties.
  */
-public class Entity {
+public abstract class Entity {
 	protected Entity parent;
 	protected List<Entity> ensemble;
 

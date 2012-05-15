@@ -1,6 +1,7 @@
 package org.heavywater.driver;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,25 +32,24 @@ public class EngineDriver extends EntityDriver{
 		lrunMap.put(listener, lt);
 	}
 	
-	void run(final Entity entity, double withDelay){
+	void run(final List<Entity> entities, double withDelay){
 		TimerTask tta = new TimerTask(){
 			public void run(){
-				entity.step();
+				for(Entity entity : entities){
+					entity.step();
+				}
 			}
 		};
 		
-		long delay =  (long) (1000*entity.getCycleTime());
+		long delay =  (long) (1000*withDelay);
 		timer.scheduleAtFixedRate(tta, 100, delay);
-		
-		erunMap.put(entity, tta);
 	}
 
 	public void drive(Entity e) {
 		Engine engine = (Engine) e;
-		for (Entity en : engine.getEnsemble()){
-			System.out.println("[II] starting new monitor for Entity");
-			run(en, engine.getCycleTime());
-		}
+		System.out.println("[II] starting new monitor for Entity");
+		run(e.getEnsemble(), engine.getCycleTime());
+
 		for (Listener lnr : engine.getListeners()){
 			System.out.println("[II] starting Listener");
 			run(lnr);

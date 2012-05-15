@@ -1,4 +1,4 @@
-package org.heavywater.driver;
+package org.heavywater.property;
 
 import org.heavywater.entity.Entity;
 import org.heavywater.primitives.Vector3;
@@ -10,7 +10,7 @@ import org.heavywater.util.prNotation;
 public class DynamicsAffector extends Affector{
 	public void affect(Property p, Entity e) {
 		Dynamics d = (Dynamics) p;
-		System.out.println("[II] Particle before ="+prNotation.generate(d));
+
 		Vector3 a = d.accel.add(d.g_accel);
 		Vector3 v = d.velocity; 
 		double t = e.getCycleTime();
@@ -21,8 +21,8 @@ public class DynamicsAffector extends Affector{
 		// v = v + at
 		d.velocity = v.add( a.mult(t) );
 
-		System.out.println("[II] Particle after ="+prNotation.generate(d));
-		System.out.println("[II] aliveTime = " + e.getAliveTime());
+		System.out.println("[II] Particle="+prNotation.generate(d));
+		System.out.println("[II] aliveTime= " + e.getAliveTime());
 	}
 		
 }

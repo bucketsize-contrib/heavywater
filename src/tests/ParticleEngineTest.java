@@ -11,6 +11,7 @@ public class ParticleEngineTest extends TestCase {
 	
 	public final void testCreateOne(){
 		Engine pEngine = new Engine();
+		pEngine.cycleTime(0.03);
 		
 		Particle p = new Particle();
 		

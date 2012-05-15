@@ -7,7 +7,6 @@ import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.Listener;
 
 public class Engine extends Entity{
-	private double cycleTime;
 
 	private  List<Listener> listeners;
 	

@@ -1,4 +1,4 @@
-package org.heavywater.property;
+package org.heavywater.affector;
 
 import org.heavywater.entity.Entity;
 import org.heavywater.primitives.Vector3;
@@ -7,11 +7,11 @@ import org.heavywater.property.Property;
 import org.heavywater.util.pNotation;
 import org.heavywater.util.prNotation;
 
-public class DynamicsAffector extends Affector{
+public class ParticleDynamicsAffector extends Affector{
 	public void affect(Property p, Entity e) {
 		Dynamics d = (Dynamics) p;
 
-		Vector3 a = d.accel.add(d.g_accel);
+		Vector3 a = d.accel;
 		Vector3 v = d.velocity; 
 		double t = e.getCycleTime();
 		

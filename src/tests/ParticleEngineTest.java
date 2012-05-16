@@ -17,7 +17,6 @@ public class ParticleEngineTest extends TestCase {
 		
 		Dynamics d = new Dynamics();
 		d.accel = new Vector3(10.0, 0.0, 0.0);
-		d.g_accel = new Vector3(0.0, -9.8, 0.0);
 		
 		p.add(d);
 		

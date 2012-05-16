@@ -6,7 +6,7 @@ public class ParticleAffectorFactory extends EntityAffectorFactory {
 
 	@Override
 	public Affector entityAffector(Property p) {
-		new ParticleDynamicsAffector();
+		return new ParticleDynamicsAffector();
 	}
 
 }	

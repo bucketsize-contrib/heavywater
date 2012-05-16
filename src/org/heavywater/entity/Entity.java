@@ -46,8 +46,8 @@ public abstract class Entity {
 	}
 
 	public void add(Entity entity) {
-		entity.cycleTime = cycleTime;
 		entity.parent = this;
+		entity.cycleTime = cycleTime;		
 		ensemble.add(entity);
 	}
 

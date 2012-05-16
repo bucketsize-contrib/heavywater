@@ -8,21 +8,23 @@ import java.util.TimerTask;
 
 import org.heavywater.entity.Engine;
 import org.heavywater.entity.Entity;
+import org.heavywater.event.Animator;
 import org.heavywater.event.Listener;
 
 public class EngineDriver extends EntityDriver{
 	private Map<Listener, Thread> lrunMap;
-	private HashMap<Entity, TimerTask> erunMap;
+	private Map<Long, Animator> erunMap;
 	Timer timer;
 	
 	public EngineDriver(){
 		System.out.println("[II] init EngineDriver");
 		lrunMap = new HashMap<Listener, Thread>();
-		erunMap = new HashMap<Entity, TimerTask>();
+		erunMap = new HashMap<Long, Animator>();
 		timer = new Timer();
 	}
 	
 	void run(final Listener listener){
+		System.out.println("[II] starting Listener");
 		Thread lt = new Thread(new Runnable(){
 			public void run(){
 				listener.listen();
@@ -32,26 +34,28 @@ public class EngineDriver extends EntityDriver{
 		lrunMap.put(listener, lt);
 	}
 	
-	void run(final List<Entity> entities, double withDelay){
-		TimerTask tta = new TimerTask(){
-			public void run(){
-				for(Entity entity : entities){
-					entity.step();
-				}
+	void run(final List<Entity> entities, double withDelay){		
+		System.out.println("[II] starting Animators");
+		for(Entity e: entities){
+			Long eKey = (long) (e.getCycleTime()*1000);
+			Animator a;
+			if (erunMap.containsKey(eKey)){
+				a = erunMap.get(eKey);
+			}else{
+				a = new Animator(eKey);
+				erunMap.put(eKey, a);
 			}
-		};
-		
-		long delay =  (long) (1000*withDelay);
-		timer.scheduleAtFixedRate(tta, 100, delay);
+			a.add(e);
+			timer.scheduleAtFixedRate(a.getTask(), 100, eKey);
+		}
 	}
 
 	public void drive(Entity e) {
 		Engine engine = (Engine) e;
-		System.out.println("[II] starting new monitor for Entity");
+		
 		run(e.getEnsemble(), engine.getCycleTime());
 
 		for (Listener lnr : engine.getListeners()){
-			System.out.println("[II] starting Listener");
 			run(lnr);
 		}
 	}

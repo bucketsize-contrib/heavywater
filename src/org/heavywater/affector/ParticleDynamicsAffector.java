@@ -8,6 +8,9 @@ import org.heavywater.util.pNotation;
 import org.heavywater.util.prNotation;
 
 public class ParticleDynamicsAffector extends Affector{
+	public ParticleDynamicsAffector(){
+		System.out.println("[WW] new "+this);
+	}
 	public void affect(Property p, Entity e) {
 		Dynamics d = (Dynamics) p;
 

@@ -38,7 +38,4 @@ public class Animator {
 			entity.step();
 		}
 	}
-
-	
-
 }

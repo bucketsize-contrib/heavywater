@@ -6,12 +6,18 @@ import org.heavywater.entity.Entity;
 import org.heavywater.property.Property;
 
 public class ParticleDriver extends EntityDriver{
+	ParticleAffectorFactory paff;
+	
+	public ParticleDriver(){
+		super();
+		paff = new ParticleAffectorFactory();
+	}
+	
 	@Override
 	public void drive(Entity e) {
-		// update property changes - each induvidual property
-		ParticleAffectorFactory pf = new ParticleAffectorFactory();
+		// update property changes - each individual property
 		for(Property p: e.getProperties()){
-			Affector a = pf.entityAffector(p);
+			Affector a = paff.entityAffector(p);
 			a.affect(p, e);
 		}
 	}

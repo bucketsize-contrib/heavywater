@@ -1,16 +1,17 @@
 package org.heavywater.driver;
 
 import org.heavywater.affector.Affector;
+import org.heavywater.affector.EntityAffectorFactory;
 import org.heavywater.affector.ParticleAffectorFactory;
 import org.heavywater.entity.Entity;
 import org.heavywater.property.Property;
 
 public class ParticleDriver extends EntityDriver{
-	ParticleAffectorFactory paff;
+	EntityAffectorFactory paff;
 	
 	public ParticleDriver(){
 		super();
-		paff = new ParticleAffectorFactory();
+		paff = (EntityAffectorFactory)ParticleAffectorFactory.instance();
 	}
 	
 	@Override

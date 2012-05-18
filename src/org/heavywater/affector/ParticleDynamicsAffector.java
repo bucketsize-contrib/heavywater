@@ -8,6 +8,15 @@ import org.heavywater.util.pNotation;
 import org.heavywater.util.prNotation;
 
 public class ParticleDynamicsAffector extends Affector{
+	private static Object ins;
+	
+	public static Object instance(){
+		return ins!=null?ins:(ins=create());
+	}
+	
+	private static Object create(){
+		return new ParticleDynamicsAffector();
+	}
 	public ParticleDynamicsAffector(){
 		System.out.println("[WW] new "+this);
 	}
@@ -17,15 +26,15 @@ public class ParticleDynamicsAffector extends Affector{
 		Vector3 a = d.accel;
 		Vector3 v = d.velocity; 
 		double t = e.getCycleTime();
-		
+
 		// s = s + ( v*t + 0.5*a*t^2 )
 		d.location = d.location.add( v.mult(t).add(a.mult(t*t).mult(0.5)) );  
-		
+
 		// v = v + at
 		d.velocity = v.add( a.mult(t) );
 
 		System.out.println("[II] Particle="+prNotation.generate(d));
 		System.out.println("[II] aliveTime= " + e.getAliveTime());
 	}
-		
+
 }

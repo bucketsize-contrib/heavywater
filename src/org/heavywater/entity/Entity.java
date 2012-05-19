@@ -60,7 +60,6 @@ public abstract class Entity {
 	}
 
 	public void step() {
-		System.out.println("[II] Entity step up");
 		driver.drive(this);
 		aliveTime += cycleTime;
 	}

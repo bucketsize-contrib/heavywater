@@ -1,6 +1,7 @@
 package org.heavywater.property;
 
-
+import org.heavywater.affector.Affector;
+import org.heavywater.affector.AffectorFactory;
 
 /**
  * Property as of now only signifies physical properties an Entity can have.
@@ -8,4 +9,5 @@ package org.heavywater.property;
  * This kind of makes for duck typing in a strongly typed language. 
  */
 public abstract class Property {
+	public abstract Affector entityAffector(AffectorFactory aff);
 }

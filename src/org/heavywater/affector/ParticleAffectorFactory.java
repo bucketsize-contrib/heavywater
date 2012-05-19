@@ -1,22 +1,22 @@
 package org.heavywater.affector;
 
-import org.heavywater.property.Property;
-import org.heavywater.util.InstanceCache;
+import org.heavywater.property.Dynamics;
 
-public class ParticleAffectorFactory extends EntityAffectorFactory {
+public class ParticleAffectorFactory extends AffectorFactory {
+	// singleton
 	private static Object ins;
-	
-	public static Object instance(){
-		return ins!=null?ins:(ins=create());
+
+	public static Object instance() {
+		return ins != null ? ins : (ins = create());
 	}
-	
-	private static Object create(){
+
+	private static Object create() {
 		return new ParticleAffectorFactory();
 	}
+	// !singleton
 	
-	@Override
-	public Affector entityAffector(Property p) {
+	public Affector affector(Dynamics p) {
 		return (Affector) ParticleDynamicsAffector.instance();
 	}
 
-}	
+}

@@ -2,6 +2,7 @@ package org.heavywater.util;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
 import java.util.logging.Level;
 
 public class Logger {
@@ -22,12 +23,22 @@ public class Logger {
 
 	public Logger(){
 		LOGGER.setLevel(Level.INFO);
+		FileHandler fh=null;
 		try {
-			LOGGER.addHandler(new FileHandler("Logging.txt"));
-		} catch (SecurityException e) {
+			fh = new FileHandler("Logging.txt");
+		} catch (SecurityException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Formatter sf = new LogFormatter(); 
+		fh.setFormatter(sf);
+		
+		try {
+			LOGGER.addHandler(fh);
+		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

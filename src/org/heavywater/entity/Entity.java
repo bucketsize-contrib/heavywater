@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
-
-/**
+import static org.heavywater.util.LogUtil.*
+;/**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
  * 
@@ -17,23 +17,28 @@ import org.heavywater.property.Property;
  * EntityDriver visits all properties.
  */
 public abstract class Entity {
-	protected Entity parent;
+	protected long id=-1;
+	private static long pIndex=0; 
+	
+	protected double cycleTime;
+	protected double aliveTime;
+	
+	protected List<Property> properties;
 	protected List<Entity> ensemble;
 
-	protected List<Property> properties;
+	protected Entity parent;
 
 	protected EntityDriver driver;
 
-	protected double cycleTime;
-	protected double aliveTime;
-
 	public Entity(EntityDriver ed) {
+		id = pIndex++;
 		driver = ed;
 		parent = null;
 		cycleTime = 1.0;
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		ensemble = new ArrayList<Entity>();
+		logInfo("new Entity "+"type="+this.getClass()+" id= "+pIndex);
 	}
 
 	
@@ -71,5 +76,10 @@ public abstract class Entity {
 
 	public double getAliveTime() {
 		return aliveTime;
+	}
+
+
+	public long getID() {
+		return id;
 	}
 }

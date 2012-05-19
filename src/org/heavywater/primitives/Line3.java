@@ -1,6 +1,7 @@
 package org.heavywater.primitives;
 
 import org.heavywater.util.pNotation;
+import static org.heavywater.util.LogUtil.*;
 
 public class Line3 extends Geom {
 
@@ -100,7 +101,7 @@ public class Line3 extends Geom {
 			double m = c.cross(b).length() / a.cross(b).length();
 			return this.vertices()[0].add(a.mult(m));
 		} else {
-			System.out.println(this.notation() + " " + l2.notation()
+			logInfo(this.notation() + " " + l2.notation()
 					+ " do not intersect");
 			return null;
 		}

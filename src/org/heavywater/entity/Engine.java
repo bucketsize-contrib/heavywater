@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.heavywater.driver.EngineDriver;
-import org.heavywater.event.Animator;
 import org.heavywater.event.Listener;
+import static org.heavywater.util.LogUtil.*;
 
 public class Engine extends Entity{
 
@@ -37,7 +37,7 @@ public class Engine extends Entity{
 	}
 	
 	public void start(){
-		System.out.println("[II] starting Engine");
+		logInfo("starting Engine");
 		driver.drive(this);
 		
 		while(true){}

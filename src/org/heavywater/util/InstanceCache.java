@@ -2,6 +2,7 @@ package org.heavywater.util;
 
 import java.util.HashMap;
 import java.util.Map;
+import static org.heavywater.util.LogUtil.*;
 
 public class InstanceCache {
 	private static Map<String, Object> pool = new HashMap<String, Object>();
@@ -16,7 +17,7 @@ public class InstanceCache {
 	}
 	
 	public static Object get(String key){
-		System.out.println("[II] cacheFetch: "+key);
+		logInfo("cacheFetch: "+key);
 		return pool.get(key);
 	}
 	

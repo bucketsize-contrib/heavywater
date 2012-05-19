@@ -1,10 +1,11 @@
 package org.heavywater.affector;
 
+import static org.heavywater.util.LogUtil.logInfo;
+
 import org.heavywater.entity.Entity;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Property;
-import org.heavywater.util.pNotation;
 import org.heavywater.util.prNotation;
 
 public class ParticleDynamicsAffector extends Affector{
@@ -18,7 +19,7 @@ public class ParticleDynamicsAffector extends Affector{
 		return new ParticleDynamicsAffector();
 	}
 	public ParticleDynamicsAffector(){
-		System.out.println("[WW] new "+this);
+		logInfo("new "+this);
 	}
 	public void affect(Property p, Entity e) {
 		Dynamics d = (Dynamics) p;
@@ -33,8 +34,8 @@ public class ParticleDynamicsAffector extends Affector{
 		// v = v + at
 		d.velocity = v.add( a.mult(t) );
 
-		System.out.println("[II] Particle="+prNotation.generate(d));
-		System.out.println("[II] aliveTime= " + e.getAliveTime());
+		logInfo("Particle "+e.getID()+"="+prNotation.generate(d));
+		logInfo("aliveTime= " + e.getAliveTime());
 	}
 
 }

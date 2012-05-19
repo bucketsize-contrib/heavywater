@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import org.heavywater.entity.Engine;
 import org.heavywater.entity.Entity;
 import org.heavywater.event.Animator;
 import org.heavywater.event.Listener;
+import static org.heavywater.util.LogUtil.*;
 
 public class EngineDriver extends EntityDriver{
 	private Map<Listener, Thread> lrunMap;
@@ -17,14 +17,14 @@ public class EngineDriver extends EntityDriver{
 	Timer timer;
 	
 	public EngineDriver(){
-		System.out.println("[II] init EngineDriver");
+		logInfo("init EngineDriver");
 		lrunMap = new HashMap<Listener, Thread>();
 		erunMap = new HashMap<Long, Animator>();
 		timer = new Timer();
 	}
 	
 	void run(final Listener listener){
-		System.out.println("[II] starting Listener");
+		logInfo("starting Listener");
 		Thread lt = new Thread(new Runnable(){
 			public void run(){
 				listener.listen();
@@ -35,7 +35,7 @@ public class EngineDriver extends EntityDriver{
 	}
 	
 	void run(final List<Entity> entities, double withDelay){		
-		System.out.println("[II] starting Animators");
+		logInfo("starting Animators");
 		for(Entity e: entities){
 			Long eKey = (long) (e.getCycleTime()*1000);
 			Animator a;

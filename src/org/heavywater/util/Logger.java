@@ -1,6 +1,7 @@
 package org.heavywater.util;
 
 import java.io.IOException;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
 import java.util.logging.Level;
@@ -33,7 +34,7 @@ public class Logger {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Formatter sf = new LogFormatter(); 
+		LogFormatter sf = new LogFormatter(); 
 		fh.setFormatter(sf);
 		
 		try {

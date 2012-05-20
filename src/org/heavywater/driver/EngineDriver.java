@@ -12,51 +12,55 @@ import org.heavywater.event.Listener;
 import static org.heavywater.util.LogUtil.*;
 
 public class EngineDriver extends EntityDriver{
-	private Map<Listener, Thread> lrunMap;
-	private Map<Long, Animator> erunMap;
+	private Map<Listener, Thread> listenerMap;
+	private Map<Long, Animator> animatorMap;
 	Timer timer;
 	
 	public EngineDriver(){
 		logInfo("init EngineDriver");
-		lrunMap = new HashMap<Listener, Thread>();
-		erunMap = new HashMap<Long, Animator>();
+		listenerMap = new HashMap<Listener, Thread>();
+		animatorMap = new HashMap<Long, Animator>();
 		timer = new Timer();
 	}
 	
-	void run(final Listener listener){
-		logInfo("starting Listener");
+	void start(final Listener listener){
 		Thread lt = new Thread(new Runnable(){
 			public void run(){
 				listener.listen();
 			}
 		});
 		lt.start();
-		lrunMap.put(listener, lt);
+		listenerMap.put(listener, lt);
 	}
 	
-	void run(final List<Entity> entities, double withDelay){		
-		logInfo("starting Animators");
-		for(Entity e: entities){
-			Long eKey = (long) (e.getCycleTime()*1000);
-			Animator a;
-			if (erunMap.containsKey(eKey)){
-				a = erunMap.get(eKey);
-			}else{
-				a = new Animator(eKey);
-				erunMap.put(eKey, a);
-			}
-			a.add(e);
+	void start(final Entity e){		
+		Long eKey = (long) (e.getCycleTime()*1000);
+		Animator a;
+		
+		// get an Animator, else create a new one
+		if (animatorMap.containsKey(eKey)){
+			a = animatorMap.get(eKey);
+		}else{
+			a = new Animator(eKey);
+			animatorMap.put(eKey, a);
 			timer.scheduleAtFixedRate(a.getTask(), 100, eKey);
 		}
+		
+		// register Entity with the Animator
+		a.add(e);		
 	}
 
 	public void drive(Entity e) {
 		Engine engine = (Engine) e;
 		
-		run(e.getEnsemble(), engine.getCycleTime());
+		logInfo("starting Entity animators");
+		for(Entity en: e.getEnsemble()){
+			start(en);
+		}		
 
+		logInfo("starting Entity listeners");
 		for (Listener lnr : engine.getListeners()){
-			run(lnr);
+			start(lnr);
 		}
 	}
 }

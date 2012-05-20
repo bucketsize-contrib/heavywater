@@ -2,6 +2,7 @@ package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.AffectorFactory;
+import org.heavywater.util.prNotation;
 
 /**
  * Property as of now only signifies physical properties an Entity can have.
@@ -10,4 +11,5 @@ import org.heavywater.affector.AffectorFactory;
  */
 public abstract class Property {
 	public abstract Affector entityAffector(AffectorFactory aff);
+	public abstract String inspect(prNotation n);
 }

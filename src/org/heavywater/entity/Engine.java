@@ -1,19 +1,19 @@
 package org.heavywater.entity;
 
+import static org.heavywater.util.LogUtil.logInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.heavywater.driver.EngineDriver;
+import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
-import static org.heavywater.util.LogUtil.*;
 
 public class Engine extends Entity{
 
+	private boolean STARTED = false;
 	private List<Listener> listeners;
-	
-	public List<Listener> getListeners() {
-		return listeners;
-	}
+	EventFlag shutdownEventFlag;
 
 	public Engine(){
 		this(new EngineDriver());
@@ -21,25 +21,42 @@ public class Engine extends Entity{
 	
 	public Engine(EngineDriver ed){
 		super(ed);
+		cycleTime=1.0; // default, override
 		listeners = new ArrayList<Listener>();
+		shutdownEventFlag = new EventFlag();
 	}
 	
-	public void add(Listener listener) {
-		listeners.add(listener);
-	}
-		
-	public void cycleTime(double t){
-		cycleTime = t;
+	public void add(Listener l) {
+		listeners.add(l);
 	}
 	
-	public double getCycleTime(){
-		return cycleTime;
+	public List<Listener> getListeners() {
+		return listeners;
+	}
+	
+	public void step(){
+		if (!STARTED){
+			STARTED=true;
+			super.step();
+		}
 	}
 	
 	public void start(){
 		logInfo("starting Engine");
-		driver.drive(this);
 		
-		while(true){}
+		// engine has only one step
+		step(); 
+		
+		// shutdown after step is completed
+		try {
+			shutdownEventFlag.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void halt(){
+		shutdownEventFlag.signal();
 	}
 }

@@ -3,6 +3,7 @@ package org.heavywater.property;
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.AffectorFactory;
 import org.heavywater.primitives.Vector3;
+import org.heavywater.util.prNotation;
 
 public class Dynamics extends Property {
 	public Vector3 location;
@@ -25,6 +26,11 @@ public class Dynamics extends Property {
 
 	public Affector entityAffector(AffectorFactory aff) {
 		return aff.affector(this);
+	}
+
+	@Override
+	public String inspect(prNotation n) {
+		return n.generate(this);
 	}
 	
 	

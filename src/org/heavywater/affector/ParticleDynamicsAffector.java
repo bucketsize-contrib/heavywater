@@ -33,9 +33,6 @@ public class ParticleDynamicsAffector extends Affector{
 
 		// v = v + at
 		d.velocity = v.add( a.mult(t) );
-
-		logInfo("Particle "+e.getID()+"="+prNotation.generate(d));
-		logInfo("aliveTime= " + e.getAliveTime());
 	}
 
 }

@@ -2,10 +2,10 @@ package org.heavywater.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
-import java.util.logging.SimpleFormatter;
 
-public final class LogFormatter extends SimpleFormatter {
+public final class LogFormatter extends Formatter {
 	private final static SimpleDateFormat date_format = new SimpleDateFormat(
 			"MMM dd,yyyy HH:mm");
 

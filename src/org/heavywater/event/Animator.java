@@ -6,6 +6,14 @@ import java.util.TimerTask;
 
 import org.heavywater.entity.Entity;
 
+/**
+ * Animator serves to periodically animate an Entity by calling the step
+ * method on it.
+ * There is one Animator for any cycleTime in a registered Entity. * Multiple 
+ * entities can be linked to one Animator. 
+ * @author jb
+ *
+ */
 public class Animator {
 	private Long cycleTime;
 	private List<Entity> ensemble;

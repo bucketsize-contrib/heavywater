@@ -34,7 +34,7 @@ public abstract class Entity {
 		id = pIndex++;
 		driver = ed;
 		parent = null;
-		cycleTime = 1.0;
+		cycleTime = 0.0;
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		ensemble = new ArrayList<Entity>();
@@ -52,7 +52,7 @@ public abstract class Entity {
 
 	public void add(Entity entity) {
 		entity.parent = this;
-		entity.cycleTime = cycleTime;		
+		entity.cycleTime = entity.cycleTime!=0.0?entity.cycleTime:cycleTime;		
 		ensemble.add(entity);
 	}
 
@@ -69,6 +69,10 @@ public abstract class Entity {
 		aliveTime += cycleTime;
 	}
 
+	public void cycleTime(double t){
+		cycleTime = t;
+	}
+	
 	public double getCycleTime() {
 		return cycleTime;
 	}

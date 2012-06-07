@@ -1,1 +1,27 @@
+Intro:
+======
 A realty simulation system.
+
+Lets one orchestrate physical behaviour on generic objects i.e. an Entity.
+
+It's pretty simple from a highlevel.
+-Create an Entity type.
+-Write Property(s) for your Entity.
+-Write Driver for the Entity - based on Entity type.
+-Write Affectors for Entity-Property pairs.
+-Optionally write listeners to watch for events on Entity(s).
+-And, give it all to the engine to manage.
+
+The final behavior is a summation of the behaviour modifiers (Affectors) and the Property set attached to each entity.
+
+Initially started out with a elaborate type system, but I slowly seem to move more into the ducktyping and  callback paradigm of C.
+
+Although most of the internal management relies heavily on Object Orientation, to get the right kind of affectors to work on the Entity (based on its Property set)
+
+TODO:
+=====
+Incorporate entangled Affectors for behaviour based on related properties.
+Provide nano-scale effects simulation.
+Provide quantum entanglement effects simulation.
+
+https://github.com/bucketsize/heavywater

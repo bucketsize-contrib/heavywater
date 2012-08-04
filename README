@@ -1,10 +1,9 @@
-Intro:
-======
-A realty simulation system.
+== Intro:
+A reality simulation system.
 
-Lets one orchestrate physical behaviour on generic objects i.e. an Entity.
+Lets one play physical behavior on generic objects i.e. an Entity.
 
-It's pretty simple from a highlevel.
+It's pretty simple from a high level.
 -Create an Entity type.
 -Write Property(s) for your Entity.
 -Write Driver for the Entity - based on Entity type.
@@ -12,15 +11,14 @@ It's pretty simple from a highlevel.
 -Optionally write listeners to watch for events on Entity(s).
 -And, give it all to the engine to manage.
 
-The final behavior is a summation of the behaviour modifiers (Affectors) and the Property set attached to each entity.
+The final behavior is a summation of the behavior modifiers (Affectors) and the Property set attached to each entity.
 
 Initially started out with a elaborate type system, but I slowly seem to move more into the ducktyping and  callback paradigm of C.
 
 Although most of the internal management relies heavily on Object Orientation, to get the right kind of affectors to work on the Entity (based on its Property set)
 
-TODO:
-=====
-Incorporate entangled Affectors for behaviour based on related properties.
+== TODO:
+Incorporate entangled Affectors for behavior based on related properties.
 Provide nano-scale effects simulation.
 Provide quantum entanglement effects simulation.
 

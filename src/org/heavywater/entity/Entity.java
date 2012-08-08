@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.heavywater.driver.EntityDriver;
+import org.heavywater.ex.HWException;
 import org.heavywater.property.Property;
 import static org.heavywater.util.LogUtil.*
 ;/**

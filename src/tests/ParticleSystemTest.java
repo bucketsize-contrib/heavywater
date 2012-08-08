@@ -21,14 +21,14 @@ public class ParticleSystemTest extends TestCase {
 		engine.add(logger);		
 		
 		ParticleSystem ps = new ParticleSystem();
-		for(int i=0; i<10000; ++i){
+		for(int i=0; i<5000; ++i){
 			Dynamics d = new Dynamics();
 			d.accel = new Vector3(10.0, 0.0, 0.0);
 			
 			Particle p = new Particle();
 			p.add(d);
 			
-			//logger.add(p);
+			logger.add(p);
 			
 			ps.add(p);
 		}

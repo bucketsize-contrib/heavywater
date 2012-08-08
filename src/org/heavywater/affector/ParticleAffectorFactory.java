@@ -15,7 +15,7 @@ public class ParticleAffectorFactory extends AffectorFactory {
 	}
 	// !singleton
 	
-	public Affector affector(Dynamics p) {
+	public Affector resolve(Dynamics p) {
 		return (Affector) ParticleDynamicsAffector.instance();
 	}
 

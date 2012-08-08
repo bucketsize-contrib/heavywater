@@ -8,10 +8,11 @@ import java.util.List;
 import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
+import org.heavywater.ex.*;
 
 public class Engine extends Entity{
 
-	private boolean STARTED = false;
+	private boolean ENGINE_STARTED = false;
 	private List<Listener> listeners;
 	EventFlag shutdownEventFlag;
 
@@ -35,14 +36,18 @@ public class Engine extends Entity{
 	}
 	
 	public void step(){
-		if (!STARTED){
-			STARTED=true;
+		if (!ENGINE_STARTED){
+			ENGINE_STARTED=true;
 			super.step();
 		}
 	}
 	
 	public void start(){
 		logInfo("starting Engine");
+		
+		// sanitize engine params
+		if (cycleTime == 0)
+			throw new HWException("engine::cycletime = 0");
 		
 		// engine has only one step
 		step(); 

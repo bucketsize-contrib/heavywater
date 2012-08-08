@@ -24,8 +24,8 @@ public class Dynamics extends Property {
 		a_accel = new Vector3();
 	}
 
-	public Affector entityAffector(AffectorFactory aff) {
-		return aff.affector(this);
+	public Affector dispatch(AffectorFactory aff) {
+		return aff.resolve(this);
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class ParticleDriver extends EntityDriver{
 	public void drive(Entity e) {
 		// update property changes - each individual property
 		for(Property p: e.getProperties()){
-			Affector a = p.entityAffector(aff);
+			Affector a = (Affector) p.dispatch(aff);
 			a.affect(p, e);
 		}
 	}

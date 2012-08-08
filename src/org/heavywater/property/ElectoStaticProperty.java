@@ -9,7 +9,7 @@ public class ElectoStaticProperty extends Property {
 	public double charge;
 
 	@Override
-	public Affector entityAffector(AffectorFactory aff) {
+	public Affector dispatch(AffectorFactory aff) {
 		// TODO Auto-generated method stub
 		return null;
 	}

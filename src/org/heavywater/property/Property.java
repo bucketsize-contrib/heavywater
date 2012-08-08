@@ -10,6 +10,6 @@ import org.heavywater.util.prNotation;
  * This kind of makes for duck typing in a strongly typed language. 
  */
 public abstract class Property {
-	public abstract Affector entityAffector(AffectorFactory aff);
+	public abstract Object dispatch(AffectorFactory aff);
 	public abstract String inspect(prNotation n);
 }

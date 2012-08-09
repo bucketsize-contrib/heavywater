@@ -6,7 +6,7 @@ import org.heavywater.entity.Engine;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.StateLogger;
 import org.heavywater.primitives.Vector3;
-import org.heavywater.property.Dynamics;
+import org.heavywater.property.Kinetics;
 
 public class ParticleTest extends TestCase {
 	
@@ -14,7 +14,7 @@ public class ParticleTest extends TestCase {
 		Engine engine = new Engine();
 		engine.cycleTime(0.03);
 		
-		Dynamics d = new Dynamics();
+		Kinetics d = new Kinetics();
 		d.accel = new Vector3(10.0, 0.0, 0.0);
 		
 		Particle p = new Particle();

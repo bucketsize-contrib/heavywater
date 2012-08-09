@@ -1,9 +1,11 @@
 package org.heavywater.affector;
 
 import org.heavywater.property.Dynamics;
+import org.heavywater.property.Kinetics;
+import org.heavywater.util.Singleton;
 
-public abstract class AffectorResolver {
-	// any property should have minimally atleast a dynamics affector
-	public abstract Affector resolve(Dynamics p);
+public abstract class AffectorResolver implements Singleton {
+	public abstract Affector resolve(Kinetics kinetics);
+	public abstract Affector resolve(Dynamics dynamics);
 }
 

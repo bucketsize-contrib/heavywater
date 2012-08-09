@@ -1,7 +1,7 @@
 package org.heavywater.util;
 
 import org.heavywater.affector.ParticleAffectorResolver;
-import org.heavywater.property.Dynamics;
+import org.heavywater.property.Kinetics;
 
 public class prNotation extends Notation{
 	// singleton
@@ -16,7 +16,7 @@ public class prNotation extends Notation{
 	}
 	// !singleton
 
-	public String generate(Dynamics d) {
+	public String generate(Kinetics d) {
 		if (!sanitize(d)) return nullNotation();
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics");

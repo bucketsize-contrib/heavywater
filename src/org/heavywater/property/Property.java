@@ -1,7 +1,7 @@
 package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
-import org.heavywater.affector.AffectorFactory;
+import org.heavywater.affector.AffectorResolver;
 import org.heavywater.util.prNotation;
 
 /**
@@ -10,6 +10,6 @@ import org.heavywater.util.prNotation;
  * This kind of makes for duck typing in a strongly typed language. 
  */
 public abstract class Property {
-	public abstract Object dispatch(AffectorFactory aff);
+	public abstract Object dispatch(AffectorResolver afr);
 	public abstract String inspect(prNotation n);
 }

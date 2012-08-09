@@ -2,7 +2,7 @@ package org.heavywater.affector;
 
 import org.heavywater.property.Dynamics;
 
-public class ParticleAffectorFactory extends AffectorFactory {
+public class ParticleAffectorResolver extends AffectorResolver {
 	// singleton
 	private static Object ins;
 
@@ -11,7 +11,7 @@ public class ParticleAffectorFactory extends AffectorFactory {
 	}
 
 	private static Object create() {
-		return new ParticleAffectorFactory();
+		return new ParticleAffectorResolver();
 	}
 	// !singleton
 	

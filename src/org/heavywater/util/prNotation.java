@@ -1,6 +1,6 @@
 package org.heavywater.util;
 
-import org.heavywater.affector.ParticleAffectorFactory;
+import org.heavywater.affector.ParticleAffectorResolver;
 import org.heavywater.property.Dynamics;
 
 public class prNotation extends Notation{

@@ -22,15 +22,13 @@ public class Dynamics extends Property{
 		type = "Dynamics";
 	}
 	
-	@Override
 	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}
 
-	@Override
+	
 	public String inspect(prNotation n) {
-		// TODO Auto-generated method stub
-		return null;
+		return n.generate(this);
 	}
 
 }

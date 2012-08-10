@@ -4,6 +4,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.prNotation;
 
 public class StateLogger extends Entity {
@@ -25,5 +26,13 @@ public class StateLogger extends Entity {
 		}
 	}
 	
+	public Object dispatch(Resolver afr) {
+		return afr.resolve(this);
+	}
+
+	
+	public String inspect(prNotation n) {
+		return n.generate(this);
+	}
 
 }

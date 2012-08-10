@@ -64,5 +64,14 @@ public class Engine extends Entity{
 		shutdownEventFlag.signal();
 	}
 
+	public Object dispatch(Resolver afr) {
+		return afr.resolve(this);
+	}
+
+	
+	public String inspect(prNotation n) {
+		return n.generate(this);
+	}
+
 	
 }

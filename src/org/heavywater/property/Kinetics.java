@@ -3,6 +3,7 @@ package org.heavywater.property;
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.AffectorResolver;
 import org.heavywater.primitives.Vector3;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.prNotation;
 
 // primary; this will yield due to changes in secondarie(s)
@@ -26,11 +27,11 @@ public class Kinetics extends Property {
 		type = "Kinetics";
 	}
 
-	public Affector dispatch(AffectorResolver afr) {
+	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}
 
-	@Override
+	
 	public String inspect(prNotation n) {
 		return n.generate(this);
 	}

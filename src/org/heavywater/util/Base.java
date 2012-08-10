@@ -16,15 +16,7 @@ public abstract class Base {
 	public String getType(){
 		return type;
 	}
+	public abstract Object dispatch(Resolver afr);
+	public abstract String inspect(prNotation ng);
 	
-	
-	public Object dispatch(Resolver afr) {
-		return afr.resolve(this);
-	}
-
-	
-	public String inspect(prNotation n) {
-		return n.generate(this);
-	}
-
 }

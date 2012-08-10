@@ -19,10 +19,10 @@ public class ParticleSystemTest extends TestCase {
 
 	public final void testRun(){
 		Engine engine = new Engine(new EngineDriver());
-		engine.cycleTime(0.01);
+		engine.cycleTime(0.3);
 
 		StateLogger logger = new StateLogger();
-		logger.cycleTime(20.0);
+		logger.cycleTime(10.0);
 
 		engine.add(logger);		
 		

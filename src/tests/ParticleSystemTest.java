@@ -15,6 +15,8 @@ import org.heavywater.property.Kinetics;
 
 public class ParticleSystemTest extends TestCase {
 	
+	private int NUM_PAR = 10;
+
 	public final void testRun(){
 		Engine engine = new Engine(new EngineDriver());
 		engine.cycleTime(0.01);
@@ -25,7 +27,7 @@ public class ParticleSystemTest extends TestCase {
 		engine.add(logger);		
 		
 		ParticleSystem ps = new ParticleSystem(new ParticleSystemDriver());
-		for(int i=0; i<5000; ++i){
+		for(int i=0; i<NUM_PAR; ++i){
 			Kinetics k = new Kinetics();
 			Dynamics d = new Dynamics();
 			d.accel = new Vector3(10.0, 0.0, 0.0);
@@ -34,7 +36,7 @@ public class ParticleSystemTest extends TestCase {
 			p.add(k);
 			p.add(d);
 			
-			//logger.add(p);
+			logger.add(p);
 			
 			ps.add(p);
 		}

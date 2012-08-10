@@ -1,5 +1,7 @@
 package org.heavywater.property;
 
+import org.heavywater.affector.Affector;
+import org.heavywater.affector.AffectorResolver;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.util.Resolver;
 import org.heavywater.util.prNotation;
@@ -22,13 +24,18 @@ public class Dynamics extends Property{
 		type = "Dynamics";
 	}
 	
-	public Object dispatch(Resolver afr) {
+	public Affector dispatch(AffectorResolver afr) {
 		return afr.resolve(this);
 	}
 
 	
 	public String inspect(prNotation n) {
 		return n.generate(this);
+	}
+
+	public Object dispatch(Resolver afr) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

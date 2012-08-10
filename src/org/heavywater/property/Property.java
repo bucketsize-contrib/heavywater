@@ -1,5 +1,7 @@
 package org.heavywater.property;
 
+import org.heavywater.affector.Affector;
+import org.heavywater.affector.AffectorResolver;
 import org.heavywater.util.Base;
 
 /**
@@ -8,5 +10,5 @@ import org.heavywater.util.Base;
  * This kind of makes for duck typing in a strongly typed language. 
  */
 public abstract class Property extends Base {
-	
+	public abstract Affector dispatch(AffectorResolver aff);
 }

@@ -12,14 +12,4 @@ public class Sphere extends Shape {
 		super(ed);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Object dispatch(Resolver afr) {
-		return afr.resolve(this);
-	}
-
-	
-	public String inspect(prNotation n) {
-		return n.generate(this);
-	}
-
 }

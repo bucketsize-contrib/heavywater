@@ -27,13 +27,21 @@ public class Kinetics extends Property {
 		type = "Kinetics";
 	}
 
-	public Object dispatch(Resolver afr) {
-		return afr.resolve(this);
-	}
-
 	
 	public String inspect(prNotation n) {
 		return n.generate(this);
+	}
+
+	@Override
+	public Affector dispatch(AffectorResolver afr) {
+		return afr.resolve(this);
+	}
+
+
+	@Override
+	public Object dispatch(Resolver afr) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

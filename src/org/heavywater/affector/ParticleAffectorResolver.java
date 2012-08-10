@@ -2,6 +2,7 @@ package org.heavywater.affector;
 
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
+import org.heavywater.util.Base;
 
 public class ParticleAffectorResolver extends AffectorResolver {
 	// singleton
@@ -15,9 +16,13 @@ public class ParticleAffectorResolver extends AffectorResolver {
 		return (Affector) ParticleKineticsAffector.instance();
 	}
 
-	@Override
-	public Affector resolve(Dynamics dynamics) {
+	public Affector resolve(Dynamics d) {
 		return (Affector) ParticleDynamicsAffector.instance();
+	}
+
+	@Override
+	public Object resolve(Base base) {
+		return null;
 	}
 
 }

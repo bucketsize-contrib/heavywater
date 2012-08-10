@@ -36,7 +36,7 @@ public abstract class Entity extends Base {
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		ensemble = new ArrayList<Entity>();
-		logInfo("new Entity "+"type="+this.getClass()+" id= "+pIndex);
+		logInfo("new Entity "+"type="+type+" id= "+id);
 	}
 
 	
@@ -59,7 +59,7 @@ public abstract class Entity extends Base {
 	public List<Property> getProperties(String t) {
 		List<Property> tlist = new ArrayList<Property>();
 		for(Property e: properties){
-			if (e.getType() == t){
+			if (e.getType().equals(t)){
 				tlist.add(e);
 			}
 		}
@@ -93,10 +93,8 @@ public abstract class Entity extends Base {
 		return cycleTime;
 	}
 
-
 	public double getAliveTime() {
 		return aliveTime;
 	}
-
 
 }

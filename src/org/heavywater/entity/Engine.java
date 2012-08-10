@@ -9,6 +9,8 @@ import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
 import org.heavywater.ex.*;
+import org.heavywater.util.Resolver;
+import org.heavywater.util.prNotation;
 
 public class Engine extends Entity{
 
@@ -16,13 +18,10 @@ public class Engine extends Entity{
 	private List<Listener> listeners;
 	EventFlag shutdownEventFlag;
 
-	public Engine(){
-		this(new EngineDriver());
-	}
-	
 	public Engine(EngineDriver ed){
 		super(ed);
-		cycleTime=1.0; // default, override
+		cycleTime=1.0;
+		
 		listeners = new ArrayList<Listener>();
 		shutdownEventFlag = new EventFlag();
 	}
@@ -64,4 +63,6 @@ public class Engine extends Entity{
 	public void halt(){
 		shutdownEventFlag.signal();
 	}
+
+	
 }

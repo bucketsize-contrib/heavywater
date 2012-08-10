@@ -23,6 +23,7 @@ public class Kinetics extends Property {
 
 		velocity = new Vector3();
 		angular_velocity = new Vector3();
+		type = "Kinetics";
 	}
 
 	public Affector dispatch(AffectorResolver afr) {

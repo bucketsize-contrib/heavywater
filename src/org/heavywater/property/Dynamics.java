@@ -1,7 +1,7 @@
 package org.heavywater.property;
 
-import org.heavywater.affector.AffectorResolver;
 import org.heavywater.primitives.Vector3;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.prNotation;
 
 //defectors/secondary; modified by tertiary - affects primary
@@ -19,10 +19,11 @@ public class Dynamics extends Property{
 	public Dynamics(){
 		accel = new Vector3();
 		a_accel = new Vector3();
+		type = "Dynamics";
 	}
 	
 	@Override
-	public Object dispatch(AffectorResolver afr) {
+	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}
 

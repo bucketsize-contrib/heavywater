@@ -1,13 +1,10 @@
 package org.heavywater.affector;
 
-import static org.heavywater.util.LogUtil.logInfo;
+import java.util.List;
 
 import org.heavywater.entity.Entity;
-import org.heavywater.primitives.Vector3;
-import org.heavywater.property.Kinetics;
+import org.heavywater.property.Dynamics;
 import org.heavywater.property.Property;
-import org.heavywater.util.Singleton;
-import org.heavywater.util.prNotation;
 
 // aggregate the dynamics from tertiary entity properties 
 // to secondary
@@ -22,6 +19,16 @@ public class ParticleDynamicsAffector extends Affector{
 	@Override
 	public void affect(Property p, Entity e) {
 		
+	}
+	
+	public Dynamics aggregate(List<Property> dlist){
+		Dynamics tdyn = new Dynamics();
+		for(Property p: dlist){
+			Dynamics d = (Dynamics)p;
+			tdyn.accel = tdyn.accel.add( d.accel );
+			tdyn.a_accel = tdyn.a_accel.add( d.a_accel );
+		}
+		return tdyn;
 	}
 
 }

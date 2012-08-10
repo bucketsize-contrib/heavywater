@@ -2,11 +2,13 @@ package org.heavywater.affector;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
+import java.util.List;
+
 import org.heavywater.entity.Entity;
 import org.heavywater.primitives.Vector3;
+import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
 import org.heavywater.property.Property;
-import org.heavywater.util.Singleton;
 
 // compute kinematics from secondary
 // there can be one or more secondary, depends on the affector scheme
@@ -24,17 +26,30 @@ public class ParticleKineticsAffector extends Affector{
 	}
 	
 	public void affect(Property p, Entity e) {
-		Kinetics d = (Kinetics) p;
+		Kinetics k = (Kinetics) p;
 
-		Vector3 a = d.accel; // FIXME
-		Vector3 v = d.velocity; 
+		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) ParticleDynamicsAffector.instance();
+		Dynamics d = pda.aggregate( e.getProperties("Dynamics") ); 
+		
+		Vector3 a = d.accel;
+		Vector3 v = k.velocity; 
 		double t = e.getCycleTime();
 
 		// s = s + ( v*t + 0.5*a*t^2 )
-		d.location = d.location.add( v.mult(t).add(a.mult(t*t).mult(0.5)) );  
+		k.location = k.location.add( v.mult(t).add(a.mult(t*t).mult(0.5)) );  
 
 		// v = v + at
-		d.velocity = v.add( a.mult(t) );
+		k.velocity = v.add( a.mult(t) );
+	}
+	
+	public Kinetics aggregate(List<Property> plist){
+		Kinetics tkin = new Kinetics();
+		for(Property p: plist){
+			Kinetics k = (Kinetics) p;
+			tkin.velocity = tkin.velocity.add( k.velocity );
+			tkin.angular_velocity = tkin.angular_velocity.add( k.angular_velocity );
+		}
+		return tkin;
 	}
 
 }

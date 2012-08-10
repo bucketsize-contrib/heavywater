@@ -1,13 +1,14 @@
 package org.heavywater.entity;
 
+import static org.heavywater.util.LogUtil.logInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.heavywater.driver.EntityDriver;
-import org.heavywater.ex.HWException;
 import org.heavywater.property.Property;
-import static org.heavywater.util.LogUtil.*
-;/**
+import org.heavywater.util.Base;
+/**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
  * 
@@ -17,10 +18,7 @@ import static org.heavywater.util.LogUtil.*
  * Simulation is based around entity type and its properties [AMBI].
  * EntityDriver visits all properties.
  */
-public abstract class Entity {
-	protected long id=-1;
-	private static long pIndex=0; 
-	
+public abstract class Entity extends Base {	
 	protected double cycleTime;
 	protected double aliveTime;
 	
@@ -32,7 +30,6 @@ public abstract class Entity {
 	protected EntityDriver driver;
 
 	public Entity(EntityDriver ed) {
-		id = pIndex++;
 		driver = ed;
 		parent = null;
 		cycleTime = 0.0;
@@ -46,9 +43,27 @@ public abstract class Entity {
 	public List<Entity> getEnsemble() {
 		return ensemble;
 	}
+	public List<Entity> getEnsemble(String t) {
+		List<Entity> tlist = new ArrayList<Entity>();
+		for(Entity e: ensemble){
+			if (e.type == t){
+				tlist.add(e);
+			}
+		}
+		return tlist;
+	}
 
 	public List<Property> getProperties() {
 		return properties;
+	}
+	public List<Property> getProperties(String t) {
+		List<Property> tlist = new ArrayList<Property>();
+		for(Property e: properties){
+			if (e.getType() == t){
+				tlist.add(e);
+			}
+		}
+		return tlist;
 	}
 
 	public void add(Entity entity) {
@@ -84,7 +99,4 @@ public abstract class Entity {
 	}
 
 
-	public long getID() {
-		return id;
-	}
 }

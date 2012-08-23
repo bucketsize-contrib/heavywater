@@ -1,6 +1,9 @@
 package org.heavywater.driver;
 
+import org.heavywater.affector.Affector;
+import org.heavywater.affector.AffectorResolver;
 import org.heavywater.entity.Entity;
+import org.heavywater.property.Property;
 
 /**
  * EntityDriver know how each Property affect this particular Entity.
@@ -9,5 +12,15 @@ import org.heavywater.entity.Entity;
  * from the Entity object.
  */
 public abstract class EntityDriver {
-	public abstract void drive(Entity e);
+	private AffectorResolver afr = null;
+	public void setAffectorResolver(AffectorResolver _afr){
+		afr=_afr;
+	}
+	public void drive(Entity e) {
+		// update property changes - each individual property
+		for(Property p: e.getProperties()){
+			Affector a = (Affector) p.dispatch(afr);
+			a.affect(p, e);
+		}
+	}
 }

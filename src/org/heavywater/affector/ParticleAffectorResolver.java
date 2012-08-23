@@ -30,7 +30,6 @@ public class ParticleAffectorResolver extends AffectorResolver implements Single
 	}
 
 	public Affector resolve(ElectoStaticProperty electoStaticProperty) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

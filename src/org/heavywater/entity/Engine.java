@@ -12,6 +12,10 @@ import org.heavywater.ex.HWException;
 import org.heavywater.util.Resolver;
 import org.heavywater.util.prNotation;
 
+/**
+ * @author bucketsize
+ *
+ */
 public class Engine extends Entity{
 
 	private boolean ENGINE_STARTED = false;

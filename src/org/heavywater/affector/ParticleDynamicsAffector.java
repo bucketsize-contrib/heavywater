@@ -17,7 +17,6 @@ public class ParticleDynamicsAffector extends Affector{
 	}
 	// !singleton
 
-	@Override
 	public void affect(Property p, Entity e) {
 		
 	}

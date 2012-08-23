@@ -18,6 +18,7 @@ import org.heavywater.util.Base;
  * Simulation is based around entity type and its properties [AMBI].
  * EntityDriver visits all properties.
  */
+
 public abstract class Entity extends Base {	
 	protected double cycleTime;
 	protected double aliveTime;

@@ -10,11 +10,15 @@ import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
 import org.heavywater.ex.HWException;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.prNotation;
+import org.heavywater.util.hStrDump;
 
 /**
- * @author bucketsize
- *
+ * Engine is an Entity that entangles cause and effects of Entities over a 
+ * region of space.
+ * 
+ * It does this by managing Animators and Listeners for Entities.
+ * The management is delegated to the EngineDriver, which can cause different
+ * implementations.
  */
 public class Engine extends Entity{
 
@@ -73,9 +77,8 @@ public class Engine extends Entity{
 	}
 
 	
-	public String inspect(prNotation n) {
-		return n.generate(this);
+	public String inspect() {
+		return hStrDump.generate(this);
 	}
 
-	
 }

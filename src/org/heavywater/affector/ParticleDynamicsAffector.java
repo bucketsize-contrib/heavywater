@@ -5,7 +5,7 @@ import java.util.List;
 import org.heavywater.entity.Entity;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Property;
-import org.heavywater.util.prNotation;
+import org.heavywater.util.hStrDump;
 
 // aggregate the dynamics from tertiary entity properties 
 // to secondary
@@ -26,11 +26,11 @@ public class ParticleDynamicsAffector extends Affector{
 		Dynamics tdyn = new Dynamics();
 		for(Property p: dlist){
 			Dynamics d = (Dynamics)p;
-			System.out.println(d.inspect((prNotation) prNotation.instance()));
+			System.out.println(d.inspect());
 			tdyn.accel = tdyn.accel.add( d.accel );
 			tdyn.a_accel = tdyn.a_accel.add( d.a_accel );
 		}
-		System.out.println("results: " + tdyn.inspect((prNotation) prNotation.instance()));
+		System.out.println("results: " + tdyn.inspect());
 		return tdyn;
 	}
 

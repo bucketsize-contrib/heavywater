@@ -5,7 +5,7 @@
 
 package org.heavywater.primitives;
 
-import org.heavywater.util.pNotation;
+import org.heavywater.util.StrDump;
 
 public class Matrix4 extends Geom {
 	private double[][] m = { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 },
@@ -52,7 +52,7 @@ public class Matrix4 extends Geom {
 	}
 
 	public String notation() {
-		return pNotation.generate(this);
+		return StrDump.generate(this);
 	}
 
 	public Matrix4 mult(double s) {

@@ -17,6 +17,6 @@ public abstract class Base {
 		return type;
 	}
 	public abstract Object dispatch(Resolver afr);
-	public abstract String inspect(prNotation ng);
+	public abstract String inspect();
 	
 }

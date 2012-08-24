@@ -4,7 +4,7 @@ import org.heavywater.affector.Affector;
 import org.heavywater.affector.AffectorResolver;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.prNotation;
+import org.heavywater.util.hStrDump;
 
 //defectors/secondary; modified by tertiary - affects primary
 //there can be single or multiple
@@ -29,8 +29,8 @@ public class Dynamics extends Property{
 	}
 
 	
-	public String inspect(prNotation n) {
-		return n.generate(this);
+	public String inspect() {
+		return hStrDump.generate(this);
 	}
 
 	public Object dispatch(Resolver afr) {

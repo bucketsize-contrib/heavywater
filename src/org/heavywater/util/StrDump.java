@@ -7,8 +7,16 @@ import org.heavywater.primitives.Matrix4;
 import org.heavywater.primitives.Quaternion;
 import org.heavywater.primitives.Vector3;
 
-public class pNotation extends Notation{	
-
+public class StrDump{	
+	protected static String nullNotation(){
+		return "object is null";
+	}
+	protected static boolean sanitize(Object obj){
+		if (obj == null){
+			return false;
+		}
+		return true;
+	}
 	public static String generate(Vector3 geometry) {
 		if (!sanitize(geometry)) return nullNotation();
 		return "(Vector3 " + geometry.X() + " " + geometry.Y() + " "

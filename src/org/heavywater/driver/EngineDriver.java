@@ -11,6 +11,10 @@ import org.heavywater.event.Animator;
 import org.heavywater.event.Listener;
 import static org.heavywater.util.LogUtil.*;
 
+/**
+ * Specialized Driver only for Engine
+ *
+ */
 public class EngineDriver extends EntityDriver{
 	private Map<Listener, Thread> listenerMap;
 	private Map<Long, Animator> animatorMap;

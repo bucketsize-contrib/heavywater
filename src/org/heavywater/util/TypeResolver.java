@@ -1,11 +1,8 @@
 package org.heavywater.util;
 
 import org.heavywater.entity.Engine;
-import org.heavywater.entity.Mesh;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
-import org.heavywater.entity.PotentialMesh;
-import org.heavywater.entity.Shape;
 import org.heavywater.entity.StateLogger;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.ElectoStaticProperty;
@@ -41,24 +38,6 @@ public class TypeResolver implements Resolver {
 	@Override
 	public Object resolve(ElectoStaticProperty b) {
 		b.type = "ElectoStaticProperty";
-		return null;
-	}
-
-	@Override
-	public Object resolve(Mesh mesh) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object resolve(PotentialMesh potentialMesh) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object resolve(Shape shape) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

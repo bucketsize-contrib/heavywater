@@ -5,7 +5,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.prNotation;
+import org.heavywater.util.hStrDump;
 
 public class StateLogger extends Entity {
 
@@ -21,7 +21,7 @@ public class StateLogger extends Entity {
 		for(Entity e: ensemble ){
 			logInfo("Entity: "+e.getID()+" - "+e.getAliveTime());
 			for(Property p: e.getProperties()){
-				logInfo(p.inspect((prNotation)prNotation.instance()));
+				logInfo(p.inspect());
 			}
 		}
 	}
@@ -31,8 +31,8 @@ public class StateLogger extends Entity {
 	}
 
 	
-	public String inspect(prNotation n) {
-		return n.generate(this);
+	public String inspect() {
+		return hStrDump.generate(this);
 	}
 
 }

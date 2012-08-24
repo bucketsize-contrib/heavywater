@@ -2,7 +2,7 @@ package org.heavywater.entity;
 
 import org.heavywater.driver.ParticleDriver;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.prNotation;
+import org.heavywater.util.hStrDump;
 
 public class Particle extends Entity {
 	public Particle(ParticleDriver ed) {
@@ -14,8 +14,8 @@ public class Particle extends Entity {
 	}
 
 	
-	public String inspect(prNotation n) {
-		return n.generate(this);
+	public String inspect() {
+		return hStrDump.generate(this);
 	}
 
 }

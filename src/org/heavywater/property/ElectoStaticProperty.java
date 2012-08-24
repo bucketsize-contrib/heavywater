@@ -1,7 +1,7 @@
 package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
-import org.heavywater.affector.AffectorResolver;
+import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.util.Resolver;
 import org.heavywater.util.hStrDump;
 

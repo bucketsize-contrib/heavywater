@@ -1,7 +1,7 @@
 package org.heavywater.driver;
 
-import org.heavywater.affector.AffectorResolver;
-import org.heavywater.affector.ParticleAffectorResolver;
+import org.heavywater.affector.resolver.AffectorResolver;
+import org.heavywater.affector.resolver.ParticleAffectorResolver;
 
 public class ParticleDriver extends EntityDriver{
 	public ParticleDriver(){

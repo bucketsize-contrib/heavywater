@@ -1,7 +1,7 @@
 package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
-import org.heavywater.affector.AffectorResolver;
+import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.util.Resolver;
 import org.heavywater.util.hStrDump;
@@ -27,7 +27,6 @@ public class Dynamics extends Property{
 	public Affector dispatch(AffectorResolver afr) {
 		return afr.resolve(this);
 	}
-
 	
 	public String inspect() {
 		return hStrDump.generate(this);

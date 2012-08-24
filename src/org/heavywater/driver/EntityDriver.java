@@ -1,7 +1,7 @@
 package org.heavywater.driver;
 
 import org.heavywater.affector.Affector;
-import org.heavywater.affector.AffectorResolver;
+import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.entity.Entity;
 import org.heavywater.property.Property;
 
@@ -34,12 +34,14 @@ public abstract class EntityDriver {
 		// update property changes - each individual property
 		for(Property p: e.getProperties()){
 			Affector a = (Affector) p.dispatch(afr);
-			a.affect(p, e);
+			if (a!=null) {
+				a.affect(p, e);
+			}
 		}
 		
 		// update ensemble
 		for(Entity en: e.getEnsemble()){
-			e.step();
+			en.step();
 		}
 	}
 }

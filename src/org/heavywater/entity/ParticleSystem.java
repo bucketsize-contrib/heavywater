@@ -1,11 +1,11 @@
 package org.heavywater.entity;
 
-import org.heavywater.driver.ParticleSystemDriver;
+import org.heavywater.driver.EntityDriver;
 import org.heavywater.util.Resolver;
 import org.heavywater.util.hStrDump;
 
 public class ParticleSystem extends Entity {
-	public ParticleSystem(ParticleSystemDriver ed) {
+	public ParticleSystem(EntityDriver ed) {
 		super(ed);
 	}
 	

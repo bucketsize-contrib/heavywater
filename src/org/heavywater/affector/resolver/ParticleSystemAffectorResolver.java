@@ -1,5 +1,6 @@
-package org.heavywater.affector;
+package org.heavywater.affector.resolver;
 
+import org.heavywater.affector.Affector;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.ElectoStaticProperty;
 import org.heavywater.property.Kinetics;

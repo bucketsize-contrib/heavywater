@@ -5,6 +5,8 @@ import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.entity.Entity;
 import org.heavywater.property.Property;
 
+import static org.heavywater.util.LogUtil.logInfo;
+
 /**
  * EntityDriver know how each Property affect this particular Entity.
  * 
@@ -24,6 +26,19 @@ public abstract class EntityDriver {
 		afr=_afr;
 	}
 	
+	public void setAffectorResolver(Entity en){
+		logInfo("loading class [jb]: "+"org.heavywater.affector.resolver." +en.getType() + "AffectorResolver");
+		try {
+			afr = (AffectorResolver) Class.forName("org.heavywater.affector.resolver." +en.getType().toString() + "AffectorResolver").newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 *  Called by Entity#step, this causes evaluation of Affector on Entity 
 	 *  Property.
@@ -31,11 +46,16 @@ public abstract class EntityDriver {
 	 *  @param e
 	 */
 	public void drive(Entity e) {
+		// an afr should be attached beyond this
+		if (afr == null){
+			setAffectorResolver(e);
+		}
 		// update property changes - each individual property
 		for(Property p: e.getProperties()){
-			Affector a = (Affector) p.dispatch(afr);
-			if (a!=null) {
-				a.affect(p, e);
+			Affector aff = (Affector) p.dispatch(afr);
+			if (aff!=null) {
+				//System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
+				aff.affect(p, e);
 			}
 		}
 		

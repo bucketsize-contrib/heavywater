@@ -22,15 +22,15 @@ public class ParticleDynamicsAffector extends Affector{
 	}
 	
 	public Dynamics aggregate(List<Property> dlist){
-		System.out.println("aggregating ...");
+		//System.out.println("aggregating:");
 		Dynamics tdyn = new Dynamics();
 		for(Property p: dlist){
 			Dynamics d = (Dynamics)p;
-			System.out.println(d.inspect());
+			//System.out.println("..."+d.inspect());
 			tdyn.accel = tdyn.accel.add( d.accel );
 			tdyn.a_accel = tdyn.a_accel.add( d.a_accel );
 		}
-		System.out.println("results: " + tdyn.inspect());
+		//System.out.println("= " + tdyn.inspect());
 		return tdyn;
 	}
 

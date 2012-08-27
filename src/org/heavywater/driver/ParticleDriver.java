@@ -5,7 +5,7 @@ import org.heavywater.affector.resolver.ParticleAffectorResolver;
 
 public class ParticleDriver extends EntityDriver{
 	public ParticleDriver(){
-		setAffectorResolver((AffectorResolver)ParticleAffectorResolver.instance());
+		//setAffectorResolver((AffectorResolver)ParticleAffectorResolver.instance());
 	}	
 	
 }

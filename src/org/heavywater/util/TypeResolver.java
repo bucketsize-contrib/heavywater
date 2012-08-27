@@ -11,40 +11,34 @@ import org.heavywater.property.Kinetics;
 public class TypeResolver implements Resolver {
 
 	public Object resolve(Engine b) {
-		b.type = "Engine";
-		return null;
+		return "Engine";
 	}
 
 	public Object resolve(Particle b) {
-		b.type = "Particle";
-		return null;
+		return "Particle";
 	}
 
 	public Object resolve(ParticleSystem b) {
-		b.type = "ParticleSystem";
-		return null;
+		return "ParticleSystem";
 	}
 
 	public Object resolve(Kinetics b) {
-		b.type = "Kinetics";
-		return null;
+		return "Kinetics";
 	}
 
 	public Object resolve(Dynamics b) {
-		b.type = "Dynamics";
-		return null;
+		return "Dynamics";
 	}
 
 	@Override
 	public Object resolve(ElectoStaticProperty b) {
-		b.type = "ElectoStaticProperty";
-		return null;
+		return "ElectoStaticProperty";
 	}
 
 	@Override
 	public Object resolve(StateLogger stateLogger) {
 		// TODO Auto-generated method stub
-		return null;
+		return "StateLogger";
 	}
 
 }

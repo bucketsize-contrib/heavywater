@@ -8,6 +8,7 @@ import java.util.List;
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 import org.heavywater.util.Base;
+import org.heavywater.util.TypeResolver;
 /**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
@@ -37,7 +38,8 @@ public abstract class Entity extends Base {
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		ensemble = new ArrayList<Entity>();
-		logInfo("new Entity "+"type="+type+" id= "+id);
+		type = (String) dispatch(new TypeResolver());
+		logInfo("new "+ type +", id= " + id);
 	}
 
 	

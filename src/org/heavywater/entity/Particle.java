@@ -2,6 +2,7 @@ package org.heavywater.entity;
 
 import org.heavywater.driver.ParticleDriver;
 import org.heavywater.util.Resolver;
+import org.heavywater.util.TypeResolver;
 import org.heavywater.util.hStrDump;
 
 public class Particle extends Entity {
@@ -12,7 +13,6 @@ public class Particle extends Entity {
 	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}
-
 	
 	public String inspect() {
 		return hStrDump.generate(this);

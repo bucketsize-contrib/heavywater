@@ -19,9 +19,9 @@ public class StateLogger extends Entity {
 	
 	public void step(){
 		for(Entity e: ensemble ){
-			logInfo("Entity: "+e.getID()+" - "+e.getAliveTime());
+			logInfo(e.inspect());
 			for(Property p: e.getProperties()){
-				logInfo(p.inspect());
+				logInfo("\t"+p.inspect());
 			}
 		}
 	}

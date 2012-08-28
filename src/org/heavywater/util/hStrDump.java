@@ -1,7 +1,5 @@
 package org.heavywater.util;
 
-import java.awt.Shape;
-
 import org.heavywater.entity.Engine;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
@@ -24,9 +22,9 @@ public class hStrDump {
 		if (!sanitize(d)) return nullNotation();
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Kinetics");
-		sb.append(" loc ");
+		sb.append(" ");
 		sb.append(StrDump.generate(d.location));
-		sb.append(" vel ");
+		sb.append(" ");
 		sb.append(StrDump.generate(d.velocity));
 		sb.append(")");
 
@@ -36,10 +34,9 @@ public class hStrDump {
 	public static String generate(Dynamics d) {
 		if (!sanitize(d)) return nullNotation();
 		StringBuffer sb = new StringBuffer();
-		sb.append("(Dynamics");
-		sb.append(" acc ");
+		sb.append("(Dynamics ");
 		sb.append(StrDump.generate(d.accel));
-		sb.append(" wacc ");
+		sb.append(" ");
 		sb.append(StrDump.generate(d.a_accel));
 		sb.append(")");
 
@@ -47,21 +44,36 @@ public class hStrDump {
 	}
 
 	public static String generate(Engine engine) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!sanitize(engine)) return nullNotation();
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Engine ");
+		sb.append(engine.getID());
+		sb.append(" ");
+		sb.append(engine.getCycleTime());
+		sb.append(" ");
+		sb.append(engine.getAliveTime());
+		sb.append(" ");
+		sb.append(engine.getListeners().size());
+		sb.append(")");
+		
+		return sb.toString();
 	}
 
 	public static String generate(Particle particle) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		if (!sanitize(particle)) return nullNotation();
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Particle ");
+		sb.append(particle.getID());
+		sb.append(" ");
+		sb.append(particle.getCycleTime());
+		sb.append(" ");
+		sb.append(particle.getAliveTime());
+		sb.append(")");
+		
+		return sb.toString();
+		}
 
 	public static String generate(ParticleSystem particleSystem) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String generate(Shape shape) {
 		// TODO Auto-generated method stub
 		return null;
 	}

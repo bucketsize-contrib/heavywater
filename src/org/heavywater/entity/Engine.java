@@ -53,8 +53,9 @@ public class Engine extends Entity{
 		logInfo("starting Engine");
 		
 		// sanitize engine params
-		if (cycleTime == 0)
+		if (cycleTime == 0){
 			throw new HWException("engine::cycletime = 0");
+		}
 		
 		// engine has only one step
 		step(); 

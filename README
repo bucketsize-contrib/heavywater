@@ -17,9 +17,4 @@ Initially started out with a elaborate type system, but I slowly seem to move mo
 
 Although most of the internal management relies heavily on Object Orientation, to get the right kind of affectors to work on the Entity (based on its Property set)
 
-== TODO:
-Incorporate entangled Affectors for behavior based on related properties.
-Provide nano-scale effects simulation.
-Provide quantum entanglement effects simulation.
-
 https://github.com/bucketsize/heavywater

@@ -1,0 +1,21 @@
+== TODO:
+Incorporate entangled Affectors for behavior based on related properties.
+Provide nano-scale effects simulation.
+Provide quantum entanglement effects simulation.
+
+29-aug-2012
+-entanglement 
+	- Affector can be entangled/not implicitly - call other Affector(s)
+	or
+	- have relationships on entity, that mark properties to be entangled
+	  every property has an Affector and an EntangledAffector
+
+	- how does EntangledAffector work?
+	
+-refactor
+	- Resolvers -> EntityResolver, PropertyResolver
+	- strDump -> EntityStrDump, PropertyStrDump
+	
+-implementation
+	- consider geometry as a Property, than as an entity.
+	- global Property(s) that affect all affectable Entity(s)

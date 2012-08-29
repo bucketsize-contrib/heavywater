@@ -1,6 +1,7 @@
 package org.heavywater.util;
 
 import org.heavywater.entity.Engine;
+import org.heavywater.entity.Entity;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
@@ -16,4 +17,5 @@ public interface Resolver {
 	Object resolve(Particle particle);
 	Object resolve(ParticleSystem particleSystem);
 	Object resolve(StateLogger stateLogger);
+	Object resolve(Entity entity);
 }

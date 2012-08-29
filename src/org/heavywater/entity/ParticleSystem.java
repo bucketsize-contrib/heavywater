@@ -5,10 +5,15 @@ import org.heavywater.util.Resolver;
 import org.heavywater.util.hStrDump;
 
 public class ParticleSystem extends Entity {
+	
 	public ParticleSystem(EntityDriver ed) {
 		super(ed);
 	}
 	
+	public ParticleSystem() {
+		super();
+	}
+
 	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}

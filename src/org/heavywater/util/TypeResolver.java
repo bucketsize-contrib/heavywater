@@ -1,6 +1,7 @@
 package org.heavywater.util;
 
 import org.heavywater.entity.Engine;
+import org.heavywater.entity.Entity;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
@@ -39,6 +40,11 @@ public class TypeResolver implements Resolver {
 	public Object resolve(StateLogger stateLogger) {
 		// TODO Auto-generated method stub
 		return "StateLogger";
+	}
+
+	@Override
+	public Object resolve(Entity entity) {
+		throw new RuntimeException("shouldnt be here!");
 	}
 
 }

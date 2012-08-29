@@ -21,7 +21,7 @@ public class StateLogger extends Entity {
 		for(Entity e: ensemble ){
 			logInfo(e.inspect());
 			for(Property p: e.getProperties()){
-				logInfo("\t"+p.inspect());
+				logInfo("\t" + p.inspect());
 			}
 		}
 	}

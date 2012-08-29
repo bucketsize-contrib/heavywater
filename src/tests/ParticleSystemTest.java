@@ -3,8 +3,7 @@ package tests;
 import junit.framework.TestCase;
 
 import org.heavywater.driver.EngineDriver;
-import org.heavywater.driver.ParticleDriver;
-import org.heavywater.driver.ParticleSystemDriver;
+import org.heavywater.driver.EntityDriver;
 import org.heavywater.entity.Engine;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
@@ -26,13 +25,13 @@ public class ParticleSystemTest extends TestCase {
 
 		engine.add(logger);		
 		
-		ParticleSystem ps = new ParticleSystem(new ParticleSystemDriver());
+		ParticleSystem ps = new ParticleSystem();
 		for(int i=0; i<NUM_PAR; ++i){
 			Kinetics k = new Kinetics();
 			Dynamics d = new Dynamics();
 			d.accel = new Vector3(10.0, 0.0, 0.0);
 			
-			Particle p = new Particle(new ParticleDriver());
+			Particle p = new Particle();
 			p.add(k);
 			p.add(d);
 			

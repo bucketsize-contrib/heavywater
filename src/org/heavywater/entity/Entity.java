@@ -9,6 +9,7 @@ import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 import org.heavywater.util.Base;
 import org.heavywater.util.TypeResolver;
+import org.heavywater.util.Visitable;
 /**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
@@ -20,7 +21,7 @@ import org.heavywater.util.TypeResolver;
  * EntityDriver visits all properties.
  */
 
-public abstract class Entity extends Base {	
+public abstract class Entity extends Base implements Visitable {	
 	protected double cycleTime;
 	protected double aliveTime;
 	
@@ -31,6 +32,9 @@ public abstract class Entity extends Base {
 
 	protected EntityDriver driver;
 
+	public Entity(){
+		this(new EntityDriver());
+	}
 	public Entity(EntityDriver ed) {
 		driver = ed;
 		parent = null;
@@ -41,11 +45,11 @@ public abstract class Entity extends Base {
 		type = (String) dispatch(new TypeResolver());
 		logInfo("new "+ type +", id= " + id);
 	}
-
 	
 	public List<Entity> getEnsemble() {
 		return ensemble;
 	}
+
 	public List<Entity> getEnsemble(String t) {
 		List<Entity> tlist = new ArrayList<Entity>();
 		for(Entity e: ensemble){
@@ -59,6 +63,7 @@ public abstract class Entity extends Base {
 	public List<Property> getProperties() {
 		return properties;
 	}
+	
 	public List<Property> getProperties(String t) {
 		List<Property> tlist = new ArrayList<Property>();
 		for(Property e: properties){

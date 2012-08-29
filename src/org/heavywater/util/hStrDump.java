@@ -1,6 +1,7 @@
 package org.heavywater.util;
 
 import org.heavywater.entity.Engine;
+import org.heavywater.entity.Entity;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
@@ -86,6 +87,9 @@ public class hStrDump {
 	public static String generate(ElectoStaticProperty electoStaticProperty) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public static String generate(Entity entity) {
+		throw new RuntimeException("shouldnt be here!");
 	}
 
 }

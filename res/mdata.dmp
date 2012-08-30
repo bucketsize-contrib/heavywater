@@ -1,0 +1,25 @@
+-Thoughtdump
+
+-entanglement 
+	- 29aug2012 - Affector can be entangled/not implicitly - call other Affector(s)
+	- 30aug2012 - Affector was mean to be entangled, thats the whole point of having
+	  Property Affector per Entity type (specialization). This also identifies 2
+	  perspectives 
+	  	1.Property Entanglement
+	  	2.Entity Entanglement
+	- 30aug2012 - Introducing Constraint type to address Entity entanglement.
+	
+	- Constraint as an Entity or Property?
+	  If Property then ConstraintEffector can be written for different types of
+	  Constraint(s).
+	    
+	or
+	
+	- have relationships on entity, that mark properties to be entangled
+	  every property has an Affector and an EntangledAffector
+	- how does EntangledAffector work?
+	* this line of thought abandoned
+	
+-implementation
+	- consider geometry as a Property, than as an entity.
+	- global Property(s) that affect all affectable Entity(s)

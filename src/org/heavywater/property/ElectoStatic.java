@@ -2,7 +2,7 @@ package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
-import org.heavywater.util.EntityResolver;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.PropertyStrDump;
 
 public class ElectoStatic extends Property {
@@ -16,7 +16,7 @@ public class ElectoStatic extends Property {
 		return afr.resolve(this);
 	}
 
-	public Object dispatch(EntityResolver afr) {
+	public Object dispatch(Resolver afr) {
 		// TODO Auto-generated method stub
 		return null;
 	}

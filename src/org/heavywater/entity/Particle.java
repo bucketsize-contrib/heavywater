@@ -1,7 +1,7 @@
 package org.heavywater.entity;
 
 import org.heavywater.driver.EntityDriver;
-import org.heavywater.util.EntityResolver;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.EntityStrDump;
 
 public class Particle extends Entity {
@@ -14,7 +14,7 @@ public class Particle extends Entity {
 		super();
 	}
 
-	public Object dispatch(EntityResolver resolver) {
+	public Object dispatch(Resolver resolver) {
 		return resolver.resolve(this);
 	}
 	

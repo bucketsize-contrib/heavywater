@@ -9,7 +9,7 @@ import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
 import org.heavywater.ex.HWException;
-import org.heavywater.util.EntityResolver;
+import org.heavywater.util.Resolver;
 import org.heavywater.util.EntityStrDump;
 
 /**
@@ -73,7 +73,7 @@ public class Engine extends Entity{
 		shutdownEventFlag.signal();
 	}
 
-	public Object dispatch(EntityResolver afr) {
+	public Object dispatch(Resolver afr) {
 		return afr.resolve(this);
 	}
 

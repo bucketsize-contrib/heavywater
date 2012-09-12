@@ -1,6 +1,6 @@
-package org.heavywater.primitives;
+package org.heavywater.ptypes;
 
-import org.heavywater.util.StrDump;
+import org.heavywater.util.PtypesStrDump;
 import static org.heavywater.util.LogUtil.*;
 
 public class Line3 extends Geom {
@@ -43,7 +43,7 @@ public class Line3 extends Geom {
 	}
 
 	public String notation() {
-		return StrDump.generate(this);
+		return PtypesStrDump.generate(this);
 	}
 
 	//

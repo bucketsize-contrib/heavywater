@@ -5,7 +5,7 @@ import java.util.List;
 import org.heavywater.entity.Entity;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Property;
-import org.heavywater.util.hStrDump;
+import org.heavywater.util.EntityStrDump;
 
 // aggregate the dynamics from tertiary entity properties 
 // to secondary

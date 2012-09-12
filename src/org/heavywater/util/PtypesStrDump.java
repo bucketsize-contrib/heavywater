@@ -1,13 +1,13 @@
 package org.heavywater.util;
 
-import org.heavywater.primitives.Axis3;
-import org.heavywater.primitives.Geom;
-import org.heavywater.primitives.Line3;
-import org.heavywater.primitives.Matrix4;
-import org.heavywater.primitives.Quaternion;
-import org.heavywater.primitives.Vector3;
+import org.heavywater.ptypes.Axis3;
+import org.heavywater.ptypes.Geom;
+import org.heavywater.ptypes.Line3;
+import org.heavywater.ptypes.Matrix4;
+import org.heavywater.ptypes.Quaternion;
+import org.heavywater.ptypes.Vector3;
 
-public class StrDump{	
+public class PtypesStrDump{	
 	protected static String nullNotation(){
 		return "object is null";
 	}

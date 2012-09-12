@@ -9,8 +9,8 @@ import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
 import org.heavywater.ex.HWException;
-import org.heavywater.util.Resolver;
-import org.heavywater.util.hStrDump;
+import org.heavywater.util.EntityResolver;
+import org.heavywater.util.EntityStrDump;
 
 /**
  * Engine is an Entity that entangles cause and effects of Entities over a 
@@ -73,13 +73,13 @@ public class Engine extends Entity{
 		shutdownEventFlag.signal();
 	}
 
-	public Object dispatch(Resolver afr) {
+	public Object dispatch(EntityResolver afr) {
 		return afr.resolve(this);
 	}
 
 	
 	public String inspect() {
-		return hStrDump.generate(this);
+		return EntityStrDump.generate(this);
 	}
 
 }

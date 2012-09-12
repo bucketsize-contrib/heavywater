@@ -5,7 +5,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.hStrDump;
+import org.heavywater.util.EntityStrDump;
 
 public class StateLogger extends Entity {
 
@@ -32,7 +32,7 @@ public class StateLogger extends Entity {
 
 	
 	public String inspect() {
-		return hStrDump.generate(this);
+		return EntityStrDump.generate(this);
 	}
 
 }

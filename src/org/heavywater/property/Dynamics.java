@@ -2,9 +2,9 @@ package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
-import org.heavywater.primitives.Vector3;
+import org.heavywater.ptypes.Vector3;
+import org.heavywater.util.EntityStrDump;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.hStrDump;
 
 //defectors/secondary; modified by tertiary - affects primary
 //there can be single or multiple
@@ -14,7 +14,6 @@ import org.heavywater.util.hStrDump;
 //tertiaries are:
 //ie electrostatic, magnetic, gravitational, contact, viscous, hydraulic fields
 public class Dynamics extends Property{
-	
 	public Vector3 accel;		
 	public Vector3 a_accel;
 
@@ -29,7 +28,7 @@ public class Dynamics extends Property{
 	}
 	
 	public String inspect() {
-		return hStrDump.generate(this);
+		return EntityStrDump.generate(this);
 	}
 
 	public Object dispatch(Resolver afr) {

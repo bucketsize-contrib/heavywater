@@ -4,7 +4,7 @@ import org.heavywater.affector.Affector;
 import org.heavywater.affector.ParticleDynamicsAffector;
 import org.heavywater.affector.ParticleKineticsAffector;
 import org.heavywater.property.Dynamics;
-import org.heavywater.property.ElectoStaticProperty;
+import org.heavywater.property.ElectoStatic;
 import org.heavywater.property.Kinetics;
 import org.heavywater.util.Singleton;
 
@@ -24,7 +24,7 @@ public class ParticleAffectorResolver extends AffectorResolver implements Single
 		return (Affector) ParticleDynamicsAffector.instance();
 	}
 
-	public Affector resolve(ElectoStaticProperty electoStaticProperty) {
+	public Affector resolve(ElectoStatic electoStatics) {
 		return null;
 	}
 }

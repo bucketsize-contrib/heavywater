@@ -6,7 +6,7 @@ import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
 import org.heavywater.property.Dynamics;
-import org.heavywater.property.ElectoStaticProperty;
+import org.heavywater.property.ElectoStatic;
 import org.heavywater.property.Kinetics;
 
 public class TypeResolver implements Resolver {
@@ -31,18 +31,15 @@ public class TypeResolver implements Resolver {
 		return "Dynamics";
 	}
 
-	@Override
-	public Object resolve(ElectoStaticProperty b) {
+	public Object resolve(ElectoStatic b) {
 		return "ElectoStaticProperty";
 	}
 
-	@Override
 	public Object resolve(StateLogger stateLogger) {
 		// TODO Auto-generated method stub
 		return "StateLogger";
 	}
 
-	@Override
 	public Object resolve(Entity entity) {
 		throw new RuntimeException("shouldnt be here!");
 	}

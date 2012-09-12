@@ -22,15 +22,14 @@ import org.heavywater.util.Visitable;
  */
 
 public abstract class Entity extends Base implements Visitable {	
+	protected List<Property> properties;
+	protected EntityDriver driver;
+	
 	protected double cycleTime;
 	protected double aliveTime;
 	
-	protected List<Property> properties;
 	protected List<Entity> ensemble;
-
 	protected Entity parent;
-
-	protected EntityDriver driver;
 
 	public Entity(){
 		this(new EntityDriver());

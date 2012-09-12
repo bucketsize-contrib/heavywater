@@ -2,9 +2,9 @@ package org.heavywater.property;
 
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
-import org.heavywater.primitives.Vector3;
+import org.heavywater.ptypes.Vector3;
+import org.heavywater.util.EntityStrDump;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.hStrDump;
 
 // primary; this will yield due to changes in secondarie(s)
 // ie - dynamics
@@ -29,7 +29,7 @@ public class Kinetics extends Property {
 
 	
 	public String inspect() {
-		return hStrDump.generate(this);
+		return EntityStrDump.generate(this);
 	}
 
 	@Override

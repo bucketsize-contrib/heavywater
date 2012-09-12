@@ -2,7 +2,7 @@ package org.heavywater.entity;
 
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.hStrDump;
+import org.heavywater.util.EntityStrDump;
 
 public class ParticleSystem extends Entity {
 	
@@ -19,7 +19,7 @@ public class ParticleSystem extends Entity {
 	}
 	
 	public String inspect(){
-		return hStrDump.generate(this);
+		return EntityStrDump.generate(this);
 	}
 
 }

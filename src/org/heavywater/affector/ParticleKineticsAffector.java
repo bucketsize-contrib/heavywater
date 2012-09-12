@@ -5,10 +5,10 @@ import static org.heavywater.util.LogUtil.logInfo;
 import java.util.List;
 
 import org.heavywater.entity.Entity;
-import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
 import org.heavywater.property.Property;
+import org.heavywater.ptypes.Vector3;
 
 // compute kinematics from secondary
 // there can be one or more secondary, depends on the affector scheme

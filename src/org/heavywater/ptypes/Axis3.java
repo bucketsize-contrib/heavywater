@@ -1,4 +1,4 @@
-package org.heavywater.primitives;
+package org.heavywater.ptypes;
 
 public class Axis3 extends Line3 {
 	public Axis3() {

@@ -6,10 +6,9 @@ import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
 import org.heavywater.property.Dynamics;
-import org.heavywater.property.ElectoStaticProperty;
 import org.heavywater.property.Kinetics;
 
-public class hStrDump {
+public class EntityStrDump {
 	protected static String nullNotation(){
 		return "object is null";
 	}
@@ -24,9 +23,9 @@ public class hStrDump {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Kinetics");
 		sb.append(" ");
-		sb.append(StrDump.generate(d.location));
+		sb.append(PtypesStrDump.generate(d.location));
 		sb.append(" ");
-		sb.append(StrDump.generate(d.velocity));
+		sb.append(PtypesStrDump.generate(d.velocity));
 		sb.append(")");
 
 		return sb.toString();
@@ -36,9 +35,9 @@ public class hStrDump {
 		if (!sanitize(d)) return nullNotation();
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
-		sb.append(StrDump.generate(d.accel));
+		sb.append(PtypesStrDump.generate(d.accel));
 		sb.append(" ");
-		sb.append(StrDump.generate(d.a_accel));
+		sb.append(PtypesStrDump.generate(d.a_accel));
 		sb.append(")");
 
 		return sb.toString();
@@ -84,10 +83,7 @@ public class hStrDump {
 		return null;
 	}
 
-	public static String generate(ElectoStaticProperty electoStaticProperty) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	public static String generate(Entity entity) {
 		throw new RuntimeException("shouldnt be here!");
 	}

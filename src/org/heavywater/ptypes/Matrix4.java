@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package org.heavywater.primitives;
+package org.heavywater.ptypes;
 
-import org.heavywater.util.StrDump;
+import org.heavywater.util.PtypesStrDump;
 
 public class Matrix4 extends Geom {
 	private double[][] m = { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 },
@@ -52,7 +52,7 @@ public class Matrix4 extends Geom {
 	}
 
 	public String notation() {
-		return StrDump.generate(this);
+		return PtypesStrDump.generate(this);
 	}
 
 	public Matrix4 mult(double s) {

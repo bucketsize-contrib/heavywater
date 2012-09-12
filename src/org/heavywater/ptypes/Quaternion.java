@@ -1,4 +1,4 @@
-package org.heavywater.primitives;
+package org.heavywater.ptypes;
 
 //	Quaternion 
 //		H = a.1 + x.i + y.j + z.k  	or	[a x y z]

@@ -1,13 +1,13 @@
-package org.heavywater.primitives;
+package org.heavywater.ptypes;
 
-import org.heavywater.util.StrDump;
+import org.heavywater.util.PtypesStrDump;
 
 public abstract class Geom {
 	
-	StrDump fNot;
+	PtypesStrDump fNot;
 	
 	public Geom(){
-		fNot = new StrDump();
+		fNot = new PtypesStrDump();
 	}
 	
 	public String notation() {

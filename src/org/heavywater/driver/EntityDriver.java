@@ -27,6 +27,8 @@ public class EntityDriver {
 	}
 	
 	public void setAffectorResolver(Entity en){
+		// doing this i dont have to set, resolvers in driver
+		// hence can use a unified driver
 		logInfo("loading class [jb]: "+"org.heavywater.affector.resolver." +en.getType() + "AffectorResolver");
 		try {
 			afr = (AffectorResolver) Class.forName("org.heavywater.affector.resolver." +en.getType().toString() + "AffectorResolver").newInstance();

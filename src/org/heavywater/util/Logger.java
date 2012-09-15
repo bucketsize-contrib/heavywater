@@ -1,9 +1,7 @@
 package org.heavywater.util;
 
 import java.io.IOException;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
 import java.util.logging.Level;
 
 public class Logger {
@@ -26,7 +24,7 @@ public class Logger {
 		LOGGER.setLevel(Level.INFO);
 		FileHandler fh=null;
 		try {
-			fh = new FileHandler("Logging.txt");
+			fh = new FileHandler("heavy.log");
 		} catch (SecurityException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

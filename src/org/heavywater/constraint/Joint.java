@@ -1,5 +1,7 @@
 package org.heavywater.constraint;
 
-public class Joint{
-	
+import org.heavywater.entity.Entity;
+
+public class Joint implements Constraint{
+	Entity[] entities = new Entity[2];
 }

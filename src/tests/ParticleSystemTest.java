@@ -3,14 +3,13 @@ package tests;
 import junit.framework.TestCase;
 
 import org.heavywater.driver.EngineDriver;
-import org.heavywater.driver.EntityDriver;
 import org.heavywater.entity.Engine;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
-import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
+import org.heavywater.ptypes.Vector3;
 
 public class ParticleSystemTest extends TestCase {
 	

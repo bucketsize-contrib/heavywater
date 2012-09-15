@@ -5,7 +5,6 @@
 
 package org.heavywater.ptypes;
 
-import org.heavywater.util.PtypesStrDump;
 
 public class Matrix4 extends Geom {
 	private double[][] m = { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 },
@@ -52,7 +51,16 @@ public class Matrix4 extends Geom {
 	}
 
 	public String notation() {
-		return PtypesStrDump.generate(this);
+		String s = "(Matrix4 ";
+		double [][] a = m;
+		for (int i = 0; i < 4; ++i){
+			s+="\n(";
+			for (int j = 0; j < 4; ++j){
+				s+=a[i][j]+" ";				
+			}
+			s+=")";
+		}
+		return s+")";
 	}
 
 	public Matrix4 mult(double s) {

@@ -3,13 +3,12 @@ package org.heavywater.property;
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.PropertyStrDump;
 
 public class ElectoStatic extends Property {
 	public double charge;	
 	
 	public String inspect() {
-		return PropertyStrDump.generate(this);
+		return "ElectoStatic#inspect";
 	}
 
 	public Affector dispatch(AffectorResolver afr) {

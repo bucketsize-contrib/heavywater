@@ -1,6 +1,5 @@
 package org.heavywater.ptypes;
 
-import org.heavywater.util.PtypesStrDump;
 
 public class Vector3 extends Geom {
 	private double[] c;
@@ -77,7 +76,8 @@ public class Vector3 extends Geom {
 	}
 
 	public String notation() {
-		return PtypesStrDump.generate(this);
+		return "(Vector3 " + c[0] + " " + c[1] + " "
+		+ c[2]+")";
 	}
 
 	// extra opts

@@ -3,7 +3,6 @@ package org.heavywater.property;
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.ptypes.Vector3;
-import org.heavywater.util.EntityStrDump;
 import org.heavywater.util.Resolver;
 
 // primary; this will yield due to changes in secondarie(s)
@@ -29,7 +28,15 @@ public class Kinetics extends Property {
 
 	
 	public String inspect() {
-		return EntityStrDump.generate(this);
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Kinetics");
+		sb.append(" ");
+		sb.append(location.notation());
+		sb.append(" ");
+		sb.append(velocity.notation());
+		sb.append(")");
+
+		return sb.toString();
 	}
 
 	@Override

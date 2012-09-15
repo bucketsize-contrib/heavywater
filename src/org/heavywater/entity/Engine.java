@@ -10,7 +10,6 @@ import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
 import org.heavywater.ex.HWException;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.EntityStrDump;
 
 /**
  * Engine is an Entity that entangles cause and effects of Entities over a 
@@ -79,7 +78,18 @@ public class Engine extends Entity{
 
 	
 	public String inspect() {
-		return EntityStrDump.generate(this);
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Engine ");
+		sb.append(getID());
+		sb.append(" ");
+		sb.append(getCycleTime());
+		sb.append(" ");
+		sb.append(getAliveTime());
+		sb.append(" ");
+		sb.append(getListeners().size());
+		sb.append(")");
+		
+		return sb.toString();
 	}
 
 }

@@ -3,7 +3,6 @@ package org.heavywater.property;
 import org.heavywater.affector.Affector;
 import org.heavywater.affector.resolver.AffectorResolver;
 import org.heavywater.ptypes.Vector3;
-import org.heavywater.util.EntityStrDump;
 import org.heavywater.util.Resolver;
 
 //defectors/secondary; modified by tertiary - affects primary
@@ -28,7 +27,14 @@ public class Dynamics extends Property{
 	}
 	
 	public String inspect() {
-		return EntityStrDump.generate(this);
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Dynamics ");
+		sb.append(accel.notation());
+		sb.append(" ");
+		sb.append(a_accel.notation());
+		sb.append(")");
+
+		return sb.toString();
 	}
 
 	public Object dispatch(Resolver afr) {

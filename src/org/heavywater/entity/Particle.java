@@ -2,7 +2,6 @@ package org.heavywater.entity;
 
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.util.Resolver;
-import org.heavywater.util.EntityStrDump;
 
 public class Particle extends Entity {
 	
@@ -19,6 +18,15 @@ public class Particle extends Entity {
 	}
 	
 	public String inspect() {
-		return EntityStrDump.generate(this);
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Particle ");
+		sb.append(getID());
+		sb.append(" ");
+		sb.append(getCycleTime());
+		sb.append(" ");
+		sb.append(getAliveTime());
+		sb.append(")");
+		
+		return sb.toString();
 	}
 }

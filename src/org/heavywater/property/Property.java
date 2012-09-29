@@ -9,6 +9,6 @@ import org.heavywater.util.Base;
  * Behaviour is tied to entity based on properties it holds, not on type.
  * This kind of makes for duck typing in a strongly typed language. 
  */
-public abstract class Property extends Base {
+ public abstract class Property extends Base {
 	public abstract Affector dispatch(AffectorResolver afr);
 }

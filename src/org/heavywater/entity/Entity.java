@@ -5,6 +5,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.heavywater.constraint.Constraint;
 import org.heavywater.driver.EntityDriver;
 import org.heavywater.property.Property;
 import org.heavywater.util.Base;
@@ -23,14 +24,16 @@ import org.heavywater.util.Visitable;
 
 public abstract class Entity extends Base implements Visitable {	
 	protected List<Property> properties;
-	protected EntityDriver driver;
+	protected List<Constraint> constraints;	
+
+	protected List<Entity> ensemble;
+	protected Entity parent;
 	
 	protected double cycleTime;
 	protected double aliveTime;
-	
-	protected List<Entity> ensemble;
-	protected Entity parent;
 
+	protected EntityDriver driver;
+	
 	public Entity(){
 		this(new EntityDriver());
 	}
@@ -43,44 +46,6 @@ public abstract class Entity extends Base implements Visitable {
 		ensemble = new ArrayList<Entity>();
 		type = (String) dispatch(new TypeResolver());
 		logInfo("new "+ type +", id= " + id);
-	}
-	
-	public List<Entity> getEnsemble() {
-		return ensemble;
-	}
-
-	public List<Entity> getEnsemble(String t) {
-		List<Entity> tlist = new ArrayList<Entity>();
-		for(Entity e: ensemble){
-			if (e.type == t){
-				tlist.add(e);
-			}
-		}
-		return tlist;
-	}
-
-	public List<Property> getProperties() {
-		return properties;
-	}
-	
-	public List<Property> getProperties(String t) {
-		List<Property> tlist = new ArrayList<Property>();
-		for(Property e: properties){
-			if (e.getType().equals(t)){
-				tlist.add(e);
-			}
-		}
-		return tlist;
-	}
-
-	public void add(Entity entity) {
-		entity.parent = this;
-		entity.cycleTime = entity.cycleTime!=0.0?entity.cycleTime:cycleTime;		
-		ensemble.add(entity);
-	}
-
-	public void add(Property p) {
-		properties.add(p);
 	}
 	
 	public void driver(EntityDriver d) {
@@ -103,5 +68,63 @@ public abstract class Entity extends Base implements Visitable {
 	public double getAliveTime() {
 		return aliveTime;
 	}
+	
+	// -- ACCESSORS --
+	public void add(Entity e) {
+		e.parent = this;
+		e.cycleTime = e.cycleTime!=0.0?e.cycleTime:cycleTime;		
+		ensemble.add(e);
+	}
+
+	public void add(Property p) {
+		properties.add(p);
+	}
+	
+	public void add(Constraint c) {
+		constraints.add(c);
+	}
+	
+	public List<Entity> getEnsemble() {
+		return ensemble;
+	}
+	
+	public List<Property> getProperties() {
+		return properties;
+	}
+	
+	public List<Constraint> getConstraints() {
+		return constraints;
+	}
+	
+	public List<Entity> getEnsemble(String t) {
+		List<Entity> tlist = new ArrayList<Entity>();
+		for(Entity e: ensemble){
+			if (e.type == t){
+				tlist.add(e);
+			}
+		}
+		return tlist;
+	}	
+	
+	public List<Property> getProperties(String t) {
+		List<Property> tlist = new ArrayList<Property>();
+		for(Property e: properties){
+			if (e.getType().equals(t)){
+				tlist.add(e);
+			}
+		}
+		return tlist;
+	}
+	
+	public List<Constraint> getConstraints(String t) {
+		List<Constraint> tlist = new ArrayList<Constraint>();
+		for(Constraint e: constraints){
+			if (e.getType().equals(t)){
+				tlist.add(e);
+			}
+		}
+		return tlist;
+	}
+
 
 }

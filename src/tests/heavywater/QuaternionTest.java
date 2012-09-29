@@ -1,4 +1,4 @@
-package tests;
+package tests.heavywater;
 
 import junit.framework.TestCase;
 

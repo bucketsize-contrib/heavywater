@@ -23,3 +23,22 @@
 -implementation
 	- consider geometry as a Property, than as an entity.
 	- global Property(s) that affect all affectable Entity(s)
+	
+- Constraint / 29sep2012
+	the link between properties and objective
+	one property is always the objective
+	here it is dynamics
+	property(s) affect constraint
+		constraint is the product of properties at that moment
+		constraint are static and dynamic
+			static => retained / external logic
+			dynamic => calculated
+				drag
+				retardation
+				discarded after dynamic property change induction
+	
+	constraint causes dynamics
+	
+	EntityPropertyAffector
+		- implicit constraint incursion
+		- 		

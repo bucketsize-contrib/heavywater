@@ -1,7 +1,6 @@
-package org.heavywater.util;
+package org.heavywater.core;
 
 import org.heavywater.entity.Engine;
-import org.heavywater.entity.Entity;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;

@@ -1,11 +1,7 @@
-package org.heavywater.driver;
-
-import org.heavywater.affector.Affector;
-import org.heavywater.affector.resolver.AffectorResolver;
-import org.heavywater.entity.Entity;
-import org.heavywater.property.Property;
+package org.heavywater.core;
 
 import static org.heavywater.util.LogUtil.logInfo;
+
 
 /**
  * EntityDriver know how each Property affect this particular Entity.
@@ -52,7 +48,8 @@ public class EntityDriver {
 		if (afr == null){
 			setAffectorResolver(e);
 		}
-		// update property changes - each individual property
+		
+		// update Property changes - each individual property
 		for(Property p: e.getProperties()){
 			Affector aff = (Affector) p.dispatch(afr);
 			if (aff!=null) {
@@ -60,6 +57,16 @@ public class EntityDriver {
 				aff.affect(p, e);
 			}
 		}
+		
+		// update Constraint changes - each individual property
+		for(Constraint c: e.getConstraints()){
+			Affector aff = (Affector) c.dispatch(afr);
+			if (aff!=null) {
+				//System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
+				aff.affect(c, e);
+			}
+		}
+		
 		
 		// update ensemble
 		for(Entity en: e.getEnsemble()){

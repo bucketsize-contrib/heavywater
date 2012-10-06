@@ -1,4 +1,5 @@
-package org.heavywater.util;
+package org.heavywater.core;
+
 
 public abstract class Base {
 	protected static long pIndex=0;

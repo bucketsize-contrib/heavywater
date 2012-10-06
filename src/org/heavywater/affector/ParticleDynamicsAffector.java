@@ -2,9 +2,12 @@ package org.heavywater.affector;
 
 import java.util.List;
 
-import org.heavywater.entity.Entity;
+import org.heavywater.core.Affectable;
+import org.heavywater.core.Affector;
+import org.heavywater.core.Constraint;
+import org.heavywater.core.Entity;
+import org.heavywater.core.Property;
 import org.heavywater.property.Dynamics;
-import org.heavywater.property.Property;
 
 // aggregate the dynamics from tertiary entity properties 
 // to secondary
@@ -16,14 +19,14 @@ public class ParticleDynamicsAffector extends Affector{
 	}
 	// !singleton
 
-	public void affect(Property p, Entity e) {
+	public void affect(Affectable p, Entity e) {
 		
 	}
 	
-	public Dynamics aggregate(List<Property> dlist){
+	public Affectable aggregate(List<Affectable> dlist){
 		//System.out.println("aggregating:");
 		Dynamics tdyn = new Dynamics();
-		for(Property p: dlist){
+		for(Affectable p: dlist){
 			Dynamics d = (Dynamics)p;
 			//System.out.println("..."+d.inspect());
 			tdyn.accel = tdyn.accel.add( d.accel );

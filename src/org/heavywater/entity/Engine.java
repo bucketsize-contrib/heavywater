@@ -5,11 +5,12 @@ import static org.heavywater.util.LogUtil.logInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.heavywater.core.Entity;
+import org.heavywater.core.HException;
+import org.heavywater.core.Resolver;
 import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
-import org.heavywater.ex.HWException;
-import org.heavywater.util.Resolver;
 
 /**
  * Engine is an Entity that entangles cause and effects of Entities over a 
@@ -53,7 +54,7 @@ public class Engine extends Entity{
 		
 		// sanitize engine params
 		if (cycleTime == 0){
-			throw new HWException("engine::cycletime = 0");
+			throw new HException("engine::cycletime = 0");
 		}
 		
 		// engine has only one step

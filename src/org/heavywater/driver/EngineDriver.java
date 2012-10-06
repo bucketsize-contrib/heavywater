@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 
+import org.heavywater.core.Entity;
+import org.heavywater.core.EntityDriver;
 import org.heavywater.entity.Engine;
-import org.heavywater.entity.Entity;
 import org.heavywater.event.Animator;
 import org.heavywater.event.Listener;
 import static org.heavywater.util.LogUtil.*;

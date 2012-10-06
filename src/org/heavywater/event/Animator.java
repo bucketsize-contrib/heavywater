@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 
-import org.heavywater.entity.Entity;
+import org.heavywater.core.Entity;
 
 /**
  * Animator serves to periodically animate an Entity by calling the step

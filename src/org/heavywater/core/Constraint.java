@@ -1,6 +1,5 @@
-package org.heavywater.constraint;
+package org.heavywater.core;
 
-import org.heavywater.util.Base;
 
 // Constrains are
 // - Force
@@ -12,6 +11,6 @@ import org.heavywater.util.Base;
 // - AI
 // directly effects Dynamics
 // is affected by other Property(s)
-public abstract class Constraint extends Base{
-	
+public abstract class Constraint extends Base implements Affectable{
+	public abstract Affector dispatch(AffectorResolver afr);
 }

@@ -1,8 +1,9 @@
 package org.heavywater.property;
 
-import org.heavywater.affector.Affector;
-import org.heavywater.affector.resolver.AffectorResolver;
-import org.heavywater.util.Resolver;
+import org.heavywater.core.Affector;
+import org.heavywater.core.AffectorResolver;
+import org.heavywater.core.Property;
+import org.heavywater.core.Resolver;
 
 public class ElectoStatic extends Property {
 	public double charge;	

@@ -1,5 +1,7 @@
 package org.heavywater.ptypes;
 
+import org.heavywater.core.Geom;
+
 //	Quaternion 
 //		H = a.1 + x.i + y.j + z.k  	or	[a x y z]
 //		where,

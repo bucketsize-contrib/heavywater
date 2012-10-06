@@ -1,7 +1,8 @@
 package org.heavywater.entity;
 
-import org.heavywater.driver.EntityDriver;
-import org.heavywater.util.Resolver;
+import org.heavywater.core.Entity;
+import org.heavywater.core.EntityDriver;
+import org.heavywater.core.Resolver;
 
 public class Particle extends Entity {
 	

@@ -2,7 +2,7 @@ package org.heavywater.event;
 
 import java.util.List;
 
-import org.heavywater.entity.Entity;
+import org.heavywater.core.Entity;
 
 /**
  * Resolver acts on an a set of entities for a given event. 

@@ -1,9 +1,10 @@
 package org.heavywater.property;
 
-import org.heavywater.affector.Affector;
-import org.heavywater.affector.resolver.AffectorResolver;
+import org.heavywater.core.Affector;
+import org.heavywater.core.AffectorResolver;
+import org.heavywater.core.Property;
+import org.heavywater.core.Resolver;
 import org.heavywater.ptypes.Vector3;
-import org.heavywater.util.Resolver;
 
 // primary; this will yield due to changes in secondarie(s)
 // ie - dynamics

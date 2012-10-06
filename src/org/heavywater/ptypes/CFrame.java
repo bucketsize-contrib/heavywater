@@ -1,5 +1,7 @@
 package org.heavywater.ptypes;
 
+import org.heavywater.core.Geom;
+
 
 public class CFrame extends Geom {
 

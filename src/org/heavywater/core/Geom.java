@@ -1,4 +1,4 @@
-package org.heavywater.ptypes;
+package org.heavywater.core;
 
 
 public abstract class Geom {

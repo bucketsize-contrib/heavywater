@@ -1,5 +1,7 @@
 package org.heavywater.ptypes;
 
+import org.heavywater.core.Geom;
+
 
 public class Vector3 extends Geom {
 	private double[] c;

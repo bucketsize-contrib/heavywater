@@ -2,6 +2,8 @@ package org.heavywater.ptypes;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
+import org.heavywater.core.Geom;
+
 public class Line3 extends Geom {
 
 	protected Vector3[] v;

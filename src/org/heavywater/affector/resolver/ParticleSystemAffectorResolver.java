@@ -1,10 +1,13 @@
 package org.heavywater.affector.resolver;
 
-import org.heavywater.affector.Affector;
+import org.heavywater.constraint.Force;
+import org.heavywater.constraint.Joint;
+import org.heavywater.core.Affector;
+import org.heavywater.core.AffectorResolver;
+import org.heavywater.core.Singleton;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.ElectoStatic;
 import org.heavywater.property.Kinetics;
-import org.heavywater.util.Singleton;
 
 public class ParticleSystemAffectorResolver extends AffectorResolver implements Singleton {
 		// singleton
@@ -25,6 +28,16 @@ public class ParticleSystemAffectorResolver extends AffectorResolver implements 
 		}
 		@Override
 		public Affector resolve(ElectoStatic electoStaticProperty) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Affector resolve(Force f) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Affector resolve(Joint j) {
 			// TODO Auto-generated method stub
 			return null;
 		}

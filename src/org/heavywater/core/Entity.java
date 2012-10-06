@@ -1,16 +1,11 @@
-package org.heavywater.entity;
+package org.heavywater.core;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.heavywater.constraint.Constraint;
-import org.heavywater.driver.EntityDriver;
-import org.heavywater.property.Property;
-import org.heavywater.util.Base;
 import org.heavywater.util.TypeResolver;
-import org.heavywater.util.Visitable;
 /**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
@@ -106,8 +101,8 @@ public abstract class Entity extends Base implements Visitable {
 		return tlist;
 	}	
 	
-	public List<Property> getProperties(String t) {
-		List<Property> tlist = new ArrayList<Property>();
+	public List<Affectable> getProperties(String t) {
+		List<Affectable> tlist = new ArrayList<Affectable>();
 		for(Property e: properties){
 			if (e.getType().equals(t)){
 				tlist.add(e);
@@ -116,11 +111,11 @@ public abstract class Entity extends Base implements Visitable {
 		return tlist;
 	}
 	
-	public List<Constraint> getConstraints(String t) {
-		List<Constraint> tlist = new ArrayList<Constraint>();
+	public List<Affectable> getConstraints(String t) {
+		List<Affectable> tlist = new ArrayList<Affectable>();
 		for(Constraint e: constraints){
 			if (e.getType().equals(t)){
-				tlist.add(e);
+				tlist.add((Affectable) e);
 			}
 		}
 		return tlist;

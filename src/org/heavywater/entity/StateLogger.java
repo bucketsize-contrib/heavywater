@@ -2,9 +2,10 @@ package org.heavywater.entity;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
-import org.heavywater.driver.EntityDriver;
-import org.heavywater.property.Property;
-import org.heavywater.util.Resolver;
+import org.heavywater.core.Entity;
+import org.heavywater.core.EntityDriver;
+import org.heavywater.core.Property;
+import org.heavywater.core.Resolver;
 
 public class StateLogger extends Entity {
 

@@ -2,7 +2,7 @@ package org.heavywater.event;
 
 import java.util.List;
 
-import org.heavywater.entity.Entity;
+import org.heavywater.core.Entity;
 
 /**
  * Listener polls for event on registered entities

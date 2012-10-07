@@ -8,16 +8,9 @@ import org.heavywater.property.Dynamics;
 import org.heavywater.property.ElectoStatic;
 import org.heavywater.property.Kinetics;
 
-public interface Resolver {
-	// entity
+public interface IEntityResolver extends IResolver{
 	Object resolve(Engine engine);
 	Object resolve(Particle particle);
 	Object resolve(ParticleSystem particleSystem);
 	Object resolve(StateLogger stateLogger);
-	Object resolve(Entity entity);
-	
-	//property
-	Object resolve(Dynamics dynamics);
-	Object resolve(Kinetics kinetics);
-	Object resolve(ElectoStatic electo);
 }

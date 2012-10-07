@@ -5,7 +5,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.heavywater.util.TypeResolver;
+
 /**
  * Entity is the primary object in the simulation world. It can have many parts
  * also entities.
@@ -17,7 +17,7 @@ import org.heavywater.util.TypeResolver;
  * EntityDriver visits all properties.
  */
 
-public abstract class Entity extends Base implements Visitable {	
+public abstract class Entity extends Base implements IVisitable {	
 	protected List<Property> properties;
 	protected List<Constraint> constraints;	
 
@@ -38,8 +38,8 @@ public abstract class Entity extends Base implements Visitable {
 		cycleTime = 0.0;
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
+		constraints = new ArrayList<Constraint>();
 		ensemble = new ArrayList<Entity>();
-		type = (String) dispatch(new TypeResolver());
 		logInfo("new "+ type +", id= " + id);
 	}
 	
@@ -101,25 +101,24 @@ public abstract class Entity extends Base implements Visitable {
 		return tlist;
 	}	
 	
-	public List<Affectable> getProperties(String t) {
-		List<Affectable> tlist = new ArrayList<Affectable>();
+	public List<IAffectable> getProperties(String t) {
+		List<IAffectable> tlist = new ArrayList<IAffectable>();
 		for(Property e: properties){
 			if (e.getType().equals(t)){
-				tlist.add(e);
+				tlist.add((IAffectable) e);
 			}
 		}
 		return tlist;
 	}
 	
-	public List<Affectable> getConstraints(String t) {
-		List<Affectable> tlist = new ArrayList<Affectable>();
+	public List<IAffectable> getConstraints(String t) {
+		List<IAffectable> tlist = new ArrayList<IAffectable>();
 		for(Constraint e: constraints){
 			if (e.getType().equals(t)){
-				tlist.add((Affectable) e);
+				tlist.add((IAffectable) e);
 			}
 		}
 		return tlist;
 	}
-
 
 }

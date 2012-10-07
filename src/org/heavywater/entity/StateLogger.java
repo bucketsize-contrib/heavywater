@@ -5,7 +5,8 @@ import static org.heavywater.util.LogUtil.logInfo;
 import org.heavywater.core.Entity;
 import org.heavywater.core.EntityDriver;
 import org.heavywater.core.Property;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IEntityResolver;
+import org.heavywater.core.IResolver;
 
 public class StateLogger extends Entity {
 
@@ -26,13 +27,18 @@ public class StateLogger extends Entity {
 		}
 	}
 	
-	public Object dispatch(Resolver afr) {
+	public Object dispatch(IEntityResolver afr) {
 		return afr.resolve(this);
 	}
 
 	
 	public String inspect() {
 		return "StateLogger#inspect";
+	}
+	
+	@Override
+	public Object dispatch(IResolver r) {
+		return ((IEntityResolver) r).resolve(this);
 	}
 
 }

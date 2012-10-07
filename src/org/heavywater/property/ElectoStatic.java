@@ -1,9 +1,8 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Affector;
-import org.heavywater.core.AffectorResolver;
 import org.heavywater.core.Property;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IResolver;
 
 public class ElectoStatic extends Property {
 	public double charge;	
@@ -12,12 +11,8 @@ public class ElectoStatic extends Property {
 		return "ElectoStatic#inspect";
 	}
 
-	public Affector dispatch(AffectorResolver afr) {
-		return afr.resolve(this);
-	}
-
-	public Object dispatch(Resolver afr) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public Object dispatch(IResolver r) {
+		return ((IPropertyResolver) r).resolve(this);
 	}
 }

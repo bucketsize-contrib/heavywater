@@ -2,14 +2,18 @@ package org.heavywater.core;
 
 
 public abstract class Base {
-	protected static long pIndex=0;
+	protected static int pIndex=0;
 	
-	protected long id=-1;
-	protected String type; 
+	protected int id=-1;
+	protected String type;
 	
 	public Base(){
 		id = pIndex++;
+		String i = this.getClass().toString();
+		String[] s = i.split("\\."); 
+		type = s[s.length - 1];
 	}
+	
 	public long getID() {
 		return id;
 	}
@@ -17,7 +21,7 @@ public abstract class Base {
 	public String getType(){
 		return type;
 	}
-	public abstract Object dispatch(Resolver afr);
+
 	public abstract String inspect();
 	
 }

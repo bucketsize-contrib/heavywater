@@ -1,9 +1,8 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Affector;
-import org.heavywater.core.AffectorResolver;
 import org.heavywater.core.Property;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IResolver;
 import org.heavywater.ptypes.Vector3;
 
 // primary; this will yield due to changes in secondarie(s)
@@ -41,15 +40,8 @@ public class Kinetics extends Property {
 	}
 
 	@Override
-	public Affector dispatch(AffectorResolver afr) {
-		return afr.resolve(this);
-	}
-
-
-	@Override
-	public Object dispatch(Resolver afr) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object dispatch(IResolver r) {
+		return ((IPropertyResolver) r).resolve(this);
 	}
 	
 }

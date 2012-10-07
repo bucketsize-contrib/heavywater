@@ -1,9 +1,8 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Affector;
-import org.heavywater.core.AffectorResolver;
 import org.heavywater.core.Property;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IResolver;
 import org.heavywater.ptypes.Vector3;
 
 //defectors/secondary; modified by tertiary - affects primary
@@ -22,11 +21,7 @@ public class Dynamics extends Property{
 		a_accel = new Vector3();
 		type = "Dynamics";
 	}
-	
-	public Affector dispatch(AffectorResolver afr) {
-		return afr.resolve(this);
-	}
-	
+		
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
@@ -38,9 +33,8 @@ public class Dynamics extends Property{
 		return sb.toString();
 	}
 
-	public Object dispatch(Resolver afr) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public Object dispatch(IResolver r) {
+		return ((IPropertyResolver) r).resolve(this);
 	}
-
 }

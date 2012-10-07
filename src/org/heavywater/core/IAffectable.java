@@ -1,5 +1,4 @@
 package org.heavywater.core;
 
-public interface Affectable{
-	
+public interface IAffectable{
 }

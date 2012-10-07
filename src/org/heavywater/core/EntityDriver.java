@@ -1,6 +1,8 @@
 package org.heavywater.core;
 
-import static org.heavywater.util.LogUtil.logInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 /**
@@ -10,30 +12,32 @@ import static org.heavywater.util.LogUtil.logInfo;
  * from the Entity object.
  */
 public class EntityDriver {
-	private AffectorResolver afr = null;
+	private IPropertyResolver pafr = null;
+	private IConstraintResolver cafr = null;
 	
-	/**
-	 * Needs to be called to set the correct AffectorResolver after driver 
-	 * instanciation.
-	 * 
-	 * @param _afr
-	 */
-	public void setAffectorResolver(AffectorResolver _afr){
-		afr=_afr;
+	private List<Affector> paftrs;
+	private List<Affector> caftrs;
+	
+	public EntityDriver(){
+		paftrs = new ArrayList<Affector>();
+		caftrs = new ArrayList<Affector>();
 	}
 	
-	public void setAffectorResolver(Entity en){
-		// doing this i dont have to set, resolvers in driver
-		// hence can use a unified driver
-		logInfo("loading class [jb]: "+"org.heavywater.affector.resolver." +en.getType() + "AffectorResolver");
-		try {
-			afr = (AffectorResolver) Class.forName("org.heavywater.affector.resolver." +en.getType().toString() + "AffectorResolver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+	private void reloadAfftrs(Entity e) {
+		pafr = new PropertyAffectorResolver(e);
+		cafr = new ConstraintAffectorResolver(e);
+		
+		System.out.println("[1]:"+e);
+		for(Property p: e.getProperties()){
+			Affector aff = (Affector) p.dispatch(pafr);
+			paftrs.add(aff);
+		}
+		
+		
+		System.out.println("[2]:"+e);
+		for(Constraint p: e.getConstraints()){
+			Affector aff = (Affector) p.dispatch(pafr);
+			caftrs.add(aff);
 		}
 	}
 	
@@ -44,33 +48,32 @@ public class EntityDriver {
 	 *  @param e
 	 */
 	public void drive(Entity e) {
-		// an afr should be attached beyond this
-		if (afr == null){
-			setAffectorResolver(e);
+		if (pafr == null || cafr == null){
+			reloadAfftrs(e);
 		}
 		
 		// update Property changes - each individual property
 		for(Property p: e.getProperties()){
-			Affector aff = (Affector) p.dispatch(afr);
+			Affector aff = (Affector) p.dispatch(pafr);
 			if (aff!=null) {
-				//System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect(p, e);
+				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
+				aff.affect((IAffectable) p, e);
 			}
 		}
 		
 		// update Constraint changes - each individual property
 		for(Constraint c: e.getConstraints()){
-			Affector aff = (Affector) c.dispatch(afr);
+			Affector aff = (Affector) c.dispatch(cafr);
 			if (aff!=null) {
-				//System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect(c, e);
+				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
+				aff.affect((IAffectable) c, e);
 			}
 		}
-		
 		
 		// update ensemble
 		for(Entity en: e.getEnsemble()){
 			en.step();
 		}
 	}
+	
 }

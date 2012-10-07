@@ -2,7 +2,7 @@ package org.heavywater.affector;
 
 import java.util.List;
 
-import org.heavywater.core.Affectable;
+import org.heavywater.core.IAffectable;
 import org.heavywater.core.Affector;
 import org.heavywater.core.Constraint;
 import org.heavywater.core.Entity;
@@ -19,21 +19,21 @@ public class ParticleDynamicsAffector extends Affector{
 	}
 	// !singleton
 
-	public void affect(Affectable p, Entity e) {
+	public void affect(IAffectable p, Entity e) {
 		
 	}
 	
-	public Affectable aggregate(List<Affectable> dlist){
+	public IAffectable aggregate(List<IAffectable> dlist){
 		//System.out.println("aggregating:");
 		Dynamics tdyn = new Dynamics();
-		for(Affectable p: dlist){
+		for(IAffectable p: dlist){
 			Dynamics d = (Dynamics)p;
 			//System.out.println("..."+d.inspect());
 			tdyn.accel = tdyn.accel.add( d.accel );
 			tdyn.a_accel = tdyn.a_accel.add( d.a_accel );
 		}
 		//System.out.println("= " + tdyn.inspect());
-		return tdyn;
+		return (IAffectable) tdyn;
 	}
 
 }

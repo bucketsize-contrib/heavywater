@@ -7,7 +7,8 @@ import java.util.List;
 
 import org.heavywater.core.Entity;
 import org.heavywater.core.HException;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IEntityResolver;
+import org.heavywater.core.IResolver;
 import org.heavywater.driver.EngineDriver;
 import org.heavywater.event.EventFlag;
 import org.heavywater.event.Listener;
@@ -73,7 +74,7 @@ public class Engine extends Entity{
 		shutdownEventFlag.signal();
 	}
 
-	public Object dispatch(Resolver afr) {
+	public Object dispatch(IEntityResolver afr) {
 		return afr.resolve(this);
 	}
 
@@ -91,6 +92,11 @@ public class Engine extends Entity{
 		sb.append(")");
 		
 		return sb.toString();
+	}
+
+	@Override
+	public Object dispatch(IResolver r) {
+		return ((IEntityResolver) r).resolve(this);
 	}
 
 }

@@ -4,7 +4,7 @@ import static org.heavywater.util.LogUtil.logInfo;
 
 import java.util.List;
 
-import org.heavywater.core.Affectable;
+import org.heavywater.core.IAffectable;
 import org.heavywater.core.Affector;
 import org.heavywater.core.Constraint;
 import org.heavywater.core.Entity;
@@ -29,7 +29,7 @@ public class ParticleKineticsAffector extends Affector{
 	// there can be one or more secondary, depends on the affector scheme
 	// single: when all tertiaries coalesce to one one secondary
 	// multiple: when there can be a secondary per tertiary
-	public void affect(Affectable p, Entity e) {
+	public void affect(IAffectable p, Entity e) {
 		Kinetics k = (Kinetics) p;
 
 		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) ParticleDynamicsAffector.instance();
@@ -47,14 +47,14 @@ public class ParticleKineticsAffector extends Affector{
 	}
 	
 	// aggregate related properties	
-	public Affectable aggregate(List<Affectable> plist){
+	public IAffectable aggregate(List<IAffectable> plist){
 		Kinetics tkin = new Kinetics();
-		for(Affectable p: plist){
+		for(IAffectable p: plist){
 			Kinetics k = (Kinetics) p;
 			tkin.velocity = tkin.velocity.add( k.velocity );
 			tkin.angular_velocity = tkin.angular_velocity.add( k.angular_velocity );
 		}
-		return tkin;
+		return (IAffectable) tkin;
 	}
 		
 }

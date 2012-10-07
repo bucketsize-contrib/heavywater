@@ -2,7 +2,8 @@ package org.heavywater.entity;
 
 import org.heavywater.core.Entity;
 import org.heavywater.core.EntityDriver;
-import org.heavywater.core.Resolver;
+import org.heavywater.core.IEntityResolver;
+import org.heavywater.core.IResolver;
 
 public class Particle extends Entity {
 	
@@ -14,7 +15,7 @@ public class Particle extends Entity {
 		super();
 	}
 
-	public Object dispatch(Resolver resolver) {
+	public Object dispatch(IEntityResolver resolver) {
 		return resolver.resolve(this);
 	}
 	
@@ -29,5 +30,10 @@ public class Particle extends Entity {
 		sb.append(")");
 		
 		return sb.toString();
+	}
+
+	@Override
+	public Object dispatch(IResolver r) {
+		return ((IEntityResolver) r).resolve(this);
 	}
 }

@@ -11,6 +11,7 @@ package org.heavywater.core;
 // - AI
 // directly effects Dynamics
 // is affected by other Property(s)
-public abstract class Constraint extends Base implements Affectable{
-	public abstract Affector dispatch(AffectorResolver afr);
+public abstract class Constraint 
+extends Base 
+implements IVisitable, IAffectable{
 }

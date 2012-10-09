@@ -1,9 +1,9 @@
-package org.heavywater.ptypes;
+package org.heavywater.primitives;
 
-import org.heavywater.core.Geom;
+import org.heavywater.core.IPrimitive;
 
 
-public class Vector3 extends Geom {
+public class Vector3 implements IPrimitive {
 	private double[] c;
 
 	public Vector3(){

@@ -1,9 +1,9 @@
-package org.heavywater.ptypes;
+package org.heavywater.primitives;
 
-import org.heavywater.core.Geom;
+import org.heavywater.core.IPrimitive;
 
 
-public class CFrame extends Geom {
+public class CFrame implements IPrimitive {
 
 	private Vector3 ux;
 	private Vector3 uy;

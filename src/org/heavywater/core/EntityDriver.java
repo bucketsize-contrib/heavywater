@@ -1,7 +1,7 @@
 package org.heavywater.core;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -15,12 +15,12 @@ public class EntityDriver {
 	private IPropertyResolver pafr = null;
 	private IConstraintResolver cafr = null;
 	
-	private List<Affector> paftrs;
-	private List<Affector> caftrs;
+	private Map<String, Affector> paftrs;
+	private Map<String, Affector> caftrs;
 	
 	public EntityDriver(){
-		paftrs = new ArrayList<Affector>();
-		caftrs = new ArrayList<Affector>();
+		paftrs = new HashMap<String, Affector>();
+		caftrs = new HashMap<String, Affector>();
 	}
 	
 	private void reloadAfftrs(Entity e) {
@@ -28,16 +28,16 @@ public class EntityDriver {
 		cafr = new ConstraintAffectorResolver(e);
 		
 		System.out.println("[1]:"+e);
-		for(Property p: e.getProperties()){
-			Affector aff = (Affector) p.dispatch(pafr);
-			paftrs.add(aff);
+		for(Property a: e.getProperties()){
+			Affector aff = (Affector) a.dispatch(pafr);
+			paftrs.put(a.getType(), aff);
 		}
 		
 		
 		System.out.println("[2]:"+e);
-		for(Constraint p: e.getConstraints()){
-			Affector aff = (Affector) p.dispatch(pafr);
-			caftrs.add(aff);
+		for(Constraint a: e.getConstraints()){
+			Affector aff = (Affector) a.dispatch(cafr);
+			caftrs.put(a.getType(), aff);
 		}
 	}
 	
@@ -53,20 +53,21 @@ public class EntityDriver {
 		}
 		
 		// update Property changes - each individual property
-		for(Property p: e.getProperties()){
-			Affector aff = (Affector) p.dispatch(pafr);
+		Affector aff = null;
+		for(Property a: e.getProperties()){
+			aff = paftrs.get(a.getType());
 			if (aff!=null) {
 				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect((IAffectable) p, e);
+				aff.affect((IAffectable) a, e);
 			}
 		}
 		
 		// update Constraint changes - each individual property
-		for(Constraint c: e.getConstraints()){
-			Affector aff = (Affector) c.dispatch(cafr);
+		for(Constraint a: e.getConstraints()){
+			aff = paftrs.get(a.getType());
 			if (aff!=null) {
 				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect((IAffectable) c, e);
+				aff.affect((IAffectable) a, e);
 			}
 		}
 		

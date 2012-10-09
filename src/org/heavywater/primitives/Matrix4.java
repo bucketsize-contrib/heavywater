@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package org.heavywater.ptypes;
+package org.heavywater.primitives;
 
-import org.heavywater.core.Geom;
+import org.heavywater.core.IPrimitive;
 
 
-public class Matrix4 extends Geom {
+public class Matrix4 implements IPrimitive {
 	private double[][] m = { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 },
 			{ 0, 0, 0, 1 } };
 	public Matrix4() {

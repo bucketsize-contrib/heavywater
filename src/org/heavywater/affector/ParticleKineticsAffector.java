@@ -9,9 +9,9 @@ import org.heavywater.core.Affector;
 import org.heavywater.core.Constraint;
 import org.heavywater.core.Entity;
 import org.heavywater.core.Property;
+import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
-import org.heavywater.ptypes.Vector3;
 
 
 public class ParticleKineticsAffector extends Affector{

@@ -1,10 +1,10 @@
-package org.heavywater.ptypes;
+package org.heavywater.primitives;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
-import org.heavywater.core.Geom;
+import org.heavywater.core.IPrimitive;
 
-public class Line3 extends Geom {
+public class Line3 implements IPrimitive {
 
 	protected Vector3[] v;
 

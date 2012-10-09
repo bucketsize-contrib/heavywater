@@ -3,7 +3,7 @@ package org.heavywater.constraint;
 import org.heavywater.core.Constraint;
 import org.heavywater.core.IConstraintResolver;
 import org.heavywater.core.IResolver;
-import org.heavywater.ptypes.Vector3;
+import org.heavywater.primitives.Vector3;
 
 public class Force extends Constraint{
 	

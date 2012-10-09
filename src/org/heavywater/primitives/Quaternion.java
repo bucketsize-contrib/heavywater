@@ -1,6 +1,6 @@
-package org.heavywater.ptypes;
+package org.heavywater.primitives;
 
-import org.heavywater.core.Geom;
+import org.heavywater.core.IPrimitive;
 
 //	Quaternion 
 //		H = a.1 + x.i + y.j + z.k  	or	[a x y z]
@@ -77,7 +77,7 @@ import org.heavywater.core.Geom;
 //			simpler to compose than euler angles
 //			efficient than matrixes
 
-public class Quaternion extends Geom {
+public class Quaternion implements IPrimitive {
 
 	private double[] c;
 

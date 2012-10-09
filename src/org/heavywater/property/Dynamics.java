@@ -3,7 +3,7 @@ package org.heavywater.property;
 import org.heavywater.core.Property;
 import org.heavywater.core.IPropertyResolver;
 import org.heavywater.core.IResolver;
-import org.heavywater.ptypes.Vector3;
+import org.heavywater.primitives.Vector3;
 
 //defectors/secondary; modified by tertiary - affects primary
 //there can be single or multiple

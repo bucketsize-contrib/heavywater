@@ -2,8 +2,8 @@ package tests.heavywater;
 
 import junit.framework.TestCase;
 
-import org.heavywater.ptypes.Line3;
-import org.heavywater.ptypes.Vector3;
+import org.heavywater.primitives.Line3;
+import org.heavywater.primitives.Vector3;
 
 public class Line3Test extends TestCase {
 

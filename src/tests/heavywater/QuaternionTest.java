@@ -2,8 +2,8 @@ package tests.heavywater;
 
 import junit.framework.TestCase;
 
-import org.heavywater.ptypes.Quaternion;
-import org.heavywater.ptypes.Vector3;
+import org.heavywater.primitives.Quaternion;
+import org.heavywater.primitives.Vector3;
 
 public class QuaternionTest extends TestCase {
 

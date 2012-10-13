@@ -1,4 +1,4 @@
-package org.heavywater.entity;
+package org.heavywater.engine;
 
 import static org.heavywater.util.LogUtil.logInfo;
 
@@ -9,9 +9,6 @@ import org.heavywater.core.Entity;
 import org.heavywater.core.HException;
 import org.heavywater.core.IEntityResolver;
 import org.heavywater.core.IResolver;
-import org.heavywater.driver.EngineDriver;
-import org.heavywater.event.EventFlag;
-import org.heavywater.event.Listener;
 
 /**
  * Engine is an Entity that entangles cause and effects of Entities over a 

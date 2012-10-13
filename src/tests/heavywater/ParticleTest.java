@@ -2,8 +2,8 @@ package tests.heavywater;
 
 import junit.framework.TestCase;
 
-import org.heavywater.driver.EngineDriver;
-import org.heavywater.entity.Engine;
+import org.heavywater.engine.Engine;
+import org.heavywater.engine.EngineDriver;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.StateLogger;
 import org.heavywater.primitives.Vector3;

@@ -1,4 +1,4 @@
-package org.heavywater.event;
+package org.heavywater.engine;
 
 public class EventFlag {
 

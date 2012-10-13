@@ -2,16 +2,14 @@ package org.heavywater.affector;
 
 import java.util.List;
 
-import org.heavywater.core.IAffectable;
-import org.heavywater.core.Affector;
-import org.heavywater.core.Constraint;
 import org.heavywater.core.Entity;
-import org.heavywater.core.Property;
+import org.heavywater.core.IAffectable;
+import org.heavywater.core.IAffector;
 import org.heavywater.property.Dynamics;
 
 // aggregate the dynamics from tertiary entity properties 
 // to secondary
-public class ParticleDynamicsAffector extends Affector{
+public class ParticleDynamicsAffector implements IAffector{
 	// singleton
 	private static Object ins;	
 	public static Object instance(){

@@ -1,5 +1,7 @@
-package org.heavywater.core;
+package org.heavywater.affector;
 
+import org.heavywater.core.Entity;
+import org.heavywater.core.IPropertyResolver;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.ElectoStatic;
 import org.heavywater.property.Geometry;

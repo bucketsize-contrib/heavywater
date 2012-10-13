@@ -3,6 +3,9 @@ package org.heavywater.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.heavywater.affector.ConstraintAffectorResolver;
+import org.heavywater.affector.PropertyAffectorResolver;
+
 
 
 /**
@@ -11,16 +14,16 @@ import java.util.Map;
  * EntityDriver is also to delegate away some of the dynamic behaviour away
  * from the Entity object.
  */
-public class EntityDriver {
+public class EntityDriver implements IDriver {
 	private IPropertyResolver pafr = null;
 	private IConstraintResolver cafr = null;
 	
-	private Map<String, Affector> paftrs;
-	private Map<String, Affector> caftrs;
+	private Map<String, IAffector> paftrs;
+	private Map<String, IAffector> caftrs;
 	
 	public EntityDriver(){
-		paftrs = new HashMap<String, Affector>();
-		caftrs = new HashMap<String, Affector>();
+		paftrs = new HashMap<String, IAffector>();
+		caftrs = new HashMap<String, IAffector>();
 	}
 	
 	private void reloadAfftrs(Entity e) {
@@ -29,14 +32,14 @@ public class EntityDriver {
 		
 		System.out.println("[1]:"+e);
 		for(Property a: e.getProperties()){
-			Affector aff = (Affector) a.dispatch(pafr);
+			IAffector aff = (IAffector) a.dispatch(pafr);
 			paftrs.put(a.getType(), aff);
 		}
 		
 		
 		System.out.println("[2]:"+e);
 		for(Constraint a: e.getConstraints()){
-			Affector aff = (Affector) a.dispatch(cafr);
+			IAffector aff = (IAffector) a.dispatch(cafr);
 			caftrs.put(a.getType(), aff);
 		}
 	}
@@ -53,7 +56,7 @@ public class EntityDriver {
 		}
 		
 		// update Property changes - each individual property
-		Affector aff = null;
+		IAffector aff = null;
 		for(Property a: e.getProperties()){
 			aff = paftrs.get(a.getType());
 			if (aff!=null) {

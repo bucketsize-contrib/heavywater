@@ -8,7 +8,7 @@ import jb.hw.util.InstanceFactory;
 
 
 public class ConstraintAffectorResolver implements IConstraintResolver {
-	final String PREFIX = "org.heavywater.affector.";
+	final String PREFIX = "jb.hw.affector.";
 	final String POSTFIX = "Affector";
 	Entity e;
 

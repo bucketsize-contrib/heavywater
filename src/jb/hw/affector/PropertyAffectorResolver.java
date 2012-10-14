@@ -11,7 +11,7 @@ import jb.hw.util.InstanceFactory;
 
 
 public class PropertyAffectorResolver implements IPropertyResolver {
-	final String PREFIX = "org.heavywater.affector.";
+	final String PREFIX = "jb.hw.affector.";
 	final String POSTFIX = "Affector";
 	Entity e;
 	

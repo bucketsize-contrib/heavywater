@@ -37,6 +37,10 @@ public class Animator {
 		ensemble.add(e);	
 	}
 	
+	public void add(List<Entity> el) {
+		ensemble = el;	
+	}
+	
 	public TimerTask getTask(){
 		return task;
 	}

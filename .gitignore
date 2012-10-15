@@ -2,6 +2,7 @@
 *.txt*
 *.log
 *.log.*
+*.gch
 bin
 build
 

@@ -86,7 +86,13 @@ public:
 
 	string notation(){
 		ostringstream ss;
-		ss << "(Vector3 " << c[0] << " " << c[1] << " " < c[2] << ")";
+		ss << "(Vector3 ";
+		ss << c[0];
+		ss << " ";
+		ss << c[1];
+		ss << " ";
+		ss << c[2];
+		ss << ")";
 		return ss.str();
 	}
 

@@ -2,6 +2,7 @@
 #define _Matrix4
 
 #include "IPrimitive.hpp"
+#include "MArray.hpp"
 #include "Quaternion.hpp"
 #include <iostream>
 #include <sstream>
@@ -26,22 +27,22 @@ namespace hw {
                     this->setArray(m2);
                 }
 
-                Matrix4& setArray(double m[][4]) {
+                Matrix4& setArray(double m[4][4]) {
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             this->m[i][j] = m[i][j];
                     return *this;
                 }
 
-                double& array() {
-                    return **m;
+                double* array() {
+                    return m;
                 }
 
                 void setElement(int i, int j, double x) {
                     m[i][j] = x;
                 }
 
-                double Element(int i, int j) {
+                double element(int i, int j) {
                     return m[i][j];
                 }
 
@@ -83,13 +84,13 @@ namespace hw {
                     return *m1;
                 }
 
-                double& mult(Quaternion& v) {
+                Quaternion& mult(Quaternion& v) {
                     double v2[4] = v.array();
-                    double *v1 = new double[4];
+                    double v1[4];
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             v1[i] += this->Element(i, j) * v2[j];
-                    return *v1;
+                    return *(new Quaternion(v1));
                 }
 
                 Matrix4& mult(Matrix4& m2) {

@@ -89,11 +89,11 @@ namespace hw {
         class Quaternion: IPrimitive {
 
             private :
-                double c[4];
+                double *c;
 
             public:
                 Quaternion() {
-                    c = {0, 0, 0, 0}; 
+                    c = new double[4];
                 }
 
                 Quaternion(double a, double i, double j, double k) {
@@ -124,8 +124,8 @@ namespace hw {
                     return * new Vector3(c[1], c[2], c[3]);
                 }
 
-                double& array() {
-                    return *c;
+                double* array() {
+                    return c;
                 }
 
                 void setArray(double _c[]) {

@@ -3,6 +3,7 @@
 *.log
 *.log.*
 *.gch
+*.swp
 bin
 build
 

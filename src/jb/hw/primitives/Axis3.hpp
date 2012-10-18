@@ -2,7 +2,7 @@
 #define _Axis3
 
 #include "IPrimitive.hpp"
-#include "Line.hpp"
+#include "Line3.hpp"
 
 namespace hw {
     namespace primitives {
@@ -10,12 +10,13 @@ namespace hw {
         class Axis3: Line3 {
             public:
                 Axis3() {
-                    super.setVertices(new Vector3(0, 0, 0), new Vector3(0, 0, 1));
+                    setVertices(* new Vector3(0, 0, 0), * new Vector3(0, 0, 1));
                 }
 
                 Axis3(Vector3& p, Vector3& d) {
-                    super.setVertices(p, p.add(d));
+                    setVertices(p, p.add(d));
                 }
         };
     }
+}
 #endif

@@ -12,12 +12,17 @@ namespace hw {
 
         class Vector3: IPrimitive {
             private:
-                double c[4];
+                double *c;
+                bool valid;
 
             public:
+                
                 Vector3() {
-                    //c = new double[3];
+                    c = new double[3];
+                    valid = true;
                 }
+
+                Vector3(bool c):valid(c){}
 
                 Vector3(double x, double y, double z) {
                     c[0] = x;
@@ -27,6 +32,10 @@ namespace hw {
 
                 Vector3(Vector3& vec) {
                     this->copy(vec);
+                }
+
+                bool isValid(){
+                    return valid;
                 }
 
                 void copy(Vector3& vec) {
@@ -59,8 +68,8 @@ namespace hw {
                     c[2] = z;
                 }
 
-                double& array() {
-                    return *(this->c);
+                double* array() {
+                    return this->c;
                 }
 
                 bool isZero() {

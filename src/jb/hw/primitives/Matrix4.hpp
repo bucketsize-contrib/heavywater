@@ -2,7 +2,6 @@
 #define _Matrix4
 
 #include "IPrimitive.hpp"
-#include "MArray.hpp"
 #include "Quaternion.hpp"
 #include <iostream>
 #include <sstream>
@@ -12,9 +11,9 @@ namespace hw {
 
         class Matrix4: IPrimitive {
             private:
-                double m[][4];
+                double (*m)[4];
                 /*
-                   = { { 1, 0, 0, 0 }, 
+                  = { { 1, 0, 0, 0 }, 
                    { 0, 1, 0, 0 }, 
                    { 0, 0, 1, 0 },
                    { 0, 0, 0, 1 } };
@@ -34,7 +33,7 @@ namespace hw {
                     return *this;
                 }
 
-                double* array() {
+                double (*array())[4] {
                     return m;
                 }
 
@@ -64,7 +63,7 @@ namespace hw {
                 string notation() {
                     ostringstream ss;
                     ss << "(Matrix4 ";
-                    double  a[][4]; a = m;
+                    double  (*a)[4]; a = m;
                     for (int i = 0; i < 4; ++i){
                         ss << "\n(";
                         for (int j = 0; j < 4; ++j){
@@ -80,26 +79,27 @@ namespace hw {
                     Matrix4 *m1 = new Matrix4();
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
-                            m1->setElement(i, j, this->Element(i, j) * s);
+                            m1->setElement(i, j, this->element(i, j) * s);
                     return *m1;
                 }
 
                 Quaternion& mult(Quaternion& v) {
-                    double v2[4] = v.array();
-                    double v1[4];
+                    double *v2 = v.array();
+                    double *v1;
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
-                            v1[i] += this->Element(i, j) * v2[j];
+                            v1[i] += this->element(i, j) * v2[j];
                     return *(new Quaternion(v1));
                 }
 
                 Matrix4& mult(Matrix4& m2) {
-                    double a2[][4] = m2.array();
-                    double r2[][] = new double[4][4];
+                    double (*a2)[4] = m2.array();
+                    double (*r2)[4]; 
+                    r2 = new double[4][4];
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             for (int k = 0; k < 4; ++k)
-                                r2[i][j] += this->Element(i, j) * a2[k][j];
+                                r2[i][j] += this->element(i, j) * a2[k][j];
                     return *(new Matrix4(r2));
                 }
 

@@ -2,15 +2,16 @@
 #define _IPrimitive
 
 #include <string>
+
 using namespace std;
 
 namespace hw {
-namespace primitives {
+    namespace primitives {
 
-class IPrimitive {
-public:
-	virtual string notation()=0;
-};
-}
+        class IPrimitive {
+            public:
+                virtual string notation()=0;
+        };
+    }
 }
 #endif

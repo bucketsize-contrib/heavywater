@@ -39,8 +39,8 @@ namespace hw {
                     v[1].setZ(zb);
                 }
 
-                Vector3& vertices() {
-                    return *v;
+                Vector3 (&vertices())[2] {
+                    return v;
                 }
 
                 void setVertices(Vector3& v1, Vector3& v2) {
@@ -72,12 +72,12 @@ namespace hw {
 
                 // only for this Line3 rep
                 Vector3& center(Line3& l) {
-                    return * ((l.vertices()[0].add(l.vertices()[1]))
+                    return ((l.vertices()[0].add(l.vertices()[1]))
                             .mult((double) 0.5f));
                 }
 
                 Vector3& axisVector() {
-                    return * (v[1].sub(v[0]));
+                    return (v[1].sub(v[0]));
                 }
 
                 bool isPointBetweenStartAndEnd(Line3& l, Vector3& point) {
@@ -98,7 +98,7 @@ namespace hw {
 
                     tv = tv.mult(t);
 
-                    return * v[0].add(tv);
+                    return v[0].add(tv);
                 }
 
                 Vector3& intercept(Line3 l2) {
@@ -108,16 +108,17 @@ namespace hw {
 
                     if (c.cross(a).normalize().isParallel(c.cross(b).normalize())) {
                         double m = c.cross(b).length() / a.cross(b).length();
-                        return * v[0].add(a.mult(m));
+                        return v[0].add(a.mult(m));
                     } else {
-                        logInfo(this->notation() + " " + l2.notation()
-                                + " do not intersect");
-                        return * null;
+                        // TODO
+                        //logInfo(this->notation() + " " + l2.notation()
+                        //        + " do not intersect");
+                        return *(new Vector3(false));
                     }
                 }
 
                 double interceptAngle(Line3 l2) {
-                    if (this->intercept(l2) != null) {
+                    if (this->intercept(l2).isValid()) {
                         Vector3 a = this->axisVector();
                         Vector3 b = l2.axisVector();
                         return asin(a.cross(b).length() / (a.length() * b.length()));

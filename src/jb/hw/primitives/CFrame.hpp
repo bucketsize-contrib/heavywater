@@ -25,47 +25,47 @@ namespace hw {
                     // default matrix init
                 }
 
-                Vector3 X() {
-                    return ux;
+                Vector3* X() const {
+                    return const_cast<Vector3 *>( &ux );
                 }
 
                 void setX(Vector3& ux) {
                     this->ux.copy(ux);
                 }
 
-                Vector3& Y() {
-                    return uy;
+                Vector3* Y() const {
+                    return const_cast<Vector3 *>( &uy );
                 }
 
                 void setY(Vector3& uy) {
                     this->uy.copy(uy);
                 }
 
-                Vector3& Z() {
-                    return uz;
+                Vector3* Z() const {
+                    return const_cast<Vector3 *>( &uz );
                 }
 
                 void setZ(Vector3& uz) {
                     this->uz.copy(uz);
                 }
 
-                Vector3& position() {
-                    return p;
+                Vector3* position() const {
+                    return const_cast<Vector3 *>( &p );
                 }
 
                 void setPos(Vector3& pos) {
                     this->p = new Vector3(pos);
                 }
 
-                Matrix4& transform() {
-                    return t;
+                Matrix4* transform() const {
+                    return const_cast<Matrix4 *>( &t );
                 }
 
                 void setTransform(Matrix4& transform) {
-                    this->t.equal(transform);
+                    this->t.copy(transform);
                 }
 
-                string notation() {
+                virtual string notation() {
                     // TODO Auto-generated method stub
                     ostringstream ss;
                     ss << "(CFrame ";

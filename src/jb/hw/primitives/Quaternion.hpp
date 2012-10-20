@@ -89,12 +89,10 @@ namespace hw {
         class Quaternion: IPrimitive {
 
             private :
-                double *c;
+                double c[4];
 
             public:
-                Quaternion() {
-                    c = new double[4];
-                }
+                Quaternion() {}
 
                 Quaternion(double a, double i, double j, double k) {
                     Quaternion();
@@ -113,19 +111,19 @@ namespace hw {
 
                 }
 
-                void setVector(Vector3& v2) {
+                void setVector(const Vector3& v2) {
                     c[1] = v2.X();
                     c[2] = v2.Y();
                     c[3] = v2.Z();
                     c[0] = 1.0f;
                 }
 
-                Vector3& vector() {
-                    return * new Vector3(c[1], c[2], c[3]);
+                Vector3* vector() const {
+                    return new Vector3(c[1], c[2], c[3]);
                 }
 
-                double* array() {
-                    return c;
+                double* array() const {
+                    return const_cast<double *>(c);
                 }
 
                 void setArray(double _c[]) {
@@ -135,19 +133,19 @@ namespace hw {
                     c[3] = _c[3];
                 }
 
-                double X() {
+                double X() const {
                     return c[1];
                 }
 
-                double Y() {
+                double Y() const {
                     return c[2];
                 }
 
-                double Z() {
+                double Z() const {
                     return c[3];
                 }
 
-                double W() {
+                double W() const {
                     return c[0];
                 }
 
@@ -167,26 +165,35 @@ namespace hw {
                     this->c[0] = c;
                 }
 
-                Quaternion& add(Quaternion& q2) {
-                    return * new Quaternion(this->W() + q2.W(), this->X() + q2.X(),
-                            this->Y() + q2.Y(), this->Z() + q2.Z());
+                Quaternion* add(const Quaternion& q2) const {
+                    return new Quaternion(
+                            this->W() + q2.W(), 
+                            this->X() + q2.X(),
+                            this->Y() + q2.Y(), 
+                            this->Z() + q2.Z());
 
                 }
 
-                Quaternion& sub(Quaternion& q2) {
-                    return * new Quaternion(this->W() - q2.W(), this->X() - q2.X(),
-                            this->Y() - q2.Y(), this->Z() - q2.Z());
+                Quaternion* sub(const Quaternion& q2) const {
+                    return new Quaternion(
+                            this->W() - q2.W(), 
+                            this->X() - q2.X(),
+                            this->Y() - q2.Y(), 
+                            this->Z() - q2.Z());
 
                 }
 
-                Quaternion& mult(double s) {
-                    return * new Quaternion(this->W() * s, this->X() * s,
-                            this->Y() * s, this->Z() * s);
+                Quaternion* mult(double s) const {
+                    return new Quaternion(
+                            this->W() * s, 
+                            this->X() * s,
+                            this->Y() * s, 
+                            this->Z() * s);
 
                 }
 
-                Quaternion& mult(Quaternion& q2) {
-                    return * new Quaternion(this->X() * q2.W() + this->Y() * q2.Z()
+                Quaternion* mult(const Quaternion& q2) const {
+                    return new Quaternion(this->X() * q2.W() + this->Y() * q2.Z()
                             - this->Z() * q2.Y() + this->W() * q2.X(),
                             -this->X() * q2.Z() + this->Y() * q2.W()
                             + this->Z() * q2.X() + this->W() * q2.Y(),
@@ -196,19 +203,20 @@ namespace hw {
                             * q2.Z() + this->W() * q2.W());
                 }
 
-                Quaternion& normalise(Quaternion& q1) {
+                Quaternion* normalise(const Quaternion& q1) const {
                     double n = sqrt(q1.X() * q1.X() + q1.Y() * q1.Y()
                             + q1.Z() * q1.Z() + q1.W() * q1.W());
                     return this->mult(1.0f / n);
                 }
 
-                Quaternion& conjugate(Quaternion& q1) {
-                    return * new Quaternion(-q1.W(), -q1.X(), -q1.Y(), q1.Z());
+                Quaternion* conjugate(const Quaternion& q1) const { 
+                    return new Quaternion(-q1.W(), -q1.X(), -q1.Y(), q1.Z());
                 }
 
-                string notation(){
+                virtual string notation(){
                     ostringstream ss;
                     ss << "(Quaternion "; ss << c[0]; ss << " "; ss << c[1]; ss << " "; ss << c[2]; ss << " "; ss << c[3]; ss << ")";
+                    return ss.str();
                 }
         };
     }

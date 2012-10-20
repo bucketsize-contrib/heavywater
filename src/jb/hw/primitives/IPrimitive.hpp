@@ -2,6 +2,7 @@
 #define _IPrimitive
 
 #include <string>
+#include "types.h"
 
 using namespace std;
 

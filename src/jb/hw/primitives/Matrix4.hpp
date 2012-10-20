@@ -3,6 +3,7 @@
 
 #include "IPrimitive.hpp"
 #include "Quaternion.hpp"
+#include "types.h"
 #include <iostream>
 #include <sstream>
 
@@ -11,7 +12,7 @@ namespace hw {
 
         class Matrix4: IPrimitive {
             private:
-                double (*m)[4];
+                double m[4][4];
                 /*
                   = { { 1, 0, 0, 0 }, 
                    { 0, 1, 0, 0 }, 
@@ -22,45 +23,46 @@ namespace hw {
                 Matrix4() {
                 }
 
-                Matrix4(double m2[][4]) {
-                    this->setArray(m2);
+                Matrix4(const rArray_d4x4 m) {
+                    this->setArray(m);
                 }
 
-                Matrix4& setArray(double m[4][4]) {
+                Matrix4* setArray(const rArray_d4x4 m) {
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             this->m[i][j] = m[i][j];
-                    return *this;
+                    return this;
                 }
 
-                double (*array())[4] {
-                    return m;
+                pArray_d4x4 array() const {
+                    return (pArray_d4x4) m;
                 }
 
                 void setElement(int i, int j, double x) {
                     m[i][j] = x;
                 }
 
-                double element(int i, int j) {
+                double element(int i, int j) const {
                     return m[i][j];
                 }
 
-                Matrix4& equal(Matrix4& m2) {
-                    this->setArray(m2.array());
-                    return *this;
+                Matrix4* copy(const Matrix4& m){ 
+
+                    this->setArray((rArray_d4x4)*(m.array()) );
+                    return this;
                 }
 
-                Matrix4& setAsIdentity() {
+                Matrix4* setAsIdentity() {
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             if (i == j)
                                 this->m[i][j] = 1;
                             else
                                 this->m[i][j] = 0;
-                    return *this;
+                    return this;
                 }
 
-                string notation() {
+                virtual string notation() {
                     ostringstream ss;
                     ss << "(Matrix4 ";
                     double  (*a)[4]; a = m;
@@ -75,24 +77,24 @@ namespace hw {
                     return ss.str();
                 }
 
-                Matrix4& mult(double s) {
+                Matrix4* mult(double s) const {
                     Matrix4 *m1 = new Matrix4();
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             m1->setElement(i, j, this->element(i, j) * s);
-                    return *m1;
+                    return m1;
                 }
 
-                Quaternion& mult(Quaternion& v) {
+                Quaternion* mult(const Quaternion& v) const {
                     double *v2 = v.array();
                     double *v1;
                     for (int i = 0; i < 4; ++i)
                         for (int j = 0; j < 4; ++j)
                             v1[i] += this->element(i, j) * v2[j];
-                    return *(new Quaternion(v1));
+                    return new Quaternion(v1);
                 }
 
-                Matrix4& mult(Matrix4& m2) {
+                Matrix4* mult(const Matrix4& m2) const {
                     double (*a2)[4] = m2.array();
                     double (*r2)[4]; 
                     r2 = new double[4][4];
@@ -100,7 +102,7 @@ namespace hw {
                         for (int j = 0; j < 4; ++j)
                             for (int k = 0; k < 4; ++k)
                                 r2[i][j] += this->element(i, j) * a2[k][j];
-                    return *(new Matrix4(r2));
+                    return new Matrix4((rArray_d4x4)r2);
                 }
 
         };

@@ -5,6 +5,13 @@
 #include <string>
 #include <vector>
 
+#include "Base.hpp"
+#include "EntityDriver.hpp"
+#include "IVisitable.hpp"
+#include "IAffectable.hpp"
+#include "Property.hpp"
+#include "Constraint.hpp"
+
 using namespace std;
 
 namespace hw{
@@ -34,105 +41,45 @@ namespace hw{
                 EntityDriver *driver;
 
             public:
-                Entity(){
-                    Entity(new EntityDriver());
-                }
-                Entity(EntityDriver *ed) {
-                    driver = ed;
-                    parent = NULL;
-                    cycleTime = 0.0;
-                    aliveTime = 0.0;
-                    //properties = new ArrayList<Property>();
-                    //constraints = new ArrayList<Constraint>();
-                    //ensemble = new ArrayList<Entity>();
-                    cout << "new " << type << ", id= " << id;
-                }
+                Entity();
 
-                void driver(EntityDriver *ed) {
-                    driver = ed;
-                }
+                Entity(EntityDriver *);
 
-                void step() {
-                    driver->drive(this);
-                    aliveTime += cycleTime;
-                }
 
-                void cycleTime(double t) const {
-                    cycleTime = t;
-                }
+                void step();
 
-                double getCycleTime() const {
-                    return cycleTime;
-                }
 
-                double getAliveTime() const {
-                    return aliveTime;
-                }
 
                 // -- ACCESSORS --
-                void add(const Entity& e) {
-                    e.parent = this;
-                    e.cycleTime = e.cycleTime!=0.0?e.cycleTime:cycleTime;		
-                    ensemble.add( &e );
-                }
+                void setAliveTime(double) const;
 
-                void add(const Property& p) {
-                    properties.add( &p );
-                }
+                double getAliveTime() const;
 
-                void add(const Constraint& c) {
-                    constraints.add( &c );
-                }
+                void setCycleTime(double ) const;
 
-                vector<Entity *> *getEnsemble() const {
-                    return ensemble;
-                }
+                double getCycleTime() const;
 
-                vector<Property *> *getProperties() const {
-                    return properties;
-                }
+                void setDriver(EntityDriver *);
 
-                vector<Constraint *> *getConstraints() const {
-                    return constraints;
-                }
+                EntityDriver *getDriver();
 
-                vector<Entity *> *getEnsemble(const string& t) const {
-                    vector<Entity *> *tlist = new vector<Entity *>();
-                    for(vector<Entity *>::iterator it = ensemble->begin(); 
-                            it != ensemble->end(); 
-                            ++it)
-                    {
-                        if (it->type.equals(t)){
-                            tlist->add(it);
-                        }
-                    }
-                    return tlist;
-                }	
+                void add(const Entity&);
 
-                vector<IAffectable *> *getProperties(const string& t) const {
-                    vector<IAffectable> *tlist = new vector<IAffectable *>();
-                    for(vector<Property *>::iterator it = properties->begin();
-                            it != properties->end();
-                            ++it)
-                    {
-                        if (it->getType().equals(t)){
-                            tlist->add( (IAffectable *) it);
-                        }
-                    }
-                    return tlist;
-                }
+                void add(const Property &);
 
-                vector<IAffectable *> *getConstraints(const string& t) {
-                    vector<IAffectable *> *tlist = new vector<IAffectable *>();
-                    for(vector<Constraint *>::iterator it = constraints->begin();
-                            it != constraints->end();
-                            ++it){
-                        if (it->getType().equals(t)){
-                            tlist->add((IAffectable *) it);
-                        }
-                    }
-                    return tlist;
-                }
+                void add(const Constraint &);
+
+                vector<Entity *> *getEnsemble() const;
+
+                vector<Property *> *getProperties() const;
+
+                vector<Constraint *> *getConstraints() const;
+
+                vector<Entity *> *getEnsemble(const string &) const;
+
+                vector<IAffectable *> *getProperties(const string &) const;
+
+                vector<IAffectable *> *getConstraints(const string &);
 
         };
     }

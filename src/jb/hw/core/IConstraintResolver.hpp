@@ -1,17 +1,24 @@
-#ifndef _hw_core_IPropertyResolver
-#define _hw_core_IPropertyResolver
+#ifndef _hw_core_IConstraintResolver
+#define _hw_core_IConstraintResolver
 
 #include "IResolver.hpp"
+//#include "../constraint/Force.hpp"
+//#include "../constraint/Joint.hpp"
 
 namespace hw{
-    namespace core{
 
+    namespace constraint{
         class Force;
         class Joint;
+    }
 
-        class IConstraintResolver:public IResolver{
-            void *resolve(Force *f);
-            void *resolve(Joint *j);
+    namespace core{
+
+
+        class IConstraintResolver: public IResolver{
+            public:
+                virtual void *resolve(constraint::Force *f);
+                virtual void *resolve(constraint::Joint *j);
         };
     }
 }

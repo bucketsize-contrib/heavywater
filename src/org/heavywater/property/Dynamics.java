@@ -25,9 +25,10 @@ public class Dynamics extends Property{
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
-		sb.append(accel.notation());
-		sb.append(" ");
-		sb.append(a_accel.notation());
+		sb.append(" a=");
+		sb.append(accel.inspect());
+		sb.append(" w=");
+		sb.append(a_accel.inspect());
 		sb.append(")");
 
 		return sb.toString();

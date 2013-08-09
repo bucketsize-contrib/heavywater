@@ -30,10 +30,10 @@ public class Kinetics extends Property {
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Kinetics");
-		sb.append(" ");
-		sb.append(location.notation());
-		sb.append(" ");
-		sb.append(velocity.notation());
+		sb.append(" p=");
+		sb.append(location.inspect());
+		sb.append(" v=");
+		sb.append(velocity.inspect());
 		sb.append(")");
 
 		return sb.toString();

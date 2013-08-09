@@ -1,30 +1,38 @@
 package org.heavywater.affector;
 
-import org.heavywater.constraint.Force;
-import org.heavywater.constraint.Joint;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import org.heavywater.core.Constraint;
 import org.heavywater.core.Entity;
 import org.heavywater.core.IConstraintResolver;
 import org.heavywater.util.InstanceFactory;
 
 public class ConstraintAffectorResolver implements IConstraintResolver {
-	final String PREFIX = "org.heavywater.affector.";
-	final String POSTFIX = "Affector";
-	Entity e;
+	Entity entity;
+	Properties prop;
+	
+	public ConstraintAffectorResolver() {
+		prop = new Properties();
+		 
+	    try {
+	    	InputStream pfile = new FileInputStream("res/affectors.properties");
+			prop.load(pfile);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 
-	public ConstraintAffectorResolver(Entity e) {
-		this.e = e;
+	}
+	
+	@Override
+	public Object resolve(Constraint p) {
+		return InstanceFactory.getInstance(prop.getProperty(entity.getType()+p.getType()));
 	}
 
 	@Override
-	public Object resolve(Force f) {
-		// TODO Auto-generated method stub
-		return InstanceFactory.getInstance(PREFIX + e.getType() + f.getType()+ POSTFIX);
+	public void setEntity(Entity e) {
+		entity = e;
 	}
-
-	@Override
-	public Object resolve(Joint f) {
-		// TODO Auto-generated method stub
-		return InstanceFactory.getInstance(PREFIX + e.getType() + f.getType()+ POSTFIX);
-	}
-
 }

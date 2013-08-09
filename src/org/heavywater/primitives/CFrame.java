@@ -57,7 +57,7 @@ public class CFrame implements IPrimitive {
 	}
 
 	@Override
-	public String notation() {
+	public String inspect() {
 		// TODO Auto-generated method stub
 		return null;
 	}

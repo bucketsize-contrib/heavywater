@@ -23,9 +23,9 @@ public class Particle extends Entity {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Particle ");
 		sb.append(getID());
-		sb.append(" ");
+		sb.append(" ct=");
 		sb.append(getCycleTime());
-		sb.append(" ");
+		sb.append(" at=");
 		sb.append(getAliveTime());
 		sb.append(")");
 		

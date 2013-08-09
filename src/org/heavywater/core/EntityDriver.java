@@ -1,12 +1,7 @@
 package org.heavywater.core;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.heavywater.affector.ConstraintAffectorResolver;
 import org.heavywater.affector.PropertyAffectorResolver;
-
-
 
 /**
  * EntityDriver know how each Property affect this particular Entity.
@@ -18,30 +13,9 @@ public class EntityDriver implements IDriver {
 	private IPropertyResolver pafr = null;
 	private IConstraintResolver cafr = null;
 	
-	private Map<String, IAffector> paftrs;
-	private Map<String, IAffector> caftrs;
-	
 	public EntityDriver(){
-		paftrs = new HashMap<String, IAffector>();
-		caftrs = new HashMap<String, IAffector>();
-	}
-	
-	private void reloadAfftrs(Entity e) {
-		pafr = new PropertyAffectorResolver(e);
-		cafr = new ConstraintAffectorResolver(e);
-		
-		System.out.println("[1]:"+e);
-		for(Property a: e.getProperties()){
-			IAffector aff = (IAffector) a.dispatch(pafr);
-			paftrs.put(a.getType(), aff);
-		}
-		
-		
-		System.out.println("[2]:"+e);
-		for(Constraint a: e.getConstraints()){
-			IAffector aff = (IAffector) a.dispatch(cafr);
-			caftrs.put(a.getType(), aff);
-		}
+		pafr = new PropertyAffectorResolver();
+		cafr = new ConstraintAffectorResolver();
 	}
 	
 	/**
@@ -51,27 +25,19 @@ public class EntityDriver implements IDriver {
 	 *  @param e
 	 */
 	public void drive(Entity e) {
-		if (pafr == null || cafr == null){
-			reloadAfftrs(e);
-		}
+		
+		setContext(e);
 		
 		// update Property changes - each individual property
-		IAffector aff = null;
-		for(Property a: e.getProperties()){
-			aff = paftrs.get(a.getType());
-			if (aff!=null) {
-				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect((IAffectable) a, e);
-			}
+		for(Property property: e.getProperties()){
+			IAffector aff = (IAffector) property.dispatch(pafr);
+			aff.affect((IAffectable) property, e);
 		}
 		
 		// update Constraint changes - each individual property
-		for(Constraint a: e.getConstraints()){
-			aff = paftrs.get(a.getType());
-			if (aff!=null) {
-				// System.out.printf("compute %s on %s, id=%d\n", p.getType(), e.getType(), e.getID());
-				aff.affect((IAffectable) a, e);
-			}
+		for(Constraint constrain: e.getConstraints()){
+			IAffector aff = (IAffector) constrain.dispatch(cafr);
+			aff.affect((IAffectable) constrain, e);
 		}
 		
 		// update ensemble
@@ -79,5 +45,9 @@ public class EntityDriver implements IDriver {
 			en.step();
 		}
 	}
-	
+
+	private void setContext(Entity e) {
+		pafr.setEntity(e);
+		cafr.setEntity(e);		
+	}
 }

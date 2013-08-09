@@ -16,7 +16,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testLine3");
 		try {
 			Line3 l = new Line3();
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -27,7 +27,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testLine3DoubleDoubleDoubleDoubleDoubleDouble");
 		try {
 			Line3 l = new Line3(0, 0, 0, 0, 10, 0);
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -38,7 +38,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testLine3Vector3Vector3");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -49,10 +49,10 @@ public class Line3Test extends TestCase {
 		System.out.println("testSetLine");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 
 			l.setLine(-1, -1, -1, 0, 1, 0);
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -74,10 +74,10 @@ public class Line3Test extends TestCase {
 		System.out.println("testSetVertices");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 
 			l.setVertices(new Vector3(9, 4, 5), new Vector3(1, 2, 1));
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -88,7 +88,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testNotation");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.notation());
+			System.out.println(l.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -131,7 +131,7 @@ public class Line3Test extends TestCase {
 		System.out.println("testAxisVector");
 		try {
 			Line3 l = new Line3(new Vector3(0, 0, 0), new Vector3(0, 10, 0));
-			System.out.println(l.axisVector().notation());
+			System.out.println(l.axisVector().inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -142,13 +142,13 @@ public class Line3Test extends TestCase {
 		System.out.println("testIntercept");
 		try {
 			Line3 l1 = new Line3(new Vector3(20, 0, 0), new Vector3(20, 3, 0));
-			System.out.println(l1.notation());
+			System.out.println(l1.inspect());
 			
 			Line3 l2 = new Line3(new Vector3(30, 17, 0), new Vector3(39, 17, 0));
-			System.out.println(l2.notation());
+			System.out.println(l2.inspect());
 			
 			Vector3 v = l1.intercept(l2);
-			System.out.println(v.notation());
+			System.out.println(v.inspect());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,10 +161,10 @@ public class Line3Test extends TestCase {
 		try {
 			
 			Line3 l1 = new Line3(new Vector3(20, 0, 0), new Vector3(20, 3, 0));
-			System.out.println(l1.notation());
+			System.out.println(l1.inspect());
 			
 			Line3 l2 = new Line3(new Vector3(30, 17, 0), new Vector3(39, 17, 0));
-			System.out.println(l2.notation());
+			System.out.println(l2.inspect());
 			
 			System.out.println(l1.interceptAngle(l2)*180 / Math.PI);
 			

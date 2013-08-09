@@ -77,7 +77,7 @@ public class Vector3 implements IPrimitive {
 			return false;
 	}
 
-	public String notation() {
+	public String inspect() {
 		return "(Vector3 " + c[0] + " " + c[1] + " "
 		+ c[2]+")";
 	}

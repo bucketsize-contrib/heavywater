@@ -18,8 +18,14 @@ public class Force extends Constraint{
 	
 	@Override
 	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sb = new StringBuffer();
+		sb.append("Force o=");
+		sb.append(origin.inspect());
+		sb.append(" v=");
+		sb.append(vector.inspect());
+		sb.append(")");
+		
+		return sb.toString();
 	}
 
 	@Override

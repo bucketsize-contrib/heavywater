@@ -4,9 +4,6 @@ import org.heavywater.engine.Engine;
 import org.heavywater.entity.Particle;
 import org.heavywater.entity.ParticleSystem;
 import org.heavywater.entity.StateLogger;
-import org.heavywater.property.Dynamics;
-import org.heavywater.property.ElectoStatic;
-import org.heavywater.property.Kinetics;
 
 public interface IEntityResolver extends IResolver{
 	Object resolve(Engine engine);

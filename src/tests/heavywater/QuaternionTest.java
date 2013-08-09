@@ -15,7 +15,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternion");
 		try {
 			Quaternion q = new Quaternion();
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -26,7 +26,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(1,2,3,4);
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -37,7 +37,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleArray");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -50,7 +50,7 @@ public class QuaternionTest extends TestCase {
 		try {
 			Quaternion q = new Quaternion();
 			q.setVector(new Vector3(1,4.1,2));
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -61,7 +61,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testGetVector3");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2.2,3,4.1});
-			System.out.println(q.vector().notation());
+			System.out.println(q.vector().inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -72,7 +72,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -83,7 +83,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -126,7 +126,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -137,7 +137,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -148,7 +148,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -159,7 +159,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -170,7 +170,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 
@@ -181,7 +181,7 @@ public class QuaternionTest extends TestCase {
 		System.out.println("testQuaternionDoubleDoubleDoubleDouble");
 		try {
 			Quaternion q = new Quaternion(new double [] {1,2,3,4.1});
-			System.out.println(q.notation());
+			System.out.println(q.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString()); 

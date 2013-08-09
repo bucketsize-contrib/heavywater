@@ -10,15 +10,11 @@ import org.heavywater.core.IAffector;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Kinetics;
+import org.heavywater.util.InstanceFactory;
 
 
 public class ParticleKineticsAffector implements IAffector{
-	//
-	private static Object ins;	
-	public static Object instance(){
-		return ins!=null?ins:(ins=new ParticleKineticsAffector());
-	}
-	//
+	
 	public ParticleKineticsAffector(){
 		logInfo("new "+this);
 	}
@@ -30,7 +26,8 @@ public class ParticleKineticsAffector implements IAffector{
 	public void affect(IAffectable p, Entity e) {
 		Kinetics k = (Kinetics) p;
 
-		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) ParticleDynamicsAffector.instance();
+		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) InstanceFactory.
+				getInstance("org.heavywater.affector.ParticleDynamicsAffector");
 		Dynamics d = (Dynamics) pda.aggregate( e.getProperties("Dynamics") ); 
 		
 		Vector3 a = d.accel;

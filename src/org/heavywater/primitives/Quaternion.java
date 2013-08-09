@@ -195,7 +195,7 @@ public class Quaternion implements IPrimitive {
 		return new Quaternion(-q1.W(), -q1.X(), -q1.Y(), q1.Z());
 	}
 
-	public String notation(){
+	public String inspect(){
 		return "(Quaternion " + c[0] + " " +c[1]+ " " + c[2] + " "
 		+ c[3]+")";
 	}

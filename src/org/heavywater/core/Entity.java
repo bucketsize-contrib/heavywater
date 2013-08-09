@@ -5,6 +5,8 @@ import static org.heavywater.util.LogUtil.logInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.heavywater.util.InstanceFactory;
+
 
 /**
  * Entity is the primary object in the simulation world. It can have many parts
@@ -24,14 +26,15 @@ public abstract class Entity extends Base implements IVisitable {
 	protected List<Entity> ensemble;
 	protected Entity parent;
 	
-	protected double cycleTime;
-	protected double aliveTime;
+	protected double cycleTime; // seconds
+	protected double aliveTime; // seconds
 
 	protected EntityDriver driver;
 	
 	public Entity(){
-		this(new EntityDriver());
+		this((EntityDriver) InstanceFactory.getInstance("org.heavywater.core.EntityDriver"));
 	}
+	
 	public Entity(EntityDriver ed) {
 		driver = ed;
 		parent = null;

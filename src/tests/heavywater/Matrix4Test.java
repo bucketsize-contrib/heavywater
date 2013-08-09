@@ -14,7 +14,7 @@ public class Matrix4Test extends TestCase {
 		System.out.println("testMatrix4");
 		try {
 			Matrix4 m = new Matrix4();
-			System.out.println(m.notation());
+			System.out.println(m.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -30,7 +30,7 @@ public class Matrix4Test extends TestCase {
 					{3,4,5,6},
 					{4,5,6,7}
 			});
-			System.out.println(m.notation());
+			System.out.println(m.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -41,7 +41,7 @@ public class Matrix4Test extends TestCase {
 		System.out.println("testMatrix4DoubleArrayArray");
 		try {
 			Matrix4 m = new Matrix4();
-			System.out.println(m.notation());
+			System.out.println(m.inspect());
 			double [][] a= {
 					{1,2,3,4},
 					{2,3,4,5},
@@ -49,7 +49,7 @@ public class Matrix4Test extends TestCase {
 					{4,5,6,7}
 			};
 			m.setArray(a);
-			System.out.println(m.notation());
+			System.out.println(m.inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -81,7 +81,7 @@ public class Matrix4Test extends TestCase {
 					{3,4,5,6},
 					{4,5,6,7}
 			});
-			System.out.println(m.mult(2).notation());
+			System.out.println(m.mult(2).inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -109,7 +109,7 @@ public class Matrix4Test extends TestCase {
 					{4,5,6,7}
 			});
 			
-			System.out.println(m.mult(m2).notation());
+			System.out.println(m.mult(m2).inspect());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());

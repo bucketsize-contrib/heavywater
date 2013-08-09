@@ -43,9 +43,9 @@ public class Line3 implements IPrimitive {
 		v[1] = v2;
 	}
 
-	public String notation() {
-		return "(Line3 " + v[0].notation() + " "
-		+ v[1].notation() + ")";
+	public String inspect() {
+		return "(Line3 " + v[0].inspect() + " "
+		+ v[1].inspect() + ")";
 	}
 
 	//
@@ -103,7 +103,7 @@ public class Line3 implements IPrimitive {
 			double m = c.cross(b).length() / a.cross(b).length();
 			return this.vertices()[0].add(a.mult(m));
 		} else {
-			logInfo(this.notation() + " " + l2.notation()
+			logInfo(this.inspect() + " " + l2.inspect()
 					+ " do not intersect");
 			return null;
 		}

@@ -52,7 +52,7 @@ public class Matrix4 implements IPrimitive {
 		return this;
 	}
 
-	public String notation() {
+	public String inspect() {
 		String s = "(Matrix4 ";
 		double [][] a = m;
 		for (int i = 0; i < 4; ++i){

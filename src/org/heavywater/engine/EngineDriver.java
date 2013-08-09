@@ -1,14 +1,13 @@
 package org.heavywater.engine;
 
+import static org.heavywater.util.LogUtil.logInfo;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 
 import org.heavywater.core.Entity;
 import org.heavywater.core.EntityDriver;
-
-import static org.heavywater.util.LogUtil.*;
 
 /**
  * Specialized Driver only for Engine
@@ -17,10 +16,9 @@ import static org.heavywater.util.LogUtil.*;
 public class EngineDriver extends EntityDriver{
 	private Map<Listener, Thread> listenerMap;
 	private Map<Long, Animator> animatorMap;
-	Timer timer;
+	private Timer timer;
 	
 	public EngineDriver(){
-		logInfo("init EngineDriver");
 		listenerMap = new HashMap<Listener, Thread>();
 		animatorMap = new HashMap<Long, Animator>();
 		timer = new Timer();

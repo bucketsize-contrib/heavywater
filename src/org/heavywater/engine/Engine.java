@@ -26,7 +26,6 @@ public class Engine extends Entity{
 
 	public Engine(EngineDriver ed){
 		super(ed);
-		cycleTime=1.0;
 		
 		listeners = new ArrayList<Listener>();
 		shutdownEventFlag = new EventFlag();
@@ -52,7 +51,7 @@ public class Engine extends Entity{
 		
 		// sanitize engine params
 		if (cycleTime == 0){
-			throw new HException("engine::cycletime = 0");
+			throw new HException("cycletime = 0");
 		}
 		
 		// engine has only one step
@@ -74,7 +73,6 @@ public class Engine extends Entity{
 	public Object dispatch(IEntityResolver afr) {
 		return afr.resolve(this);
 	}
-
 	
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();

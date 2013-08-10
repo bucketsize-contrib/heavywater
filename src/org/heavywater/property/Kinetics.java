@@ -16,13 +16,13 @@ public class Kinetics extends Property {
 	// primary properties; not modifiable by external
 	public Vector3 location;	
 	public Vector3 velocity;
-	public Vector3 angular_velocity;
+	public Vector3 a_velocity;
 
 	public Kinetics(){
 		location = new Vector3();
 
 		velocity = new Vector3();
-		angular_velocity = new Vector3();
+		a_velocity = new Vector3();
 		type = "Kinetics";
 	}
 
@@ -42,6 +42,21 @@ public class Kinetics extends Property {
 	@Override
 	public Object dispatch(IResolver r) {
 		return ((IPropertyResolver) r).resolve(this);
+	}
+
+
+	@Override
+	public void copy(Property p) {
+		Kinetics k = (Kinetics) p;
+		
+		velocity.setX(k.velocity.X());
+		velocity.setY(k.velocity.Y());
+		velocity.setZ(k.velocity.Z());
+		
+		a_velocity.setX(k.a_velocity.X());
+		a_velocity.setY(k.a_velocity.Y());
+		a_velocity.setZ(k.a_velocity.Z());
+		
 	}
 	
 }

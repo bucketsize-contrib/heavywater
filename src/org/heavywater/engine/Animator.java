@@ -1,9 +1,11 @@
 package org.heavywater.engine;
 
+import static org.heavywater.util.LogUtil.logInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 
+import org.heavywater.core.Base;
 import org.heavywater.core.Entity;
 
 /**
@@ -14,7 +16,7 @@ import org.heavywater.core.Entity;
  * @author jb
  *
  */
-public class Animator {
+public class Animator extends Base{
 	private Long cycleTime;
 	private List<Entity> ensemble;
 	private TimerTask task;
@@ -35,6 +37,8 @@ public class Animator {
 	
 	public void add(Entity e) {
 		ensemble.add(e);	
+		
+		logInfo("added "+e.inspect()+" to "+this.inspect());
 	}
 	
 	public void add(List<Entity> el) {
@@ -49,5 +53,18 @@ public class Animator {
 		for(Entity entity : ensemble){
 			entity.step();
 		}
+	}
+	
+	public String inspect(){
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Animator id=");
+		sb.append(getID());
+		sb.append(" ct-ms=");
+		sb.append(cycleTime);
+		sb.append(" et-count=");
+		sb.append(ensemble.size());
+		sb.append(")");
+		
+		return sb.toString();
 	}
 }

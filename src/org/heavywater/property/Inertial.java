@@ -18,4 +18,10 @@ public class Inertial  extends Property implements IVisitable{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void copy(Property p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

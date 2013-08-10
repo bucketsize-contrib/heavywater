@@ -36,19 +36,22 @@ public class EngineDriver extends EntityDriver{
 	
 	void start(final Entity e){		
 		Long eKey = (long) (e.getCycleTime()*1000);
-		Animator a;
+		Animator animator;
 		
 		// get an Animator, else create a new one
 		if (animatorMap.containsKey(eKey)){
-			a = animatorMap.get(eKey);
+			animator = animatorMap.get(eKey);
 		}else{
-			a = new Animator(eKey);
-			animatorMap.put(eKey, a);
-			timer.scheduleAtFixedRate(a.getTask(), 100, eKey);
+			animator = new Animator(eKey);
+			animatorMap.put(eKey, animator);
+			timer.scheduleAtFixedRate(animator.getTask(), 100, eKey);
+			
+			logInfo("Animator: "+animator.inspect());
 		}
 		
 		// register Entity with the Animator
-		a.add(e);		
+		animator.add(e);	
+		
 	}
 
 	public void drive(Entity e) {

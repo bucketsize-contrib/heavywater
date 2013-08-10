@@ -1,5 +1,8 @@
 package org.heavywater.core;
 
+import static org.heavywater.util.LogUtil.*;
+
+import org.heavywater.util.HeavyUtil;
 
 public abstract class Base {
 	protected static int pIndex=0;
@@ -9,9 +12,9 @@ public abstract class Base {
 	
 	public Base(){
 		id = pIndex++;
-		String i = this.getClass().toString();
-		String[] s = i.split("\\."); 
-		type = s[s.length - 1];
+		type = HeavyUtil.getReducedType(this);
+
+		logInfo("spawned "+type+" id="+id);
 	}
 	
 	public long getID() {

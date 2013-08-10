@@ -9,7 +9,7 @@ import org.heavywater.affector.PropertyAffectorResolver;
  * EntityDriver is also to delegate away some of the dynamic behaviour away
  * from the Entity object.
  */
-public class EntityDriver implements IDriver {
+public class EntityDriver extends Base implements IDriver {
 	private IPropertyResolver pafr = null;
 	private IConstraintResolver cafr = null;
 	
@@ -49,5 +49,10 @@ public class EntityDriver implements IDriver {
 	private void setContext(Entity e) {
 		pafr.setEntity(e);
 		cafr.setEntity(e);		
+	}
+
+	@Override
+	public String inspect() {
+		return "(EntityDriver)";
 	}
 }

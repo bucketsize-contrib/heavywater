@@ -8,4 +8,7 @@ package org.heavywater.core;
 public abstract class Property 
 extends Base 
 implements IVisitable, IAffectable{
+	
+	public abstract void copy(Property p);
+	
 }

@@ -9,6 +9,7 @@ import org.heavywater.core.IAffectable;
 import org.heavywater.core.IAffector;
 import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
+import org.heavywater.property.DynamicsAggregator;
 import org.heavywater.property.Kinetics;
 import org.heavywater.util.InstanceFactory;
 
@@ -26,9 +27,13 @@ public class ParticleKineticsAffector implements IAffector{
 	public void affect(IAffectable p, Entity e) {
 		Kinetics k = (Kinetics) p;
 
-		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) InstanceFactory.
-				getInstance("org.heavywater.affector.ParticleDynamicsAffector");
-		Dynamics d = (Dynamics) pda.aggregate( e.getProperties("Dynamics") ); 
+		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) InstanceFactory
+				.getInstance("org.heavywater.affector.ParticleDynamicsAffector");
+		
+		DynamicsAggregator ag = (DynamicsAggregator) InstanceFactory
+				.getInstance("org.heavywater.property.DynamicsAggregator");
+		
+		Dynamics d = (Dynamics) ag.aggregate( e.getProperties("Dynamics") ); 
 		
 		Vector3 a = d.accel;
 		Vector3 v = k.velocity; 
@@ -40,16 +45,5 @@ public class ParticleKineticsAffector implements IAffector{
 		// v = v + at
 		k.velocity = v.add( a.mult(t) );
 	}
-	
-	// aggregate related properties	
-	public IAffectable aggregate(List<IAffectable> plist){
-		Kinetics tkin = new Kinetics();
-		for(IAffectable p: plist){
-			Kinetics k = (Kinetics) p;
-			tkin.velocity = tkin.velocity.add( k.velocity );
-			tkin.angular_velocity = tkin.angular_velocity.add( k.angular_velocity );
-		}
-		return (IAffectable) tkin;
-	}
-		
+			
 }

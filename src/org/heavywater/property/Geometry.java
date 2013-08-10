@@ -19,4 +19,10 @@ public class Geometry extends Property {
 		return ((IPropertyResolver) r).resolve(this);
 	}
 
+	@Override
+	public void copy(Property p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

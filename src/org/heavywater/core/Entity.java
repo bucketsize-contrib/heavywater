@@ -1,7 +1,5 @@
 package org.heavywater.core;
 
-import static org.heavywater.util.LogUtil.logInfo;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,12 +36,11 @@ public abstract class Entity extends Base implements IVisitable {
 	public Entity(EntityDriver ed) {
 		driver = ed;
 		parent = null;
-		cycleTime = 0.0;
+		cycleTime = 0.3; // default
 		aliveTime = 0.0;
 		properties = new ArrayList<Property>();
 		constraints = new ArrayList<Constraint>();
 		ensemble = new ArrayList<Entity>();
-		logInfo("new "+ type +", id= " + id);
 	}
 	
 	public void driver(EntityDriver d) {
@@ -69,8 +66,8 @@ public abstract class Entity extends Base implements IVisitable {
 	
 	// -- ACCESSORS --
 	public void add(Entity e) {
+		e.cycleTime = e.cycleTime!=0.0?e.cycleTime:cycleTime;
 		e.parent = this;
-		e.cycleTime = e.cycleTime!=0.0?e.cycleTime:cycleTime;		
 		ensemble.add(e);
 	}
 

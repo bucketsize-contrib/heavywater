@@ -15,4 +15,10 @@ public class ElectoStatic extends Property {
 	public Object dispatch(IResolver r) {
 		return ((IPropertyResolver) r).resolve(this);
 	}
+
+	@Override
+	public void copy(Property p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -33,7 +33,7 @@ public class StateLogger extends Entity {
 
 	
 	public String inspect() {
-		return "StateLogger#inspect";
+		return "(StateLogger)";
 	}
 	
 	@Override

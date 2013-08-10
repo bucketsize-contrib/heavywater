@@ -13,6 +13,9 @@ import org.heavywater.primitives.Vector3;
 //tertiaries are:
 //ie electrostatic, magnetic, gravitational, contact, viscous, hydraulic fields
 public class Dynamics extends Property{
+	
+	public static Dynamics initial = new Dynamics();
+	
 	public Vector3 accel;		
 	public Vector3 a_accel;
 
@@ -38,4 +41,20 @@ public class Dynamics extends Property{
 	public Object dispatch(IResolver r) {
 		return ((IPropertyResolver) r).resolve(this);
 	}
+
+	@Override
+	public void copy(Property p) {
+		Dynamics d = (Dynamics) p;
+		
+		accel.setX(d.accel.X());
+		accel.setY(d.accel.Y());
+		accel.setZ(d.accel.Z());
+		
+		a_accel.setX(d.a_accel.X());
+		a_accel.setY(d.a_accel.Y());
+		a_accel.setZ(d.a_accel.Z());
+		
+	}
+	
+	
 }

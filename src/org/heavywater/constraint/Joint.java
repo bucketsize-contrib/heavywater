@@ -1,12 +1,14 @@
 package org.heavywater.constraint;
 
+import java.util.List;
+
 import org.heavywater.core.Constraint;
-import org.heavywater.core.IConstraintResolver;
 import org.heavywater.core.Entity;
+import org.heavywater.core.IAffectorResolver;
 import org.heavywater.core.IResolver;
 
 public class Joint extends Constraint{
-	Entity[] entities = new Entity[2];
+	List<Entity> entities;
 
 	
 	@Override
@@ -18,6 +20,6 @@ public class Joint extends Constraint{
 	
 	@Override
 	public Object dispatch(IResolver r) {
-		return ((IConstraintResolver) r).resolve(this);
+		return ((IAffectorResolver) r).resolve(this);
 	}
 }

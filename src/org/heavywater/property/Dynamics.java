@@ -1,8 +1,8 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Property;
-import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IAffectorResolver;
 import org.heavywater.core.IResolver;
+import org.heavywater.core.Property;
 import org.heavywater.primitives.Vector3;
 
 //defectors/secondary; modified by tertiary - affects primary
@@ -16,12 +16,15 @@ public class Dynamics extends Property{
 	
 	public static Dynamics initial = new Dynamics();
 	
-	public Vector3 accel;		
-	public Vector3 a_accel;
-
+	public Vector3 l_accel; // accel producted by thrust at CoM		
+	public Vector3 w_accel; // angular accel produced by thrust about CoM
+	
+	public Vector3 f_accel; // cons produced by g/f/c/others
+	
 	public Dynamics(){
-		accel = new Vector3();
-		a_accel = new Vector3();
+		l_accel = new Vector3();
+		w_accel = new Vector3();
+		f_accel = new Vector3();
 		type = "Dynamics";
 	}
 		
@@ -29,9 +32,9 @@ public class Dynamics extends Property{
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
 		sb.append(" a=");
-		sb.append(accel.inspect());
+		sb.append(l_accel.inspect());
 		sb.append(" w=");
-		sb.append(a_accel.inspect());
+		sb.append(w_accel.inspect());
 		sb.append(")");
 
 		return sb.toString();
@@ -39,20 +42,20 @@ public class Dynamics extends Property{
 
 	@Override
 	public Object dispatch(IResolver r) {
-		return ((IPropertyResolver) r).resolve(this);
+		return ((IAffectorResolver) r).resolve(this);
 	}
 
 	@Override
 	public void copy(Property p) {
 		Dynamics d = (Dynamics) p;
 		
-		accel.setX(d.accel.X());
-		accel.setY(d.accel.Y());
-		accel.setZ(d.accel.Z());
+		l_accel.setX(d.l_accel.X());
+		l_accel.setY(d.l_accel.Y());
+		l_accel.setZ(d.l_accel.Z());
 		
-		a_accel.setX(d.a_accel.X());
-		a_accel.setY(d.a_accel.Y());
-		a_accel.setZ(d.a_accel.Z());
+		w_accel.setX(d.w_accel.X());
+		w_accel.setY(d.w_accel.Y());
+		w_accel.setZ(d.w_accel.Z());
 		
 	}
 	

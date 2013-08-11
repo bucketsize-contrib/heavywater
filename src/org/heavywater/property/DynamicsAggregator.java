@@ -17,8 +17,8 @@ public class DynamicsAggregator extends Base{
 		
 		for(IAffectable ia: as){
 			Dynamics id = (Dynamics) ia;
-			aggregate.accel = aggregate.accel.add(id.accel);
-			aggregate.a_accel = aggregate.a_accel.add(id.a_accel);
+			aggregate.l_accel = aggregate.l_accel.add(id.l_accel);
+			aggregate.w_accel = aggregate.w_accel.add(id.w_accel);
 		}
 		return aggregate;
 	}

@@ -1,8 +1,8 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Property;
-import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IAffectorResolver;
 import org.heavywater.core.IResolver;
+import org.heavywater.core.Property;
 import org.heavywater.primitives.Vector3;
 
 // primary; this will yield due to changes in secondarie(s)
@@ -17,6 +17,7 @@ public class Kinetics extends Property {
 	public Vector3 location;	
 	public Vector3 velocity;
 	public Vector3 a_velocity;
+	public Vector3 s_accel; // constant acceleration due to gravity / electro-magnetism
 
 	public Kinetics(){
 		location = new Vector3();
@@ -41,7 +42,7 @@ public class Kinetics extends Property {
 
 	@Override
 	public Object dispatch(IResolver r) {
-		return ((IPropertyResolver) r).resolve(this);
+		return ((IAffectorResolver) r).resolve(this);
 	}
 
 

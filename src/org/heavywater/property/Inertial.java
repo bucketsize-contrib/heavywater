@@ -1,23 +1,29 @@
 package org.heavywater.property;
 
-import org.heavywater.core.Property;
-import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IAffectorResolver;
 import org.heavywater.core.IResolver;
 import org.heavywater.core.IVisitable;
+import org.heavywater.core.Property;
 
 public class Inertial  extends Property implements IVisitable{
 	public double mass;
 	
 	@Override
 	public Object dispatch(IResolver r) {
-		return ((IPropertyResolver) r).resolve(this);
+		return ((IAffectorResolver) r).resolve(this);
 	}
 
 	@Override
 	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sb = new StringBuffer();
+		sb.append("(Inertial");
+		sb.append(" m=");
+		sb.append(mass);
+		sb.append(")");
+
+		return sb.toString();
 	}
+
 
 	@Override
 	public void copy(Property p) {

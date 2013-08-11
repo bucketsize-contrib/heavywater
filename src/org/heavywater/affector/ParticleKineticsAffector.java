@@ -1,9 +1,5 @@
 package org.heavywater.affector;
 
-import static org.heavywater.util.LogUtil.logInfo;
-
-import java.util.List;
-
 import org.heavywater.core.Entity;
 import org.heavywater.core.IAffectable;
 import org.heavywater.core.IAffector;
@@ -16,10 +12,6 @@ import org.heavywater.util.InstanceFactory;
 
 public class ParticleKineticsAffector implements IAffector{
 	
-	public ParticleKineticsAffector(){
-		logInfo("new "+this);
-	}
-	
 	// compute kinematics from other affectables
 	// there can be one or more secondary, depends on the affector scheme
 	// single: when all tertiaries coalesce to one one secondary
@@ -27,15 +19,12 @@ public class ParticleKineticsAffector implements IAffector{
 	public void affect(IAffectable p, Entity e) {
 		Kinetics k = (Kinetics) p;
 
-		ParticleDynamicsAffector pda = (ParticleDynamicsAffector) InstanceFactory
-				.getInstance("org.heavywater.affector.ParticleDynamicsAffector");
-		
 		DynamicsAggregator ag = (DynamicsAggregator) InstanceFactory
 				.getInstance("org.heavywater.property.DynamicsAggregator");
 		
 		Dynamics d = (Dynamics) ag.aggregate( e.getProperties("Dynamics") ); 
 		
-		Vector3 a = d.accel;
+		Vector3 a = d.l_accel.add(d.f_accel);
 		Vector3 v = k.velocity; 
 		double t = e.getCycleTime();
 

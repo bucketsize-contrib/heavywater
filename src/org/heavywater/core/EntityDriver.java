@@ -1,7 +1,6 @@
 package org.heavywater.core;
 
-import org.heavywater.affector.ConstraintAffectorResolver;
-import org.heavywater.affector.PropertyAffectorResolver;
+import org.heavywater.affector.AffectorResolver;
 
 /**
  * EntityDriver know how each Property affect this particular Entity.
@@ -10,12 +9,10 @@ import org.heavywater.affector.PropertyAffectorResolver;
  * from the Entity object.
  */
 public class EntityDriver extends Base implements IDriver {
-	private IPropertyResolver pafr = null;
-	private IConstraintResolver cafr = null;
+	private IAffectorResolver afr = null;
 	
 	public EntityDriver(){
-		pafr = new PropertyAffectorResolver();
-		cafr = new ConstraintAffectorResolver();
+		afr = (IAffectorResolver) new AffectorResolver();
 	}
 	
 	/**
@@ -30,13 +27,13 @@ public class EntityDriver extends Base implements IDriver {
 		
 		// update Property changes - each individual property
 		for(Property property: e.getProperties()){
-			IAffector aff = (IAffector) property.dispatch(pafr);
+			IAffector aff = (IAffector) property.dispatch((IResolver)afr);
 			aff.affect((IAffectable) property, e);
 		}
 		
 		// update Constraint changes - each individual property
 		for(Constraint constrain: e.getConstraints()){
-			IAffector aff = (IAffector) constrain.dispatch(cafr);
+			IAffector aff = (IAffector) constrain.dispatch((IResolver)afr);
 			aff.affect((IAffectable) constrain, e);
 		}
 		
@@ -47,8 +44,7 @@ public class EntityDriver extends Base implements IDriver {
 	}
 
 	private void setContext(Entity e) {
-		pafr.setEntity(e);
-		cafr.setEntity(e);		
+		afr.setEntity(e);
 	}
 
 	@Override

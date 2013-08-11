@@ -28,7 +28,7 @@ public class ParticleSystemTest extends TestCase {
 		for(int i=0; i<NUM_PAR; ++i){
 			Kinetics k = new Kinetics();
 			Dynamics d = new Dynamics();
-			d.accel = new Vector3(0.12, 0.02, 0.10);
+			d.l_accel = new Vector3(0.12, 0.02, 0.10);
 			
 			Particle p = new Particle();
 			p.add(k);

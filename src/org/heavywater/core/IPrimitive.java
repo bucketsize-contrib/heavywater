@@ -2,5 +2,5 @@ package org.heavywater.core;
 
 
 public interface IPrimitive {
-	public String inspect();
+	String inspect();
 }

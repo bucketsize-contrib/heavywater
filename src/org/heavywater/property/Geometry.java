@@ -1,6 +1,6 @@
 package org.heavywater.property;
 
-import org.heavywater.core.IPropertyResolver;
+import org.heavywater.core.IAffectorResolver;
 import org.heavywater.core.IResolver;
 import org.heavywater.core.Property;
 
@@ -16,7 +16,7 @@ public class Geometry extends Property {
 	
 	@Override
 	public Object dispatch(IResolver r) {
-		return ((IPropertyResolver) r).resolve(this);
+		return ((IAffectorResolver) r).resolve(this);
 	}
 
 	@Override

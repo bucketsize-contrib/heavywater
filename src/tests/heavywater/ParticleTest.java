@@ -2,6 +2,7 @@ package tests.heavywater;
 
 import junit.framework.TestCase;
 
+import org.heavywater.constraint.Thrust;
 import org.heavywater.engine.Engine;
 import org.heavywater.engine.EngineDriver;
 import org.heavywater.entity.Particle;
@@ -17,14 +18,17 @@ public class ParticleTest extends TestCase {
 		Kinetics k = new Kinetics();
 		Dynamics d = new Dynamics();
 		Inertial i = new Inertial();
+		Thrust t = new Thrust();
 		
 		d.f_accel = new Vector3(0.0, 0.0, -9.8);
 		i.mass = 10.0;
+		t.force = new Vector3(1.0, 0, 0);
 		
 		Particle p = new Particle();
 		p.add(k);
 		p.add(d);
 		p.add(i);
+		p.add(t);
 		
 		StateLogger logger = new StateLogger();
 		logger.cycleTime(1);

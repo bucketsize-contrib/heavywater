@@ -27,6 +27,8 @@ public class Dynamics extends Property{
 		f_accel = new Vector3();
 		type = "Dynamics";
 	}
+	
+	
 		
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();
@@ -35,6 +37,8 @@ public class Dynamics extends Property{
 		sb.append(l_accel.inspect());
 		sb.append(" w=");
 		sb.append(w_accel.inspect());
+		sb.append(" f=");
+		sb.append(f_accel.inspect());
 		sb.append(")");
 
 		return sb.toString();
@@ -48,14 +52,7 @@ public class Dynamics extends Property{
 	@Override
 	public void copy(Property p) {
 		Dynamics d = (Dynamics) p;
-		
-		l_accel.setX(d.l_accel.X());
-		l_accel.setY(d.l_accel.Y());
-		l_accel.setZ(d.l_accel.Z());
-		
-		w_accel.setX(d.w_accel.X());
-		w_accel.setY(d.w_accel.Y());
-		w_accel.setZ(d.w_accel.Z());
+		l_accel.copy(d.l_accel);
 		
 	}
 	

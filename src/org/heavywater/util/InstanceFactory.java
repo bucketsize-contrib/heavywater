@@ -11,6 +11,7 @@ public class InstanceFactory {
 	private static Map<String, Object> instancePool = new HashMap<String, Object>();
 
 	public static Object getInstance(String klass){
+		//System.out.println("KLASS="+klass);
 		Class<?> k = classPool.get(klass);
 		if (k==null){
 			try {

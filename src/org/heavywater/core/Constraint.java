@@ -14,4 +14,7 @@ package org.heavywater.core;
 public abstract class Constraint 
 extends Base 
 implements IVisitable, IAffectable{
+	
+	public abstract void copy(Constraint p);
+	
 }

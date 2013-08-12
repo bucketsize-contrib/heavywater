@@ -6,9 +6,15 @@ import org.heavywater.core.Base;
 import org.heavywater.core.IAffectable;
 
 public class DynamicsAggregator extends Base{
-	Dynamics aggregate;
+	
+	private Dynamics aggregate;
+	
 	public DynamicsAggregator(){
 		aggregate = new Dynamics();
+	}
+	
+	private void reset() {
+		aggregate.copy(Dynamics.initial);
 	}
 	
 	public IAffectable aggregate(List<IAffectable> as){
@@ -19,13 +25,9 @@ public class DynamicsAggregator extends Base{
 			Dynamics id = (Dynamics) ia;
 			aggregate.l_accel = aggregate.l_accel.add(id.l_accel);
 			aggregate.w_accel = aggregate.w_accel.add(id.w_accel);
+			aggregate.f_accel = aggregate.f_accel.add(id.f_accel);
 		}
 		return aggregate;
-	}
-
-	private void reset() {
-		aggregate.copy(Dynamics.initial);
-		
 	}
 
 	@Override

@@ -117,17 +117,12 @@ public class Vector3Test extends TestCase {
 		}
 	}
 
-	public final void testSetProcessor() {
-	}
-
-	public final void testNotation() {
-	}
-
+	
 	public final void testAdd() {
 		System.out.println("testAdd");
 		try {
-			Vector3 v1 = new Vector3(1, 1, 1);
-			Vector3 v2 = new Vector3(-1, -1, 1);
+			Vector3 v1 = new Vector3(0.0, 0.0, 0.0);
+			Vector3 v2 = new Vector3(0.01,0.1 ,-1);
 
 			System.out.println(v1.add(v2).inspect());
 		} catch (Exception e) {

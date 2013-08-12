@@ -22,4 +22,11 @@ public class Joint extends Constraint{
 	public Object dispatch(IResolver r) {
 		return ((IAffectorResolver) r).resolve(this);
 	}
+
+
+	@Override
+	public void copy(Constraint p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

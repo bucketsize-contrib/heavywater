@@ -8,23 +8,11 @@ import org.heavywater.primitives.Vector3;
 
 public class ThrustAggregator extends Base {
 
-	private Thrust aggregate;
-
-	public ThrustAggregator(){
-		aggregate = new Thrust();
-	}
-
-	private void reset() {
-		aggregate.copy(Thrust.initial);
-	}
-
 	public IAffectable aggregate(List<IAffectable> as){
-
-		reset();
-
+		Thrust aggregate = new Thrust();
 		for(IAffectable thrust: as){
-			Vector3 force = ((Thrust)thrust).force;
-			aggregate.force = aggregate.force.add(force);
+			Vector3 force = ((Thrust)thrust).getForce();
+			aggregate.setForce(aggregate.getForce().add(force));
 		}
 
 		return aggregate;

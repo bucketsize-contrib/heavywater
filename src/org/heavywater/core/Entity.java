@@ -30,7 +30,7 @@ public abstract class Entity extends Base implements IVisitable {
 	protected EntityDriver driver;
 	
 	public Entity(){
-		this((EntityDriver) InstanceFactory.getInstance("org.heavywater.core.EntityDriver"));
+		this((EntityDriver) InstanceFactory.instance().getInstance("org.heavywater.core.EntityDriver"));
 	}
 	
 	public Entity(EntityDriver ed) {

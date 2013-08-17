@@ -14,16 +14,49 @@ import org.heavywater.primitives.Vector3;
 // affector scheme
 public class Kinetics extends Property {
 	// primary properties; not modifiable by external
-	public Vector3 location;	
-	public Vector3 velocity;
-	public Vector3 a_velocity;
-	public Vector3 s_accel; // constant acceleration due to gravity / electro-magnetism
+	private Vector3 loc;
+	private double wLoc; // radians
+	private Vector3 vel;
+	private Vector3 wVel;
+
+	public Vector3 getLoc() {
+		return loc;
+	}
+
+	public void setLoc(Vector3 loc) {
+		this.loc = loc;
+	}
+
+	public double getwLoc() {
+		return wLoc;
+	}
+
+	public void setwLoc(double wLoc) {
+		this.wLoc = wLoc;
+	}
+
+	public Vector3 getVel() {
+		return vel;
+	}
+
+	public void setVel(Vector3 vel) {
+		this.vel = vel;
+	}
+
+	public Vector3 getwVel() {
+		return wVel;
+	}
+
+	public void setwVel(Vector3 wVel) {
+		this.wVel = wVel;
+	}
 
 	public Kinetics(){
-		location = new Vector3();
-
-		velocity = new Vector3();
-		a_velocity = new Vector3();
+		loc = new Vector3();
+		wLoc = 0.0;
+		vel = new Vector3();
+		wVel = new Vector3();
+		
 		type = "Kinetics";
 	}
 
@@ -32,9 +65,9 @@ public class Kinetics extends Property {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Kinetics");
 		sb.append(" p=");
-		sb.append(location.inspect());
+		sb.append(loc.inspect());
 		sb.append(" v=");
-		sb.append(velocity.inspect());
+		sb.append(vel.inspect());
 		sb.append(")");
 
 		return sb.toString();
@@ -45,18 +78,23 @@ public class Kinetics extends Property {
 		return ((IAffectorResolver) r).resolve(this);
 	}
 
-
 	@Override
 	public void copy(Property p) {
 		Kinetics k = (Kinetics) p;
 		
-		velocity.setX(k.velocity.X());
-		velocity.setY(k.velocity.Y());
-		velocity.setZ(k.velocity.Z());
+		loc.setX(k.loc.X());
+		loc.setY(k.loc.Y());
+		loc.setZ(k.loc.Z());
 		
-		a_velocity.setX(k.a_velocity.X());
-		a_velocity.setY(k.a_velocity.Y());
-		a_velocity.setZ(k.a_velocity.Z());
+		wLoc = k.wLoc;
+		
+		vel.setX(k.vel.X());
+		vel.setY(k.vel.Y());
+		vel.setZ(k.vel.Z());
+		
+		wVel.setX(k.wVel.X());
+		wVel.setY(k.wVel.Y());
+		wVel.setZ(k.wVel.Z());
 		
 	}
 	

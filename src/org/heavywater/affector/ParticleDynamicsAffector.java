@@ -7,7 +7,6 @@ import org.heavywater.constraint.ThrustAggregator;
 import org.heavywater.core.Entity;
 import org.heavywater.core.IAffectable;
 import org.heavywater.core.IAffector;
-import org.heavywater.primitives.Vector3;
 import org.heavywater.property.Dynamics;
 import org.heavywater.property.Inertial;
 import org.heavywater.util.InstanceFactory;
@@ -25,12 +24,13 @@ public class ParticleDynamicsAffector implements IAffector{
 		if (inertials.size() > 0){
 			Inertial inertial = (Inertial) inertials.get(0);
 
-			ThrustAggregator ag = (ThrustAggregator) InstanceFactory
-					.getInstance("org.heavywater.constraint.ThrustAggregator");
+			InstanceFactory ifac = InstanceFactory.instance();
+			ThrustAggregator ag = (ThrustAggregator) ifac.
+					getInstance(ifac.getClassName("ThrustAggregator"));
 			
 			Thrust t = (Thrust) ag.aggregate(thrusts);
 
-			d.l_accel = t.force.mult(1.0/inertial.mass);
+			d.setlAccel(t.getForce().mult(1.0/inertial.getMass()));
 		}
 	}
 }

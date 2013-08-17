@@ -14,31 +14,52 @@ import org.heavywater.primitives.Vector3;
 //ie electrostatic, magnetic, gravitational, contact, viscous, hydraulic fields
 public class Dynamics extends Property{
 	
-	public static Dynamics initial = new Dynamics();
+	private Vector3 lAccel; // accel producted by thrust at CoM		
+
+	private Vector3 wAccel; // angular accel produced by thrust about CoM
 	
-	public Vector3 l_accel; // accel producted by thrust at CoM		
-	public Vector3 w_accel; // angular accel produced by thrust about CoM
+	private Vector3 fAccel; // cons produced by g/f/c/others
 	
-	public Vector3 f_accel; // cons produced by g/f/c/others
-	
-	public Dynamics(){
-		l_accel = new Vector3();
-		w_accel = new Vector3();
-		f_accel = new Vector3();
-		type = "Dynamics";
+	public Vector3 getlAccel() {
+		return lAccel;
+	}
+
+	public void setlAccel(Vector3 lAccel) {
+		this.lAccel = lAccel;
+	}
+
+	public Vector3 getwAccel() {
+		return wAccel;
+	}
+
+	public void setwAccel(Vector3 wAccel) {
+		this.wAccel = wAccel;
+	}
+
+	public Vector3 getfAccel() {
+		return fAccel;
+	}
+
+	public void setfAccel(Vector3 fAccel) {
+		this.fAccel = fAccel;
 	}
 	
-	
+	public Dynamics(){
+		lAccel = new Vector3();
+		wAccel = new Vector3();
+		fAccel = new Vector3();
+		type = "Dynamics";
+	}
 		
 	public String inspect() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
 		sb.append(" a=");
-		sb.append(l_accel.inspect());
+		sb.append(lAccel.inspect());
 		sb.append(" w=");
-		sb.append(w_accel.inspect());
+		sb.append(wAccel.inspect());
 		sb.append(" f=");
-		sb.append(f_accel.inspect());
+		sb.append(fAccel.inspect());
 		sb.append(")");
 
 		return sb.toString();
@@ -52,7 +73,7 @@ public class Dynamics extends Property{
 	@Override
 	public void copy(Property p) {
 		Dynamics d = (Dynamics) p;
-		l_accel.copy(d.l_accel);
+		lAccel.copy(d.lAccel);
 		
 	}
 	

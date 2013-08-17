@@ -6,8 +6,16 @@ import org.heavywater.core.IVisitable;
 import org.heavywater.core.Property;
 
 public class Inertial  extends Property implements IVisitable{
-	public double mass;
+	private double mass;
 	
+	public double getMass() {
+		return mass;
+	}
+
+	public void setMass(double mass) {
+		this.mass = mass;
+	}
+
 	@Override
 	public Object dispatch(IResolver r) {
 		return ((IAffectorResolver) r).resolve(this);
@@ -23,7 +31,6 @@ public class Inertial  extends Property implements IVisitable{
 
 		return sb.toString();
 	}
-
 
 	@Override
 	public void copy(Property p) {

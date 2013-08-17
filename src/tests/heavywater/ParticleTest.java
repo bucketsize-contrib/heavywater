@@ -20,9 +20,9 @@ public class ParticleTest extends TestCase {
 		Inertial i = new Inertial();
 		Thrust t = new Thrust();
 		
-		d.f_accel = new Vector3(0.0, 0.0, -9.8);
-		i.mass = 10.0;
-		t.force = new Vector3(1.0, 0, 0);
+		d.setfAccel(new Vector3(0.0, 0.0, -9.8));
+		i.setMass(10.0);
+		t.setForce(new Vector3(1.0, 0, 0));
 		
 		Particle p = new Particle();
 		p.add(k);
@@ -39,6 +39,8 @@ public class ParticleTest extends TestCase {
 		engine.add(p);
 		engine.add(logger);
 		
-		engine.start();
+		engine.start(5.0);
+		
+		
 	}
 }

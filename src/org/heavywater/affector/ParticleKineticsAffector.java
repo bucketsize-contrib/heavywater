@@ -19,20 +19,23 @@ public class ParticleKineticsAffector implements IAffector{
 	public void affect(IAffectable p, Entity e) {
 		Kinetics k = (Kinetics) p;
 
-		DynamicsAggregator ag = (DynamicsAggregator) InstanceFactory
-				.getInstance("org.heavywater.property.DynamicsAggregator");
+		InstanceFactory ifac = InstanceFactory.instance();
+		DynamicsAggregator ag = (DynamicsAggregator) ifac.
+				getInstance(ifac.getClassName("DynamicsAggregator"));
 		
 		Dynamics d = (Dynamics) ag.aggregate( e.getProperties("Dynamics") ); 
 		
-		Vector3 a = d.l_accel.add(d.f_accel);
-		Vector3 v = k.velocity; 
+		Vector3 a = d.getlAccel().add(d.getfAccel());
+		Vector3 v = k.getVel();
+		Vector3 l = k.getLoc();
+		
 		double t = e.getCycleTime();
 
 		// s = s + ( v*t + 0.5*a*t^2 )
-		k.location = k.location.add( v.mult(t).add(a.mult(t*t).mult(0.5)) );  
+		k.setLoc(l.add( v.mult(t).add(a.mult(t*t).mult(0.5)) ) );  
 
 		// v = v + at
-		k.velocity = v.add( a.mult(t) );
+		k.setVel(v.add( a.mult(t) ) );
 	}
 			
 }

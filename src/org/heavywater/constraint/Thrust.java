@@ -8,12 +8,20 @@ import org.heavywater.primitives.Vector3;
 
 public class Thrust extends Constraint {
 
-	public static Thrust initial = new Thrust();
-	public Vector3 force;
+	private Vector3 force;
 	
+	public Vector3 getForce() {
+		return force;
+	}
+
+	public void setForce(Vector3 force) {
+		this.force = force;
+	}
+
 	public Thrust(){
 		force = new Vector3();
 	}
+	
 	@Override
 	public Object dispatch(IResolver r) {
 		return ((IAffectorResolver) r).resolve(this);

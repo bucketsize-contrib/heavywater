@@ -1,16 +1,34 @@
 package org.heavywater.util;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.heavywater.core.HException;
+
 import static org.heavywater.util.LogUtil.*;
 
 public class InstanceFactory {
-	private static Map<String, Class<?>> classPool = new HashMap<String, Class<?>>();
-	private static Map<String, Object> instancePool = new HashMap<String, Object>();
+	private Map<String, Class<?>> classPool = new HashMap<String, Class<?>>();
+	private Map<String, Object> instancePool = new HashMap<String, Object>();
+	
+	private Properties classNames;
+	
+	private InstanceFactory() {
+		classNames = new Properties();
+		 
+	    try {
+	    	InputStream pfile = new FileInputStream("res/classcache.properties");
+	    	classNames.load(pfile);
+		} catch (IOException e) {
+			throw new HException(e);
+		}
+	}
 
-	public static Object getInstance(String klass){
+	public Object getInstance(String klass){
 		//System.out.println("KLASS="+klass);
 		Class<?> k = classPool.get(klass);
 		if (k==null){
@@ -34,9 +52,20 @@ public class InstanceFactory {
 			} catch (IllegalAccessException e) {
 				throw new HException(e);
 			}
-		}else{
 		}
 		return i;
+	}
+	
+	public String getClassName(String type){
+		return classNames.getProperty(type);
+	}
+
+	private static InstanceFactory instance;
+	public static InstanceFactory instance() {
+		if (instance==null){
+			instance = new InstanceFactory();
+		}
+		return instance;
 	}
 
 }

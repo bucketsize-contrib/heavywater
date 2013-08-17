@@ -4,11 +4,14 @@ import static org.heavywater.util.LogUtil.logInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.heavywater.core.Entity;
 import org.heavywater.core.HException;
 import org.heavywater.core.IEntityResolver;
 import org.heavywater.core.IResolver;
+import org.heavywater.util.InstanceFactory;
 
 /**
  * Engine is an Entity that entangles cause and effects of Entities over a 
@@ -31,6 +34,57 @@ public class Engine extends Entity{
 		shutdownEventFlag = new EventFlag();
 	}
 	
+	private void start0(){
+		logInfo("starting Engine");
+		
+		// initialize before using
+		InstanceFactory.instance(); 
+		
+		// sanitize engine params
+		if (cycleTime == 0){
+			throw new HException("cycletime = 0");
+		}
+		
+		// engine has only one step
+		step(); 
+	
+	}
+	
+	private void wait0() {
+		try {
+			shutdownEventFlag.await();
+			logInfo("stopping Engine");
+		} catch (InterruptedException e) {
+			throw new HException(e);
+		}
+	}
+
+	public void start(){
+		start0();
+		wait0();
+	}
+	
+	public void stop(){
+		shutdownEventFlag.signal();
+	}
+	
+	public void start(double secs){
+		start0();
+		
+		int delay = (int) (secs*1000);
+		new Timer().schedule(new TimerTask(){
+			@Override
+			public void run() {
+				logInfo("stop signalled to Engine");
+				stop();
+			}
+		}, delay);
+		
+		logInfo("scheduled Engine shutdown in "+secs+"seconds");
+		
+		wait0();
+	}
+
 	public void add(Listener l) {
 		listeners.add(l);
 	}
@@ -46,30 +100,6 @@ public class Engine extends Entity{
 		}
 	}
 	
-	public void start(){
-		logInfo("starting Engine");
-		
-		// sanitize engine params
-		if (cycleTime == 0){
-			throw new HException("cycletime = 0");
-		}
-		
-		// engine has only one step
-		step(); 
-		
-		// shutdown after step is completed
-		try {
-			shutdownEventFlag.await();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void halt(){
-		shutdownEventFlag.signal();
-	}
-
 	public Object dispatch(IEntityResolver afr) {
 		return afr.resolve(this);
 	}

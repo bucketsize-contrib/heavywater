@@ -5,8 +5,16 @@ import org.heavywater.core.IResolver;
 import org.heavywater.core.Property;
 
 public class ElectoStatic extends Property {
-	public double charge;	
+	private double charge;	
 	
+	public double getCharge() {
+		return charge;
+	}
+
+	public void setCharge(double charge) {
+		this.charge = charge;
+	}
+
 	public String inspect() {
 		return "ElectoStatic#inspect";
 	}

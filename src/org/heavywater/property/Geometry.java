@@ -1,12 +1,15 @@
 package org.heavywater.property;
 
 import org.heavywater.core.IAffectorResolver;
+import org.heavywater.core.IConfinement;
 import org.heavywater.core.IResolver;
+import org.heavywater.core.IShape;
 import org.heavywater.core.Property;
 
 public class Geometry extends Property {
 
-	//Mesh mesh;
+	private IShape shape;
+	private IConfinement confinement;
 	
 	@Override
 	public String inspect() {

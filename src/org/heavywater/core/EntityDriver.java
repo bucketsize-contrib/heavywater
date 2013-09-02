@@ -47,8 +47,4 @@ public class EntityDriver extends Base implements IDriver {
 		afr.setEntity(e);
 	}
 
-	@Override
-	public String inspect() {
-		return "(EntityDriver)";
-	}
 }

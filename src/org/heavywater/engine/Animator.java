@@ -38,7 +38,7 @@ public class Animator extends Base{
 	public void add(Entity e) {
 		ensemble.add(e);	
 		
-		logInfo("added "+e.inspect()+" to "+this.inspect());
+		logInfo("added "+e.toString()+" to "+this.toString());
 	}
 	
 	public void add(List<Entity> el) {
@@ -55,7 +55,7 @@ public class Animator extends Base{
 		}
 	}
 	
-	public String inspect(){
+	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Animator id=");
 		sb.append(getID());

@@ -19,7 +19,7 @@ public class Particle extends Entity {
 		return resolver.resolve(this);
 	}
 	
-	public String inspect() {
+	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Particle ");
 		sb.append(getID());

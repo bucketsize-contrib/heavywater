@@ -15,7 +15,7 @@ public class Vector3Test extends TestCase {
 		System.out.println("testVector3");
 		try {
 			Vector3 v = new Vector3();
-			System.out.println(v.inspect());
+			System.out.println(v.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -26,7 +26,7 @@ public class Vector3Test extends TestCase {
 		System.out.println("testVector3DoubleDoubleDouble");
 		try {
 			Vector3 v = new Vector3(1, 2, 3);
-			System.out.println(v.inspect());
+			System.out.println(v.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -37,7 +37,7 @@ public class Vector3Test extends TestCase {
 		System.out.println("testVector3Vector3");
 		try {
 			Vector3 v = new Vector3(new Vector3(51, 5, 34));
-			System.out.println(v.inspect());
+			System.out.println(v.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -124,7 +124,7 @@ public class Vector3Test extends TestCase {
 			Vector3 v1 = new Vector3(0.0, 0.0, 0.0);
 			Vector3 v2 = new Vector3(0.01,0.1 ,-1);
 
-			System.out.println(v1.add(v2).inspect());
+			System.out.println(v1.add(v2).toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -137,7 +137,7 @@ public class Vector3Test extends TestCase {
 			Vector3 v1 = new Vector3(1, 1, 1);
 			Vector3 v2 = new Vector3(-1, -1, 1);
 
-			System.out.println(v1.sub(v2).inspect());
+			System.out.println(v1.sub(v2).toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -149,7 +149,7 @@ public class Vector3Test extends TestCase {
 		try {
 			Vector3 v1 = new Vector3(1, 1, -1);
 
-			System.out.println(v1.mult(2.5).inspect());
+			System.out.println(v1.mult(2.5).toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -199,7 +199,7 @@ public class Vector3Test extends TestCase {
 			Vector3 v1 = new Vector3(1, 1, 1);
 			Vector3 v2 = new Vector3(1, -1, -1);
 
-			System.out.println(v1.cross(v2).inspect());
+			System.out.println(v1.cross(v2).toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());
@@ -215,7 +215,7 @@ public class Vector3Test extends TestCase {
 		try {
 			Vector3 v1 = new Vector3(1, 1, 1);
 
-			System.out.println(v1.normalize().inspect());
+			System.out.println(v1.normalize().toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage() + e.toString());

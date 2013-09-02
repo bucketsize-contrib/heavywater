@@ -27,11 +27,6 @@ public class Thrust extends Constraint {
 		return ((IAffectorResolver) r).resolve(this);
 	}
 
-	@Override
-	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void copy(Constraint p) {
 		Thrust t = (Thrust) p;

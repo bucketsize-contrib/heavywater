@@ -20,9 +20,9 @@ public class StateLogger extends Entity {
 	
 	public void step(){
 		for(Entity e: ensemble ){
-			logInfo(e.inspect());
+			logInfo(e.toString());
 			for(Property p: e.getProperties()){
-				logInfo("\t" + p.inspect());
+				logInfo("\t" + p.toString());
 			}
 		}
 	}

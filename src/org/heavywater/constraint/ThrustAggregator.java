@@ -18,10 +18,4 @@ public class ThrustAggregator extends Base {
 		return aggregate;
 	}
 
-	@Override
-	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

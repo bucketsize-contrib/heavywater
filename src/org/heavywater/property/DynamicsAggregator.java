@@ -18,9 +18,4 @@ public class DynamicsAggregator extends Base{
 		return aggregate;
 	}
 
-	@Override
-	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

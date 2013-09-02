@@ -51,15 +51,15 @@ public class Dynamics extends Property{
 		type = "Dynamics";
 	}
 		
-	public String inspect() {
+	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Dynamics ");
 		sb.append(" a=");
-		sb.append(lAccel.inspect());
+		sb.append(lAccel.toString());
 		sb.append(" w=");
-		sb.append(wAccel.inspect());
+		sb.append(wAccel.toString());
 		sb.append(" f=");
-		sb.append(fAccel.inspect());
+		sb.append(fAccel.toString());
 		sb.append(")");
 
 		return sb.toString();

@@ -12,12 +12,6 @@ public class Geometry extends Property {
 	private IConfinement confinement;
 	
 	@Override
-	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public Object dispatch(IResolver r) {
 		return ((IAffectorResolver) r).resolve(this);
 	}

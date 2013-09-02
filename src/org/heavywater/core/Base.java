@@ -25,6 +25,4 @@ public abstract class Base {
 		return type;
 	}
 
-	public abstract String inspect();
-	
 }

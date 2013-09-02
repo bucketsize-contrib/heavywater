@@ -46,7 +46,7 @@ public class EngineDriver extends EntityDriver{
 			animatorMap.put(eKey, animator);
 			timer.scheduleAtFixedRate(animator.getTask(), 100, eKey);
 			
-			logInfo("Animator: "+animator.inspect());
+			logInfo("Animator: "+animator.toString());
 		}
 		
 		// register Entity with the Animator

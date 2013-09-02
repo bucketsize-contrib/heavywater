@@ -61,13 +61,13 @@ public class Kinetics extends Property {
 	}
 
 	
-	public String inspect() {
+	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Kinetics");
 		sb.append(" p=");
-		sb.append(loc.inspect());
+		sb.append(loc.toString());
 		sb.append(" v=");
-		sb.append(vel.inspect());
+		sb.append(vel.toString());
 		sb.append(")");
 
 		return sb.toString();

@@ -9,14 +9,6 @@ import org.heavywater.core.IResolver;
 
 public class Joint extends Constraint{
 	List<Entity> entities;
-
-	
-	@Override
-	public String inspect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 	@Override
 	public Object dispatch(IResolver r) {

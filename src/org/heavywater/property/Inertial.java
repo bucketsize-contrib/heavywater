@@ -22,7 +22,7 @@ public class Inertial  extends Property implements IVisitable{
 	}
 
 	@Override
-	public String inspect() {
+	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("(Inertial");
 		sb.append(" m=");

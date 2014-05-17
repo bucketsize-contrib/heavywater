@@ -5,8 +5,9 @@
   <artifactId>heavywater</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>hw-mvn</name>
+  <name>heavywater</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
